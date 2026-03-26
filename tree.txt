@@ -1,0 +1,3645 @@
+Структура папок тома HDD 1TB
+Серийный номер тома: DE0F-898D
+E:.
+|   .env
+|   .env.example
+|   .gitignore
+|   dev_runner.py
+|   requirements.txt
+|   tree.txt
+|   
++---.venv
+|   |   pyvenv.cfg
+|   |   
+|   +---Include
+|   +---Lib
+|   |   \---site-packages
+|   |       |   distutils-precedence.pth
+|   |       |   
+|   |       +---dotenv
+|   |       |   |   cli.py
+|   |       |   |   ipython.py
+|   |       |   |   main.py
+|   |       |   |   parser.py
+|   |       |   |   py.typed
+|   |       |   |   variables.py
+|   |       |   |   version.py
+|   |       |   |   __init__.py
+|   |       |   |   __main__.py
+|   |       |   |   
+|   |       |   \---__pycache__
+|   |       |           cli.cpython-311.pyc
+|   |       |           ipython.cpython-311.pyc
+|   |       |           main.cpython-311.pyc
+|   |       |           parser.cpython-311.pyc
+|   |       |           variables.cpython-311.pyc
+|   |       |           version.cpython-311.pyc
+|   |       |           __init__.cpython-311.pyc
+|   |       |           __main__.cpython-311.pyc
+|   |       |           
+|   |       +---pip
+|   |       |   |   py.typed
+|   |       |   |   __init__.py
+|   |       |   |   __main__.py
+|   |       |   |   __pip-runner__.py
+|   |       |   |   
+|   |       |   +---_internal
+|   |       |   |   |   build_env.py
+|   |       |   |   |   cache.py
+|   |       |   |   |   configuration.py
+|   |       |   |   |   exceptions.py
+|   |       |   |   |   main.py
+|   |       |   |   |   pyproject.py
+|   |       |   |   |   self_outdated_check.py
+|   |       |   |   |   wheel_builder.py
+|   |       |   |   |   __init__.py
+|   |       |   |   |   
+|   |       |   |   +---cli
+|   |       |   |   |   |   autocompletion.py
+|   |       |   |   |   |   base_command.py
+|   |       |   |   |   |   cmdoptions.py
+|   |       |   |   |   |   command_context.py
+|   |       |   |   |   |   main.py
+|   |       |   |   |   |   main_parser.py
+|   |       |   |   |   |   parser.py
+|   |       |   |   |   |   progress_bars.py
+|   |       |   |   |   |   req_command.py
+|   |       |   |   |   |   spinners.py
+|   |       |   |   |   |   status_codes.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           autocompletion.cpython-311.pyc
+|   |       |   |   |           base_command.cpython-311.pyc
+|   |       |   |   |           cmdoptions.cpython-311.pyc
+|   |       |   |   |           command_context.cpython-311.pyc
+|   |       |   |   |           main.cpython-311.pyc
+|   |       |   |   |           main_parser.cpython-311.pyc
+|   |       |   |   |           parser.cpython-311.pyc
+|   |       |   |   |           progress_bars.cpython-311.pyc
+|   |       |   |   |           req_command.cpython-311.pyc
+|   |       |   |   |           spinners.cpython-311.pyc
+|   |       |   |   |           status_codes.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---commands
+|   |       |   |   |   |   cache.py
+|   |       |   |   |   |   check.py
+|   |       |   |   |   |   completion.py
+|   |       |   |   |   |   configuration.py
+|   |       |   |   |   |   debug.py
+|   |       |   |   |   |   download.py
+|   |       |   |   |   |   freeze.py
+|   |       |   |   |   |   hash.py
+|   |       |   |   |   |   help.py
+|   |       |   |   |   |   index.py
+|   |       |   |   |   |   inspect.py
+|   |       |   |   |   |   install.py
+|   |       |   |   |   |   list.py
+|   |       |   |   |   |   search.py
+|   |       |   |   |   |   show.py
+|   |       |   |   |   |   uninstall.py
+|   |       |   |   |   |   wheel.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           cache.cpython-311.pyc
+|   |       |   |   |           check.cpython-311.pyc
+|   |       |   |   |           completion.cpython-311.pyc
+|   |       |   |   |           configuration.cpython-311.pyc
+|   |       |   |   |           debug.cpython-311.pyc
+|   |       |   |   |           download.cpython-311.pyc
+|   |       |   |   |           freeze.cpython-311.pyc
+|   |       |   |   |           hash.cpython-311.pyc
+|   |       |   |   |           help.cpython-311.pyc
+|   |       |   |   |           index.cpython-311.pyc
+|   |       |   |   |           inspect.cpython-311.pyc
+|   |       |   |   |           install.cpython-311.pyc
+|   |       |   |   |           list.cpython-311.pyc
+|   |       |   |   |           search.cpython-311.pyc
+|   |       |   |   |           show.cpython-311.pyc
+|   |       |   |   |           uninstall.cpython-311.pyc
+|   |       |   |   |           wheel.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---distributions
+|   |       |   |   |   |   base.py
+|   |       |   |   |   |   installed.py
+|   |       |   |   |   |   sdist.py
+|   |       |   |   |   |   wheel.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           base.cpython-311.pyc
+|   |       |   |   |           installed.cpython-311.pyc
+|   |       |   |   |           sdist.cpython-311.pyc
+|   |       |   |   |           wheel.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---index
+|   |       |   |   |   |   collector.py
+|   |       |   |   |   |   package_finder.py
+|   |       |   |   |   |   sources.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           collector.cpython-311.pyc
+|   |       |   |   |           package_finder.cpython-311.pyc
+|   |       |   |   |           sources.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---locations
+|   |       |   |   |   |   base.py
+|   |       |   |   |   |   _distutils.py
+|   |       |   |   |   |   _sysconfig.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           base.cpython-311.pyc
+|   |       |   |   |           _distutils.cpython-311.pyc
+|   |       |   |   |           _sysconfig.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---metadata
+|   |       |   |   |   |   base.py
+|   |       |   |   |   |   pkg_resources.py
+|   |       |   |   |   |   _json.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   +---importlib
+|   |       |   |   |   |   |   _compat.py
+|   |       |   |   |   |   |   _dists.py
+|   |       |   |   |   |   |   _envs.py
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           _compat.cpython-311.pyc
+|   |       |   |   |   |           _dists.cpython-311.pyc
+|   |       |   |   |   |           _envs.cpython-311.pyc
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           base.cpython-311.pyc
+|   |       |   |   |           pkg_resources.cpython-311.pyc
+|   |       |   |   |           _json.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---models
+|   |       |   |   |   |   candidate.py
+|   |       |   |   |   |   direct_url.py
+|   |       |   |   |   |   format_control.py
+|   |       |   |   |   |   index.py
+|   |       |   |   |   |   installation_report.py
+|   |       |   |   |   |   link.py
+|   |       |   |   |   |   scheme.py
+|   |       |   |   |   |   search_scope.py
+|   |       |   |   |   |   selection_prefs.py
+|   |       |   |   |   |   target_python.py
+|   |       |   |   |   |   wheel.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           candidate.cpython-311.pyc
+|   |       |   |   |           direct_url.cpython-311.pyc
+|   |       |   |   |           format_control.cpython-311.pyc
+|   |       |   |   |           index.cpython-311.pyc
+|   |       |   |   |           installation_report.cpython-311.pyc
+|   |       |   |   |           link.cpython-311.pyc
+|   |       |   |   |           scheme.cpython-311.pyc
+|   |       |   |   |           search_scope.cpython-311.pyc
+|   |       |   |   |           selection_prefs.cpython-311.pyc
+|   |       |   |   |           target_python.cpython-311.pyc
+|   |       |   |   |           wheel.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---network
+|   |       |   |   |   |   auth.py
+|   |       |   |   |   |   cache.py
+|   |       |   |   |   |   download.py
+|   |       |   |   |   |   lazy_wheel.py
+|   |       |   |   |   |   session.py
+|   |       |   |   |   |   utils.py
+|   |       |   |   |   |   xmlrpc.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           auth.cpython-311.pyc
+|   |       |   |   |           cache.cpython-311.pyc
+|   |       |   |   |           download.cpython-311.pyc
+|   |       |   |   |           lazy_wheel.cpython-311.pyc
+|   |       |   |   |           session.cpython-311.pyc
+|   |       |   |   |           utils.cpython-311.pyc
+|   |       |   |   |           xmlrpc.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---operations
+|   |       |   |   |   |   check.py
+|   |       |   |   |   |   freeze.py
+|   |       |   |   |   |   prepare.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   +---build
+|   |       |   |   |   |   |   build_tracker.py
+|   |       |   |   |   |   |   metadata.py
+|   |       |   |   |   |   |   metadata_editable.py
+|   |       |   |   |   |   |   metadata_legacy.py
+|   |       |   |   |   |   |   wheel.py
+|   |       |   |   |   |   |   wheel_editable.py
+|   |       |   |   |   |   |   wheel_legacy.py
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           build_tracker.cpython-311.pyc
+|   |       |   |   |   |           metadata.cpython-311.pyc
+|   |       |   |   |   |           metadata_editable.cpython-311.pyc
+|   |       |   |   |   |           metadata_legacy.cpython-311.pyc
+|   |       |   |   |   |           wheel.cpython-311.pyc
+|   |       |   |   |   |           wheel_editable.cpython-311.pyc
+|   |       |   |   |   |           wheel_legacy.cpython-311.pyc
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   +---install
+|   |       |   |   |   |   |   editable_legacy.py
+|   |       |   |   |   |   |   wheel.py
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           editable_legacy.cpython-311.pyc
+|   |       |   |   |   |           wheel.cpython-311.pyc
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           check.cpython-311.pyc
+|   |       |   |   |           freeze.cpython-311.pyc
+|   |       |   |   |           prepare.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---req
+|   |       |   |   |   |   constructors.py
+|   |       |   |   |   |   req_file.py
+|   |       |   |   |   |   req_install.py
+|   |       |   |   |   |   req_set.py
+|   |       |   |   |   |   req_uninstall.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           constructors.cpython-311.pyc
+|   |       |   |   |           req_file.cpython-311.pyc
+|   |       |   |   |           req_install.cpython-311.pyc
+|   |       |   |   |           req_set.cpython-311.pyc
+|   |       |   |   |           req_uninstall.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---resolution
+|   |       |   |   |   |   base.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   +---legacy
+|   |       |   |   |   |   |   resolver.py
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           resolver.cpython-311.pyc
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   +---resolvelib
+|   |       |   |   |   |   |   base.py
+|   |       |   |   |   |   |   candidates.py
+|   |       |   |   |   |   |   factory.py
+|   |       |   |   |   |   |   found_candidates.py
+|   |       |   |   |   |   |   provider.py
+|   |       |   |   |   |   |   reporter.py
+|   |       |   |   |   |   |   requirements.py
+|   |       |   |   |   |   |   resolver.py
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           base.cpython-311.pyc
+|   |       |   |   |   |           candidates.cpython-311.pyc
+|   |       |   |   |   |           factory.cpython-311.pyc
+|   |       |   |   |   |           found_candidates.cpython-311.pyc
+|   |       |   |   |   |           provider.cpython-311.pyc
+|   |       |   |   |   |           reporter.cpython-311.pyc
+|   |       |   |   |   |           requirements.cpython-311.pyc
+|   |       |   |   |   |           resolver.cpython-311.pyc
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           base.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---utils
+|   |       |   |   |   |   appdirs.py
+|   |       |   |   |   |   compat.py
+|   |       |   |   |   |   compatibility_tags.py
+|   |       |   |   |   |   datetime.py
+|   |       |   |   |   |   deprecation.py
+|   |       |   |   |   |   direct_url_helpers.py
+|   |       |   |   |   |   egg_link.py
+|   |       |   |   |   |   encoding.py
+|   |       |   |   |   |   entrypoints.py
+|   |       |   |   |   |   filesystem.py
+|   |       |   |   |   |   filetypes.py
+|   |       |   |   |   |   glibc.py
+|   |       |   |   |   |   hashes.py
+|   |       |   |   |   |   logging.py
+|   |       |   |   |   |   misc.py
+|   |       |   |   |   |   models.py
+|   |       |   |   |   |   packaging.py
+|   |       |   |   |   |   setuptools_build.py
+|   |       |   |   |   |   subprocess.py
+|   |       |   |   |   |   temp_dir.py
+|   |       |   |   |   |   unpacking.py
+|   |       |   |   |   |   urls.py
+|   |       |   |   |   |   virtualenv.py
+|   |       |   |   |   |   wheel.py
+|   |       |   |   |   |   _jaraco_text.py
+|   |       |   |   |   |   _log.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           appdirs.cpython-311.pyc
+|   |       |   |   |           compat.cpython-311.pyc
+|   |       |   |   |           compatibility_tags.cpython-311.pyc
+|   |       |   |   |           datetime.cpython-311.pyc
+|   |       |   |   |           deprecation.cpython-311.pyc
+|   |       |   |   |           direct_url_helpers.cpython-311.pyc
+|   |       |   |   |           egg_link.cpython-311.pyc
+|   |       |   |   |           encoding.cpython-311.pyc
+|   |       |   |   |           entrypoints.cpython-311.pyc
+|   |       |   |   |           filesystem.cpython-311.pyc
+|   |       |   |   |           filetypes.cpython-311.pyc
+|   |       |   |   |           glibc.cpython-311.pyc
+|   |       |   |   |           hashes.cpython-311.pyc
+|   |       |   |   |           logging.cpython-311.pyc
+|   |       |   |   |           misc.cpython-311.pyc
+|   |       |   |   |           models.cpython-311.pyc
+|   |       |   |   |           packaging.cpython-311.pyc
+|   |       |   |   |           setuptools_build.cpython-311.pyc
+|   |       |   |   |           subprocess.cpython-311.pyc
+|   |       |   |   |           temp_dir.cpython-311.pyc
+|   |       |   |   |           unpacking.cpython-311.pyc
+|   |       |   |   |           urls.cpython-311.pyc
+|   |       |   |   |           virtualenv.cpython-311.pyc
+|   |       |   |   |           wheel.cpython-311.pyc
+|   |       |   |   |           _jaraco_text.cpython-311.pyc
+|   |       |   |   |           _log.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---vcs
+|   |       |   |   |   |   bazaar.py
+|   |       |   |   |   |   git.py
+|   |       |   |   |   |   mercurial.py
+|   |       |   |   |   |   subversion.py
+|   |       |   |   |   |   versioncontrol.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           bazaar.cpython-311.pyc
+|   |       |   |   |           git.cpython-311.pyc
+|   |       |   |   |           mercurial.cpython-311.pyc
+|   |       |   |   |           subversion.cpython-311.pyc
+|   |       |   |   |           versioncontrol.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   \---__pycache__
+|   |       |   |           build_env.cpython-311.pyc
+|   |       |   |           cache.cpython-311.pyc
+|   |       |   |           configuration.cpython-311.pyc
+|   |       |   |           exceptions.cpython-311.pyc
+|   |       |   |           main.cpython-311.pyc
+|   |       |   |           pyproject.cpython-311.pyc
+|   |       |   |           self_outdated_check.cpython-311.pyc
+|   |       |   |           wheel_builder.cpython-311.pyc
+|   |       |   |           __init__.cpython-311.pyc
+|   |       |   |           
+|   |       |   +---_vendor
+|   |       |   |   |   six.py
+|   |       |   |   |   typing_extensions.py
+|   |       |   |   |   vendor.txt
+|   |       |   |   |   __init__.py
+|   |       |   |   |   
+|   |       |   |   +---cachecontrol
+|   |       |   |   |   |   adapter.py
+|   |       |   |   |   |   cache.py
+|   |       |   |   |   |   controller.py
+|   |       |   |   |   |   filewrapper.py
+|   |       |   |   |   |   heuristics.py
+|   |       |   |   |   |   py.typed
+|   |       |   |   |   |   serialize.py
+|   |       |   |   |   |   wrapper.py
+|   |       |   |   |   |   _cmd.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   +---caches
+|   |       |   |   |   |   |   file_cache.py
+|   |       |   |   |   |   |   redis_cache.py
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           file_cache.cpython-311.pyc
+|   |       |   |   |   |           redis_cache.cpython-311.pyc
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           adapter.cpython-311.pyc
+|   |       |   |   |           cache.cpython-311.pyc
+|   |       |   |   |           controller.cpython-311.pyc
+|   |       |   |   |           filewrapper.cpython-311.pyc
+|   |       |   |   |           heuristics.cpython-311.pyc
+|   |       |   |   |           serialize.cpython-311.pyc
+|   |       |   |   |           wrapper.cpython-311.pyc
+|   |       |   |   |           _cmd.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---certifi
+|   |       |   |   |   |   cacert.pem
+|   |       |   |   |   |   core.py
+|   |       |   |   |   |   py.typed
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   __main__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           core.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           __main__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---chardet
+|   |       |   |   |   |   big5freq.py
+|   |       |   |   |   |   big5prober.py
+|   |       |   |   |   |   chardistribution.py
+|   |       |   |   |   |   charsetgroupprober.py
+|   |       |   |   |   |   charsetprober.py
+|   |       |   |   |   |   codingstatemachine.py
+|   |       |   |   |   |   codingstatemachinedict.py
+|   |       |   |   |   |   cp949prober.py
+|   |       |   |   |   |   enums.py
+|   |       |   |   |   |   escprober.py
+|   |       |   |   |   |   escsm.py
+|   |       |   |   |   |   eucjpprober.py
+|   |       |   |   |   |   euckrfreq.py
+|   |       |   |   |   |   euckrprober.py
+|   |       |   |   |   |   euctwfreq.py
+|   |       |   |   |   |   euctwprober.py
+|   |       |   |   |   |   gb2312freq.py
+|   |       |   |   |   |   gb2312prober.py
+|   |       |   |   |   |   hebrewprober.py
+|   |       |   |   |   |   jisfreq.py
+|   |       |   |   |   |   johabfreq.py
+|   |       |   |   |   |   johabprober.py
+|   |       |   |   |   |   jpcntx.py
+|   |       |   |   |   |   langbulgarianmodel.py
+|   |       |   |   |   |   langgreekmodel.py
+|   |       |   |   |   |   langhebrewmodel.py
+|   |       |   |   |   |   langhungarianmodel.py
+|   |       |   |   |   |   langrussianmodel.py
+|   |       |   |   |   |   langthaimodel.py
+|   |       |   |   |   |   langturkishmodel.py
+|   |       |   |   |   |   latin1prober.py
+|   |       |   |   |   |   macromanprober.py
+|   |       |   |   |   |   mbcharsetprober.py
+|   |       |   |   |   |   mbcsgroupprober.py
+|   |       |   |   |   |   mbcssm.py
+|   |       |   |   |   |   py.typed
+|   |       |   |   |   |   resultdict.py
+|   |       |   |   |   |   sbcharsetprober.py
+|   |       |   |   |   |   sbcsgroupprober.py
+|   |       |   |   |   |   sjisprober.py
+|   |       |   |   |   |   universaldetector.py
+|   |       |   |   |   |   utf1632prober.py
+|   |       |   |   |   |   utf8prober.py
+|   |       |   |   |   |   version.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   +---cli
+|   |       |   |   |   |   |   chardetect.py
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           chardetect.cpython-311.pyc
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   +---metadata
+|   |       |   |   |   |   |   languages.py
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           languages.cpython-311.pyc
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           big5freq.cpython-311.pyc
+|   |       |   |   |           big5prober.cpython-311.pyc
+|   |       |   |   |           chardistribution.cpython-311.pyc
+|   |       |   |   |           charsetgroupprober.cpython-311.pyc
+|   |       |   |   |           charsetprober.cpython-311.pyc
+|   |       |   |   |           codingstatemachine.cpython-311.pyc
+|   |       |   |   |           codingstatemachinedict.cpython-311.pyc
+|   |       |   |   |           cp949prober.cpython-311.pyc
+|   |       |   |   |           enums.cpython-311.pyc
+|   |       |   |   |           escprober.cpython-311.pyc
+|   |       |   |   |           escsm.cpython-311.pyc
+|   |       |   |   |           eucjpprober.cpython-311.pyc
+|   |       |   |   |           euckrfreq.cpython-311.pyc
+|   |       |   |   |           euckrprober.cpython-311.pyc
+|   |       |   |   |           euctwfreq.cpython-311.pyc
+|   |       |   |   |           euctwprober.cpython-311.pyc
+|   |       |   |   |           gb2312freq.cpython-311.pyc
+|   |       |   |   |           gb2312prober.cpython-311.pyc
+|   |       |   |   |           hebrewprober.cpython-311.pyc
+|   |       |   |   |           jisfreq.cpython-311.pyc
+|   |       |   |   |           johabfreq.cpython-311.pyc
+|   |       |   |   |           johabprober.cpython-311.pyc
+|   |       |   |   |           jpcntx.cpython-311.pyc
+|   |       |   |   |           langbulgarianmodel.cpython-311.pyc
+|   |       |   |   |           langgreekmodel.cpython-311.pyc
+|   |       |   |   |           langhebrewmodel.cpython-311.pyc
+|   |       |   |   |           langhungarianmodel.cpython-311.pyc
+|   |       |   |   |           langrussianmodel.cpython-311.pyc
+|   |       |   |   |           langthaimodel.cpython-311.pyc
+|   |       |   |   |           langturkishmodel.cpython-311.pyc
+|   |       |   |   |           latin1prober.cpython-311.pyc
+|   |       |   |   |           macromanprober.cpython-311.pyc
+|   |       |   |   |           mbcharsetprober.cpython-311.pyc
+|   |       |   |   |           mbcsgroupprober.cpython-311.pyc
+|   |       |   |   |           mbcssm.cpython-311.pyc
+|   |       |   |   |           resultdict.cpython-311.pyc
+|   |       |   |   |           sbcharsetprober.cpython-311.pyc
+|   |       |   |   |           sbcsgroupprober.cpython-311.pyc
+|   |       |   |   |           sjisprober.cpython-311.pyc
+|   |       |   |   |           universaldetector.cpython-311.pyc
+|   |       |   |   |           utf1632prober.cpython-311.pyc
+|   |       |   |   |           utf8prober.cpython-311.pyc
+|   |       |   |   |           version.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---colorama
+|   |       |   |   |   |   ansi.py
+|   |       |   |   |   |   ansitowin32.py
+|   |       |   |   |   |   initialise.py
+|   |       |   |   |   |   win32.py
+|   |       |   |   |   |   winterm.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   +---tests
+|   |       |   |   |   |   |   ansitowin32_test.py
+|   |       |   |   |   |   |   ansi_test.py
+|   |       |   |   |   |   |   initialise_test.py
+|   |       |   |   |   |   |   isatty_test.py
+|   |       |   |   |   |   |   utils.py
+|   |       |   |   |   |   |   winterm_test.py
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           ansitowin32_test.cpython-311.pyc
+|   |       |   |   |   |           ansi_test.cpython-311.pyc
+|   |       |   |   |   |           initialise_test.cpython-311.pyc
+|   |       |   |   |   |           isatty_test.cpython-311.pyc
+|   |       |   |   |   |           utils.cpython-311.pyc
+|   |       |   |   |   |           winterm_test.cpython-311.pyc
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           ansi.cpython-311.pyc
+|   |       |   |   |           ansitowin32.cpython-311.pyc
+|   |       |   |   |           initialise.cpython-311.pyc
+|   |       |   |   |           win32.cpython-311.pyc
+|   |       |   |   |           winterm.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---distlib
+|   |       |   |   |   |   compat.py
+|   |       |   |   |   |   database.py
+|   |       |   |   |   |   index.py
+|   |       |   |   |   |   locators.py
+|   |       |   |   |   |   manifest.py
+|   |       |   |   |   |   markers.py
+|   |       |   |   |   |   metadata.py
+|   |       |   |   |   |   resources.py
+|   |       |   |   |   |   scripts.py
+|   |       |   |   |   |   t32.exe
+|   |       |   |   |   |   t64-arm.exe
+|   |       |   |   |   |   t64.exe
+|   |       |   |   |   |   util.py
+|   |       |   |   |   |   version.py
+|   |       |   |   |   |   w32.exe
+|   |       |   |   |   |   w64-arm.exe
+|   |       |   |   |   |   w64.exe
+|   |       |   |   |   |   wheel.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           compat.cpython-311.pyc
+|   |       |   |   |           database.cpython-311.pyc
+|   |       |   |   |           index.cpython-311.pyc
+|   |       |   |   |           locators.cpython-311.pyc
+|   |       |   |   |           manifest.cpython-311.pyc
+|   |       |   |   |           markers.cpython-311.pyc
+|   |       |   |   |           metadata.cpython-311.pyc
+|   |       |   |   |           resources.cpython-311.pyc
+|   |       |   |   |           scripts.cpython-311.pyc
+|   |       |   |   |           util.cpython-311.pyc
+|   |       |   |   |           version.cpython-311.pyc
+|   |       |   |   |           wheel.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---distro
+|   |       |   |   |   |   distro.py
+|   |       |   |   |   |   py.typed
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   __main__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           distro.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           __main__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---idna
+|   |       |   |   |   |   codec.py
+|   |       |   |   |   |   compat.py
+|   |       |   |   |   |   core.py
+|   |       |   |   |   |   idnadata.py
+|   |       |   |   |   |   intranges.py
+|   |       |   |   |   |   package_data.py
+|   |       |   |   |   |   py.typed
+|   |       |   |   |   |   uts46data.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           codec.cpython-311.pyc
+|   |       |   |   |           compat.cpython-311.pyc
+|   |       |   |   |           core.cpython-311.pyc
+|   |       |   |   |           idnadata.cpython-311.pyc
+|   |       |   |   |           intranges.cpython-311.pyc
+|   |       |   |   |           package_data.cpython-311.pyc
+|   |       |   |   |           uts46data.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---msgpack
+|   |       |   |   |   |   exceptions.py
+|   |       |   |   |   |   ext.py
+|   |       |   |   |   |   fallback.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           exceptions.cpython-311.pyc
+|   |       |   |   |           ext.cpython-311.pyc
+|   |       |   |   |           fallback.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---packaging
+|   |       |   |   |   |   markers.py
+|   |       |   |   |   |   py.typed
+|   |       |   |   |   |   requirements.py
+|   |       |   |   |   |   specifiers.py
+|   |       |   |   |   |   tags.py
+|   |       |   |   |   |   utils.py
+|   |       |   |   |   |   version.py
+|   |       |   |   |   |   _manylinux.py
+|   |       |   |   |   |   _musllinux.py
+|   |       |   |   |   |   _structures.py
+|   |       |   |   |   |   __about__.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           markers.cpython-311.pyc
+|   |       |   |   |           requirements.cpython-311.pyc
+|   |       |   |   |           specifiers.cpython-311.pyc
+|   |       |   |   |           tags.cpython-311.pyc
+|   |       |   |   |           utils.cpython-311.pyc
+|   |       |   |   |           version.cpython-311.pyc
+|   |       |   |   |           _manylinux.cpython-311.pyc
+|   |       |   |   |           _musllinux.cpython-311.pyc
+|   |       |   |   |           _structures.cpython-311.pyc
+|   |       |   |   |           __about__.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---pkg_resources
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---platformdirs
+|   |       |   |   |   |   android.py
+|   |       |   |   |   |   api.py
+|   |       |   |   |   |   macos.py
+|   |       |   |   |   |   py.typed
+|   |       |   |   |   |   unix.py
+|   |       |   |   |   |   version.py
+|   |       |   |   |   |   windows.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   __main__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           android.cpython-311.pyc
+|   |       |   |   |           api.cpython-311.pyc
+|   |       |   |   |           macos.cpython-311.pyc
+|   |       |   |   |           unix.cpython-311.pyc
+|   |       |   |   |           version.cpython-311.pyc
+|   |       |   |   |           windows.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           __main__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---pygments
+|   |       |   |   |   |   cmdline.py
+|   |       |   |   |   |   console.py
+|   |       |   |   |   |   filter.py
+|   |       |   |   |   |   formatter.py
+|   |       |   |   |   |   lexer.py
+|   |       |   |   |   |   modeline.py
+|   |       |   |   |   |   plugin.py
+|   |       |   |   |   |   regexopt.py
+|   |       |   |   |   |   scanner.py
+|   |       |   |   |   |   sphinxext.py
+|   |       |   |   |   |   style.py
+|   |       |   |   |   |   token.py
+|   |       |   |   |   |   unistring.py
+|   |       |   |   |   |   util.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   __main__.py
+|   |       |   |   |   |   
+|   |       |   |   |   +---filters
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   +---formatters
+|   |       |   |   |   |   |   bbcode.py
+|   |       |   |   |   |   |   groff.py
+|   |       |   |   |   |   |   html.py
+|   |       |   |   |   |   |   img.py
+|   |       |   |   |   |   |   irc.py
+|   |       |   |   |   |   |   latex.py
+|   |       |   |   |   |   |   other.py
+|   |       |   |   |   |   |   pangomarkup.py
+|   |       |   |   |   |   |   rtf.py
+|   |       |   |   |   |   |   svg.py
+|   |       |   |   |   |   |   terminal.py
+|   |       |   |   |   |   |   terminal256.py
+|   |       |   |   |   |   |   _mapping.py
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           bbcode.cpython-311.pyc
+|   |       |   |   |   |           groff.cpython-311.pyc
+|   |       |   |   |   |           html.cpython-311.pyc
+|   |       |   |   |   |           img.cpython-311.pyc
+|   |       |   |   |   |           irc.cpython-311.pyc
+|   |       |   |   |   |           latex.cpython-311.pyc
+|   |       |   |   |   |           other.cpython-311.pyc
+|   |       |   |   |   |           pangomarkup.cpython-311.pyc
+|   |       |   |   |   |           rtf.cpython-311.pyc
+|   |       |   |   |   |           svg.cpython-311.pyc
+|   |       |   |   |   |           terminal.cpython-311.pyc
+|   |       |   |   |   |           terminal256.cpython-311.pyc
+|   |       |   |   |   |           _mapping.cpython-311.pyc
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   +---lexers
+|   |       |   |   |   |   |   python.py
+|   |       |   |   |   |   |   _mapping.py
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           python.cpython-311.pyc
+|   |       |   |   |   |           _mapping.cpython-311.pyc
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   +---styles
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           cmdline.cpython-311.pyc
+|   |       |   |   |           console.cpython-311.pyc
+|   |       |   |   |           filter.cpython-311.pyc
+|   |       |   |   |           formatter.cpython-311.pyc
+|   |       |   |   |           lexer.cpython-311.pyc
+|   |       |   |   |           modeline.cpython-311.pyc
+|   |       |   |   |           plugin.cpython-311.pyc
+|   |       |   |   |           regexopt.cpython-311.pyc
+|   |       |   |   |           scanner.cpython-311.pyc
+|   |       |   |   |           sphinxext.cpython-311.pyc
+|   |       |   |   |           style.cpython-311.pyc
+|   |       |   |   |           token.cpython-311.pyc
+|   |       |   |   |           unistring.cpython-311.pyc
+|   |       |   |   |           util.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           __main__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---pyparsing
+|   |       |   |   |   |   actions.py
+|   |       |   |   |   |   common.py
+|   |       |   |   |   |   core.py
+|   |       |   |   |   |   exceptions.py
+|   |       |   |   |   |   helpers.py
+|   |       |   |   |   |   py.typed
+|   |       |   |   |   |   results.py
+|   |       |   |   |   |   testing.py
+|   |       |   |   |   |   unicode.py
+|   |       |   |   |   |   util.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   +---diagram
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           actions.cpython-311.pyc
+|   |       |   |   |           common.cpython-311.pyc
+|   |       |   |   |           core.cpython-311.pyc
+|   |       |   |   |           exceptions.cpython-311.pyc
+|   |       |   |   |           helpers.cpython-311.pyc
+|   |       |   |   |           results.cpython-311.pyc
+|   |       |   |   |           testing.cpython-311.pyc
+|   |       |   |   |           unicode.cpython-311.pyc
+|   |       |   |   |           util.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---pyproject_hooks
+|   |       |   |   |   |   _compat.py
+|   |       |   |   |   |   _impl.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   +---_in_process
+|   |       |   |   |   |   |   _in_process.py
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           _in_process.cpython-311.pyc
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           _compat.cpython-311.pyc
+|   |       |   |   |           _impl.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---requests
+|   |       |   |   |   |   adapters.py
+|   |       |   |   |   |   api.py
+|   |       |   |   |   |   auth.py
+|   |       |   |   |   |   certs.py
+|   |       |   |   |   |   compat.py
+|   |       |   |   |   |   cookies.py
+|   |       |   |   |   |   exceptions.py
+|   |       |   |   |   |   help.py
+|   |       |   |   |   |   hooks.py
+|   |       |   |   |   |   models.py
+|   |       |   |   |   |   packages.py
+|   |       |   |   |   |   sessions.py
+|   |       |   |   |   |   status_codes.py
+|   |       |   |   |   |   structures.py
+|   |       |   |   |   |   utils.py
+|   |       |   |   |   |   _internal_utils.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   __version__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           adapters.cpython-311.pyc
+|   |       |   |   |           api.cpython-311.pyc
+|   |       |   |   |           auth.cpython-311.pyc
+|   |       |   |   |           certs.cpython-311.pyc
+|   |       |   |   |           compat.cpython-311.pyc
+|   |       |   |   |           cookies.cpython-311.pyc
+|   |       |   |   |           exceptions.cpython-311.pyc
+|   |       |   |   |           help.cpython-311.pyc
+|   |       |   |   |           hooks.cpython-311.pyc
+|   |       |   |   |           models.cpython-311.pyc
+|   |       |   |   |           packages.cpython-311.pyc
+|   |       |   |   |           sessions.cpython-311.pyc
+|   |       |   |   |           status_codes.cpython-311.pyc
+|   |       |   |   |           structures.cpython-311.pyc
+|   |       |   |   |           utils.cpython-311.pyc
+|   |       |   |   |           _internal_utils.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           __version__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---resolvelib
+|   |       |   |   |   |   providers.py
+|   |       |   |   |   |   py.typed
+|   |       |   |   |   |   reporters.py
+|   |       |   |   |   |   resolvers.py
+|   |       |   |   |   |   structs.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   +---compat
+|   |       |   |   |   |   |   collections_abc.py
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           collections_abc.cpython-311.pyc
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           providers.cpython-311.pyc
+|   |       |   |   |           reporters.cpython-311.pyc
+|   |       |   |   |           resolvers.cpython-311.pyc
+|   |       |   |   |           structs.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---rich
+|   |       |   |   |   |   abc.py
+|   |       |   |   |   |   align.py
+|   |       |   |   |   |   ansi.py
+|   |       |   |   |   |   bar.py
+|   |       |   |   |   |   box.py
+|   |       |   |   |   |   cells.py
+|   |       |   |   |   |   color.py
+|   |       |   |   |   |   color_triplet.py
+|   |       |   |   |   |   columns.py
+|   |       |   |   |   |   console.py
+|   |       |   |   |   |   constrain.py
+|   |       |   |   |   |   containers.py
+|   |       |   |   |   |   control.py
+|   |       |   |   |   |   default_styles.py
+|   |       |   |   |   |   diagnose.py
+|   |       |   |   |   |   emoji.py
+|   |       |   |   |   |   errors.py
+|   |       |   |   |   |   filesize.py
+|   |       |   |   |   |   file_proxy.py
+|   |       |   |   |   |   highlighter.py
+|   |       |   |   |   |   json.py
+|   |       |   |   |   |   jupyter.py
+|   |       |   |   |   |   layout.py
+|   |       |   |   |   |   live.py
+|   |       |   |   |   |   live_render.py
+|   |       |   |   |   |   logging.py
+|   |       |   |   |   |   markup.py
+|   |       |   |   |   |   measure.py
+|   |       |   |   |   |   padding.py
+|   |       |   |   |   |   pager.py
+|   |       |   |   |   |   palette.py
+|   |       |   |   |   |   panel.py
+|   |       |   |   |   |   pretty.py
+|   |       |   |   |   |   progress.py
+|   |       |   |   |   |   progress_bar.py
+|   |       |   |   |   |   prompt.py
+|   |       |   |   |   |   protocol.py
+|   |       |   |   |   |   py.typed
+|   |       |   |   |   |   region.py
+|   |       |   |   |   |   repr.py
+|   |       |   |   |   |   rule.py
+|   |       |   |   |   |   scope.py
+|   |       |   |   |   |   screen.py
+|   |       |   |   |   |   segment.py
+|   |       |   |   |   |   spinner.py
+|   |       |   |   |   |   status.py
+|   |       |   |   |   |   style.py
+|   |       |   |   |   |   styled.py
+|   |       |   |   |   |   syntax.py
+|   |       |   |   |   |   table.py
+|   |       |   |   |   |   terminal_theme.py
+|   |       |   |   |   |   text.py
+|   |       |   |   |   |   theme.py
+|   |       |   |   |   |   themes.py
+|   |       |   |   |   |   traceback.py
+|   |       |   |   |   |   tree.py
+|   |       |   |   |   |   _cell_widths.py
+|   |       |   |   |   |   _emoji_codes.py
+|   |       |   |   |   |   _emoji_replace.py
+|   |       |   |   |   |   _export_format.py
+|   |       |   |   |   |   _extension.py
+|   |       |   |   |   |   _fileno.py
+|   |       |   |   |   |   _inspect.py
+|   |       |   |   |   |   _log_render.py
+|   |       |   |   |   |   _loop.py
+|   |       |   |   |   |   _null_file.py
+|   |       |   |   |   |   _palettes.py
+|   |       |   |   |   |   _pick.py
+|   |       |   |   |   |   _ratio.py
+|   |       |   |   |   |   _spinners.py
+|   |       |   |   |   |   _stack.py
+|   |       |   |   |   |   _timer.py
+|   |       |   |   |   |   _win32_console.py
+|   |       |   |   |   |   _windows.py
+|   |       |   |   |   |   _windows_renderer.py
+|   |       |   |   |   |   _wrap.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   __main__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           abc.cpython-311.pyc
+|   |       |   |   |           align.cpython-311.pyc
+|   |       |   |   |           ansi.cpython-311.pyc
+|   |       |   |   |           bar.cpython-311.pyc
+|   |       |   |   |           box.cpython-311.pyc
+|   |       |   |   |           cells.cpython-311.pyc
+|   |       |   |   |           color.cpython-311.pyc
+|   |       |   |   |           color_triplet.cpython-311.pyc
+|   |       |   |   |           columns.cpython-311.pyc
+|   |       |   |   |           console.cpython-311.pyc
+|   |       |   |   |           constrain.cpython-311.pyc
+|   |       |   |   |           containers.cpython-311.pyc
+|   |       |   |   |           control.cpython-311.pyc
+|   |       |   |   |           default_styles.cpython-311.pyc
+|   |       |   |   |           diagnose.cpython-311.pyc
+|   |       |   |   |           emoji.cpython-311.pyc
+|   |       |   |   |           errors.cpython-311.pyc
+|   |       |   |   |           filesize.cpython-311.pyc
+|   |       |   |   |           file_proxy.cpython-311.pyc
+|   |       |   |   |           highlighter.cpython-311.pyc
+|   |       |   |   |           json.cpython-311.pyc
+|   |       |   |   |           jupyter.cpython-311.pyc
+|   |       |   |   |           layout.cpython-311.pyc
+|   |       |   |   |           live.cpython-311.pyc
+|   |       |   |   |           live_render.cpython-311.pyc
+|   |       |   |   |           logging.cpython-311.pyc
+|   |       |   |   |           markup.cpython-311.pyc
+|   |       |   |   |           measure.cpython-311.pyc
+|   |       |   |   |           padding.cpython-311.pyc
+|   |       |   |   |           pager.cpython-311.pyc
+|   |       |   |   |           palette.cpython-311.pyc
+|   |       |   |   |           panel.cpython-311.pyc
+|   |       |   |   |           pretty.cpython-311.pyc
+|   |       |   |   |           progress.cpython-311.pyc
+|   |       |   |   |           progress_bar.cpython-311.pyc
+|   |       |   |   |           prompt.cpython-311.pyc
+|   |       |   |   |           protocol.cpython-311.pyc
+|   |       |   |   |           region.cpython-311.pyc
+|   |       |   |   |           repr.cpython-311.pyc
+|   |       |   |   |           rule.cpython-311.pyc
+|   |       |   |   |           scope.cpython-311.pyc
+|   |       |   |   |           screen.cpython-311.pyc
+|   |       |   |   |           segment.cpython-311.pyc
+|   |       |   |   |           spinner.cpython-311.pyc
+|   |       |   |   |           status.cpython-311.pyc
+|   |       |   |   |           style.cpython-311.pyc
+|   |       |   |   |           styled.cpython-311.pyc
+|   |       |   |   |           syntax.cpython-311.pyc
+|   |       |   |   |           table.cpython-311.pyc
+|   |       |   |   |           terminal_theme.cpython-311.pyc
+|   |       |   |   |           text.cpython-311.pyc
+|   |       |   |   |           theme.cpython-311.pyc
+|   |       |   |   |           themes.cpython-311.pyc
+|   |       |   |   |           traceback.cpython-311.pyc
+|   |       |   |   |           tree.cpython-311.pyc
+|   |       |   |   |           _cell_widths.cpython-311.pyc
+|   |       |   |   |           _emoji_codes.cpython-311.pyc
+|   |       |   |   |           _emoji_replace.cpython-311.pyc
+|   |       |   |   |           _export_format.cpython-311.pyc
+|   |       |   |   |           _extension.cpython-311.pyc
+|   |       |   |   |           _fileno.cpython-311.pyc
+|   |       |   |   |           _inspect.cpython-311.pyc
+|   |       |   |   |           _log_render.cpython-311.pyc
+|   |       |   |   |           _loop.cpython-311.pyc
+|   |       |   |   |           _null_file.cpython-311.pyc
+|   |       |   |   |           _palettes.cpython-311.pyc
+|   |       |   |   |           _pick.cpython-311.pyc
+|   |       |   |   |           _ratio.cpython-311.pyc
+|   |       |   |   |           _spinners.cpython-311.pyc
+|   |       |   |   |           _stack.cpython-311.pyc
+|   |       |   |   |           _timer.cpython-311.pyc
+|   |       |   |   |           _win32_console.cpython-311.pyc
+|   |       |   |   |           _windows.cpython-311.pyc
+|   |       |   |   |           _windows_renderer.cpython-311.pyc
+|   |       |   |   |           _wrap.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           __main__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---tenacity
+|   |       |   |   |   |   after.py
+|   |       |   |   |   |   before.py
+|   |       |   |   |   |   before_sleep.py
+|   |       |   |   |   |   nap.py
+|   |       |   |   |   |   py.typed
+|   |       |   |   |   |   retry.py
+|   |       |   |   |   |   stop.py
+|   |       |   |   |   |   tornadoweb.py
+|   |       |   |   |   |   wait.py
+|   |       |   |   |   |   _asyncio.py
+|   |       |   |   |   |   _utils.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           after.cpython-311.pyc
+|   |       |   |   |           before.cpython-311.pyc
+|   |       |   |   |           before_sleep.cpython-311.pyc
+|   |       |   |   |           nap.cpython-311.pyc
+|   |       |   |   |           retry.cpython-311.pyc
+|   |       |   |   |           stop.cpython-311.pyc
+|   |       |   |   |           tornadoweb.cpython-311.pyc
+|   |       |   |   |           wait.cpython-311.pyc
+|   |       |   |   |           _asyncio.cpython-311.pyc
+|   |       |   |   |           _utils.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---tomli
+|   |       |   |   |   |   py.typed
+|   |       |   |   |   |   _parser.py
+|   |       |   |   |   |   _re.py
+|   |       |   |   |   |   _types.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           _parser.cpython-311.pyc
+|   |       |   |   |           _re.cpython-311.pyc
+|   |       |   |   |           _types.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---truststore
+|   |       |   |   |   |   py.typed
+|   |       |   |   |   |   _api.py
+|   |       |   |   |   |   _macos.py
+|   |       |   |   |   |   _openssl.py
+|   |       |   |   |   |   _ssl_constants.py
+|   |       |   |   |   |   _windows.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           _api.cpython-311.pyc
+|   |       |   |   |           _macos.cpython-311.pyc
+|   |       |   |   |           _openssl.cpython-311.pyc
+|   |       |   |   |           _ssl_constants.cpython-311.pyc
+|   |       |   |   |           _windows.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---urllib3
+|   |       |   |   |   |   connection.py
+|   |       |   |   |   |   connectionpool.py
+|   |       |   |   |   |   exceptions.py
+|   |       |   |   |   |   fields.py
+|   |       |   |   |   |   filepost.py
+|   |       |   |   |   |   poolmanager.py
+|   |       |   |   |   |   request.py
+|   |       |   |   |   |   response.py
+|   |       |   |   |   |   _collections.py
+|   |       |   |   |   |   _version.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   +---contrib
+|   |       |   |   |   |   |   appengine.py
+|   |       |   |   |   |   |   ntlmpool.py
+|   |       |   |   |   |   |   pyopenssl.py
+|   |       |   |   |   |   |   securetransport.py
+|   |       |   |   |   |   |   socks.py
+|   |       |   |   |   |   |   _appengine_environ.py
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   +---_securetransport
+|   |       |   |   |   |   |   |   bindings.py
+|   |       |   |   |   |   |   |   low_level.py
+|   |       |   |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   |   
+|   |       |   |   |   |   |   \---__pycache__
+|   |       |   |   |   |   |           bindings.cpython-311.pyc
+|   |       |   |   |   |   |           low_level.cpython-311.pyc
+|   |       |   |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |   |           
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           appengine.cpython-311.pyc
+|   |       |   |   |   |           ntlmpool.cpython-311.pyc
+|   |       |   |   |   |           pyopenssl.cpython-311.pyc
+|   |       |   |   |   |           securetransport.cpython-311.pyc
+|   |       |   |   |   |           socks.cpython-311.pyc
+|   |       |   |   |   |           _appengine_environ.cpython-311.pyc
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   +---packages
+|   |       |   |   |   |   |   six.py
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   +---backports
+|   |       |   |   |   |   |   |   makefile.py
+|   |       |   |   |   |   |   |   weakref_finalize.py
+|   |       |   |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   |   
+|   |       |   |   |   |   |   \---__pycache__
+|   |       |   |   |   |   |           makefile.cpython-311.pyc
+|   |       |   |   |   |   |           weakref_finalize.cpython-311.pyc
+|   |       |   |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |   |           
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           six.cpython-311.pyc
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   +---util
+|   |       |   |   |   |   |   connection.py
+|   |       |   |   |   |   |   proxy.py
+|   |       |   |   |   |   |   queue.py
+|   |       |   |   |   |   |   request.py
+|   |       |   |   |   |   |   response.py
+|   |       |   |   |   |   |   retry.py
+|   |       |   |   |   |   |   ssltransport.py
+|   |       |   |   |   |   |   ssl_.py
+|   |       |   |   |   |   |   ssl_match_hostname.py
+|   |       |   |   |   |   |   timeout.py
+|   |       |   |   |   |   |   url.py
+|   |       |   |   |   |   |   wait.py
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           connection.cpython-311.pyc
+|   |       |   |   |   |           proxy.cpython-311.pyc
+|   |       |   |   |   |           queue.cpython-311.pyc
+|   |       |   |   |   |           request.cpython-311.pyc
+|   |       |   |   |   |           response.cpython-311.pyc
+|   |       |   |   |   |           retry.cpython-311.pyc
+|   |       |   |   |   |           ssltransport.cpython-311.pyc
+|   |       |   |   |   |           ssl_.cpython-311.pyc
+|   |       |   |   |   |           ssl_match_hostname.cpython-311.pyc
+|   |       |   |   |   |           timeout.cpython-311.pyc
+|   |       |   |   |   |           url.cpython-311.pyc
+|   |       |   |   |   |           wait.cpython-311.pyc
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           connection.cpython-311.pyc
+|   |       |   |   |           connectionpool.cpython-311.pyc
+|   |       |   |   |           exceptions.cpython-311.pyc
+|   |       |   |   |           fields.cpython-311.pyc
+|   |       |   |   |           filepost.cpython-311.pyc
+|   |       |   |   |           poolmanager.cpython-311.pyc
+|   |       |   |   |           request.cpython-311.pyc
+|   |       |   |   |           response.cpython-311.pyc
+|   |       |   |   |           _collections.cpython-311.pyc
+|   |       |   |   |           _version.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---webencodings
+|   |       |   |   |   |   labels.py
+|   |       |   |   |   |   mklabels.py
+|   |       |   |   |   |   tests.py
+|   |       |   |   |   |   x_user_defined.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           labels.cpython-311.pyc
+|   |       |   |   |           mklabels.cpython-311.pyc
+|   |       |   |   |           tests.cpython-311.pyc
+|   |       |   |   |           x_user_defined.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   \---__pycache__
+|   |       |   |           six.cpython-311.pyc
+|   |       |   |           typing_extensions.cpython-311.pyc
+|   |       |   |           __init__.cpython-311.pyc
+|   |       |   |           
+|   |       |   \---__pycache__
+|   |       |           __init__.cpython-311.pyc
+|   |       |           __main__.cpython-311.pyc
+|   |       |           __pip-runner__.cpython-311.pyc
+|   |       |           
+|   |       +---pip-24.0.dist-info
+|   |       |       AUTHORS.txt
+|   |       |       entry_points.txt
+|   |       |       INSTALLER
+|   |       |       LICENSE.txt
+|   |       |       METADATA
+|   |       |       RECORD
+|   |       |       REQUESTED
+|   |       |       top_level.txt
+|   |       |       WHEEL
+|   |       |       
+|   |       +---pkg_resources
+|   |       |   |   __init__.py
+|   |       |   |   
+|   |       |   +---extern
+|   |       |   |   |   __init__.py
+|   |       |   |   |   
+|   |       |   |   \---__pycache__
+|   |       |   |           __init__.cpython-311.pyc
+|   |       |   |           
+|   |       |   +---_vendor
+|   |       |   |   |   appdirs.py
+|   |       |   |   |   zipp.py
+|   |       |   |   |   __init__.py
+|   |       |   |   |   
+|   |       |   |   +---importlib_resources
+|   |       |   |   |   |   abc.py
+|   |       |   |   |   |   readers.py
+|   |       |   |   |   |   simple.py
+|   |       |   |   |   |   _adapters.py
+|   |       |   |   |   |   _common.py
+|   |       |   |   |   |   _compat.py
+|   |       |   |   |   |   _itertools.py
+|   |       |   |   |   |   _legacy.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           abc.cpython-311.pyc
+|   |       |   |   |           readers.cpython-311.pyc
+|   |       |   |   |           simple.cpython-311.pyc
+|   |       |   |   |           _adapters.cpython-311.pyc
+|   |       |   |   |           _common.cpython-311.pyc
+|   |       |   |   |           _compat.cpython-311.pyc
+|   |       |   |   |           _itertools.cpython-311.pyc
+|   |       |   |   |           _legacy.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---jaraco
+|   |       |   |   |   |   context.py
+|   |       |   |   |   |   functools.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   +---text
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           context.cpython-311.pyc
+|   |       |   |   |           functools.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---more_itertools
+|   |       |   |   |   |   more.py
+|   |       |   |   |   |   recipes.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           more.cpython-311.pyc
+|   |       |   |   |           recipes.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---packaging
+|   |       |   |   |   |   markers.py
+|   |       |   |   |   |   requirements.py
+|   |       |   |   |   |   specifiers.py
+|   |       |   |   |   |   tags.py
+|   |       |   |   |   |   utils.py
+|   |       |   |   |   |   version.py
+|   |       |   |   |   |   _manylinux.py
+|   |       |   |   |   |   _musllinux.py
+|   |       |   |   |   |   _structures.py
+|   |       |   |   |   |   __about__.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           markers.cpython-311.pyc
+|   |       |   |   |           requirements.cpython-311.pyc
+|   |       |   |   |           specifiers.cpython-311.pyc
+|   |       |   |   |           tags.cpython-311.pyc
+|   |       |   |   |           utils.cpython-311.pyc
+|   |       |   |   |           version.cpython-311.pyc
+|   |       |   |   |           _manylinux.cpython-311.pyc
+|   |       |   |   |           _musllinux.cpython-311.pyc
+|   |       |   |   |           _structures.cpython-311.pyc
+|   |       |   |   |           __about__.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---pyparsing
+|   |       |   |   |   |   actions.py
+|   |       |   |   |   |   common.py
+|   |       |   |   |   |   core.py
+|   |       |   |   |   |   exceptions.py
+|   |       |   |   |   |   helpers.py
+|   |       |   |   |   |   results.py
+|   |       |   |   |   |   testing.py
+|   |       |   |   |   |   unicode.py
+|   |       |   |   |   |   util.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   +---diagram
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           actions.cpython-311.pyc
+|   |       |   |   |           common.cpython-311.pyc
+|   |       |   |   |           core.cpython-311.pyc
+|   |       |   |   |           exceptions.cpython-311.pyc
+|   |       |   |   |           helpers.cpython-311.pyc
+|   |       |   |   |           results.cpython-311.pyc
+|   |       |   |   |           testing.cpython-311.pyc
+|   |       |   |   |           unicode.cpython-311.pyc
+|   |       |   |   |           util.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   \---__pycache__
+|   |       |   |           appdirs.cpython-311.pyc
+|   |       |   |           zipp.cpython-311.pyc
+|   |       |   |           __init__.cpython-311.pyc
+|   |       |   |           
+|   |       |   \---__pycache__
+|   |       |           __init__.cpython-311.pyc
+|   |       |           
+|   |       +---python_dotenv-1.2.2.dist-info
+|   |       |   |   entry_points.txt
+|   |       |   |   INSTALLER
+|   |       |   |   METADATA
+|   |       |   |   RECORD
+|   |       |   |   REQUESTED
+|   |       |   |   top_level.txt
+|   |       |   |   WHEEL
+|   |       |   |   
+|   |       |   \---licenses
+|   |       |           LICENSE
+|   |       |           
+|   |       +---pyyaml-6.0.3.dist-info
+|   |       |   |   INSTALLER
+|   |       |   |   METADATA
+|   |       |   |   RECORD
+|   |       |   |   top_level.txt
+|   |       |   |   WHEEL
+|   |       |   |   
+|   |       |   \---licenses
+|   |       |           LICENSE
+|   |       |           
+|   |       +---setuptools
+|   |       |   |   archive_util.py
+|   |       |   |   build_meta.py
+|   |       |   |   cli-32.exe
+|   |       |   |   cli-64.exe
+|   |       |   |   cli-arm64.exe
+|   |       |   |   cli.exe
+|   |       |   |   depends.py
+|   |       |   |   dep_util.py
+|   |       |   |   discovery.py
+|   |       |   |   dist.py
+|   |       |   |   errors.py
+|   |       |   |   extension.py
+|   |       |   |   glob.py
+|   |       |   |   gui-32.exe
+|   |       |   |   gui-64.exe
+|   |       |   |   gui-arm64.exe
+|   |       |   |   gui.exe
+|   |       |   |   installer.py
+|   |       |   |   launch.py
+|   |       |   |   logging.py
+|   |       |   |   monkey.py
+|   |       |   |   msvc.py
+|   |       |   |   namespaces.py
+|   |       |   |   package_index.py
+|   |       |   |   py34compat.py
+|   |       |   |   sandbox.py
+|   |       |   |   script (dev).tmpl
+|   |       |   |   script.tmpl
+|   |       |   |   unicode_utils.py
+|   |       |   |   version.py
+|   |       |   |   wheel.py
+|   |       |   |   windows_support.py
+|   |       |   |   _deprecation_warning.py
+|   |       |   |   _entry_points.py
+|   |       |   |   _imp.py
+|   |       |   |   _importlib.py
+|   |       |   |   _itertools.py
+|   |       |   |   _path.py
+|   |       |   |   _reqs.py
+|   |       |   |   __init__.py
+|   |       |   |   
+|   |       |   +---command
+|   |       |   |   |   alias.py
+|   |       |   |   |   bdist_egg.py
+|   |       |   |   |   bdist_rpm.py
+|   |       |   |   |   build.py
+|   |       |   |   |   build_clib.py
+|   |       |   |   |   build_ext.py
+|   |       |   |   |   build_py.py
+|   |       |   |   |   develop.py
+|   |       |   |   |   dist_info.py
+|   |       |   |   |   easy_install.py
+|   |       |   |   |   editable_wheel.py
+|   |       |   |   |   egg_info.py
+|   |       |   |   |   install.py
+|   |       |   |   |   install_egg_info.py
+|   |       |   |   |   install_lib.py
+|   |       |   |   |   install_scripts.py
+|   |       |   |   |   launcher manifest.xml
+|   |       |   |   |   py36compat.py
+|   |       |   |   |   register.py
+|   |       |   |   |   rotate.py
+|   |       |   |   |   saveopts.py
+|   |       |   |   |   sdist.py
+|   |       |   |   |   setopt.py
+|   |       |   |   |   test.py
+|   |       |   |   |   upload.py
+|   |       |   |   |   upload_docs.py
+|   |       |   |   |   __init__.py
+|   |       |   |   |   
+|   |       |   |   \---__pycache__
+|   |       |   |           alias.cpython-311.pyc
+|   |       |   |           bdist_egg.cpython-311.pyc
+|   |       |   |           bdist_rpm.cpython-311.pyc
+|   |       |   |           build.cpython-311.pyc
+|   |       |   |           build_clib.cpython-311.pyc
+|   |       |   |           build_ext.cpython-311.pyc
+|   |       |   |           build_py.cpython-311.pyc
+|   |       |   |           develop.cpython-311.pyc
+|   |       |   |           dist_info.cpython-311.pyc
+|   |       |   |           easy_install.cpython-311.pyc
+|   |       |   |           editable_wheel.cpython-311.pyc
+|   |       |   |           egg_info.cpython-311.pyc
+|   |       |   |           install.cpython-311.pyc
+|   |       |   |           install_egg_info.cpython-311.pyc
+|   |       |   |           install_lib.cpython-311.pyc
+|   |       |   |           install_scripts.cpython-311.pyc
+|   |       |   |           py36compat.cpython-311.pyc
+|   |       |   |           register.cpython-311.pyc
+|   |       |   |           rotate.cpython-311.pyc
+|   |       |   |           saveopts.cpython-311.pyc
+|   |       |   |           sdist.cpython-311.pyc
+|   |       |   |           setopt.cpython-311.pyc
+|   |       |   |           test.cpython-311.pyc
+|   |       |   |           upload.cpython-311.pyc
+|   |       |   |           upload_docs.cpython-311.pyc
+|   |       |   |           __init__.cpython-311.pyc
+|   |       |   |           
+|   |       |   +---config
+|   |       |   |   |   expand.py
+|   |       |   |   |   pyprojecttoml.py
+|   |       |   |   |   setupcfg.py
+|   |       |   |   |   _apply_pyprojecttoml.py
+|   |       |   |   |   __init__.py
+|   |       |   |   |   
+|   |       |   |   +---_validate_pyproject
+|   |       |   |   |   |   error_reporting.py
+|   |       |   |   |   |   extra_validations.py
+|   |       |   |   |   |   fastjsonschema_exceptions.py
+|   |       |   |   |   |   fastjsonschema_validations.py
+|   |       |   |   |   |   formats.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           error_reporting.cpython-311.pyc
+|   |       |   |   |           extra_validations.cpython-311.pyc
+|   |       |   |   |           fastjsonschema_exceptions.cpython-311.pyc
+|   |       |   |   |           fastjsonschema_validations.cpython-311.pyc
+|   |       |   |   |           formats.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   \---__pycache__
+|   |       |   |           expand.cpython-311.pyc
+|   |       |   |           pyprojecttoml.cpython-311.pyc
+|   |       |   |           setupcfg.cpython-311.pyc
+|   |       |   |           _apply_pyprojecttoml.cpython-311.pyc
+|   |       |   |           __init__.cpython-311.pyc
+|   |       |   |           
+|   |       |   +---extern
+|   |       |   |   |   __init__.py
+|   |       |   |   |   
+|   |       |   |   \---__pycache__
+|   |       |   |           __init__.cpython-311.pyc
+|   |       |   |           
+|   |       |   +---_distutils
+|   |       |   |   |   archive_util.py
+|   |       |   |   |   bcppcompiler.py
+|   |       |   |   |   ccompiler.py
+|   |       |   |   |   cmd.py
+|   |       |   |   |   config.py
+|   |       |   |   |   core.py
+|   |       |   |   |   cygwinccompiler.py
+|   |       |   |   |   debug.py
+|   |       |   |   |   dep_util.py
+|   |       |   |   |   dir_util.py
+|   |       |   |   |   dist.py
+|   |       |   |   |   errors.py
+|   |       |   |   |   extension.py
+|   |       |   |   |   fancy_getopt.py
+|   |       |   |   |   filelist.py
+|   |       |   |   |   file_util.py
+|   |       |   |   |   log.py
+|   |       |   |   |   msvc9compiler.py
+|   |       |   |   |   msvccompiler.py
+|   |       |   |   |   py38compat.py
+|   |       |   |   |   py39compat.py
+|   |       |   |   |   spawn.py
+|   |       |   |   |   sysconfig.py
+|   |       |   |   |   text_file.py
+|   |       |   |   |   unixccompiler.py
+|   |       |   |   |   util.py
+|   |       |   |   |   version.py
+|   |       |   |   |   versionpredicate.py
+|   |       |   |   |   _collections.py
+|   |       |   |   |   _functools.py
+|   |       |   |   |   _macos_compat.py
+|   |       |   |   |   _msvccompiler.py
+|   |       |   |   |   __init__.py
+|   |       |   |   |   
+|   |       |   |   +---command
+|   |       |   |   |   |   bdist.py
+|   |       |   |   |   |   bdist_dumb.py
+|   |       |   |   |   |   bdist_rpm.py
+|   |       |   |   |   |   build.py
+|   |       |   |   |   |   build_clib.py
+|   |       |   |   |   |   build_ext.py
+|   |       |   |   |   |   build_py.py
+|   |       |   |   |   |   build_scripts.py
+|   |       |   |   |   |   check.py
+|   |       |   |   |   |   clean.py
+|   |       |   |   |   |   config.py
+|   |       |   |   |   |   install.py
+|   |       |   |   |   |   install_data.py
+|   |       |   |   |   |   install_egg_info.py
+|   |       |   |   |   |   install_headers.py
+|   |       |   |   |   |   install_lib.py
+|   |       |   |   |   |   install_scripts.py
+|   |       |   |   |   |   py37compat.py
+|   |       |   |   |   |   register.py
+|   |       |   |   |   |   sdist.py
+|   |       |   |   |   |   upload.py
+|   |       |   |   |   |   _framework_compat.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           bdist.cpython-311.pyc
+|   |       |   |   |           bdist_dumb.cpython-311.pyc
+|   |       |   |   |           bdist_rpm.cpython-311.pyc
+|   |       |   |   |           build.cpython-311.pyc
+|   |       |   |   |           build_clib.cpython-311.pyc
+|   |       |   |   |           build_ext.cpython-311.pyc
+|   |       |   |   |           build_py.cpython-311.pyc
+|   |       |   |   |           build_scripts.cpython-311.pyc
+|   |       |   |   |           check.cpython-311.pyc
+|   |       |   |   |           clean.cpython-311.pyc
+|   |       |   |   |           config.cpython-311.pyc
+|   |       |   |   |           install.cpython-311.pyc
+|   |       |   |   |           install_data.cpython-311.pyc
+|   |       |   |   |           install_egg_info.cpython-311.pyc
+|   |       |   |   |           install_headers.cpython-311.pyc
+|   |       |   |   |           install_lib.cpython-311.pyc
+|   |       |   |   |           install_scripts.cpython-311.pyc
+|   |       |   |   |           py37compat.cpython-311.pyc
+|   |       |   |   |           register.cpython-311.pyc
+|   |       |   |   |           sdist.cpython-311.pyc
+|   |       |   |   |           upload.cpython-311.pyc
+|   |       |   |   |           _framework_compat.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   \---__pycache__
+|   |       |   |           archive_util.cpython-311.pyc
+|   |       |   |           bcppcompiler.cpython-311.pyc
+|   |       |   |           ccompiler.cpython-311.pyc
+|   |       |   |           cmd.cpython-311.pyc
+|   |       |   |           config.cpython-311.pyc
+|   |       |   |           core.cpython-311.pyc
+|   |       |   |           cygwinccompiler.cpython-311.pyc
+|   |       |   |           debug.cpython-311.pyc
+|   |       |   |           dep_util.cpython-311.pyc
+|   |       |   |           dir_util.cpython-311.pyc
+|   |       |   |           dist.cpython-311.pyc
+|   |       |   |           errors.cpython-311.pyc
+|   |       |   |           extension.cpython-311.pyc
+|   |       |   |           fancy_getopt.cpython-311.pyc
+|   |       |   |           filelist.cpython-311.pyc
+|   |       |   |           file_util.cpython-311.pyc
+|   |       |   |           log.cpython-311.pyc
+|   |       |   |           msvc9compiler.cpython-311.pyc
+|   |       |   |           msvccompiler.cpython-311.pyc
+|   |       |   |           py38compat.cpython-311.pyc
+|   |       |   |           py39compat.cpython-311.pyc
+|   |       |   |           spawn.cpython-311.pyc
+|   |       |   |           sysconfig.cpython-311.pyc
+|   |       |   |           text_file.cpython-311.pyc
+|   |       |   |           unixccompiler.cpython-311.pyc
+|   |       |   |           util.cpython-311.pyc
+|   |       |   |           version.cpython-311.pyc
+|   |       |   |           versionpredicate.cpython-311.pyc
+|   |       |   |           _collections.cpython-311.pyc
+|   |       |   |           _functools.cpython-311.pyc
+|   |       |   |           _macos_compat.cpython-311.pyc
+|   |       |   |           _msvccompiler.cpython-311.pyc
+|   |       |   |           __init__.cpython-311.pyc
+|   |       |   |           
+|   |       |   +---_vendor
+|   |       |   |   |   ordered_set.py
+|   |       |   |   |   typing_extensions.py
+|   |       |   |   |   zipp.py
+|   |       |   |   |   __init__.py
+|   |       |   |   |   
+|   |       |   |   +---importlib_metadata
+|   |       |   |   |   |   _adapters.py
+|   |       |   |   |   |   _collections.py
+|   |       |   |   |   |   _compat.py
+|   |       |   |   |   |   _functools.py
+|   |       |   |   |   |   _itertools.py
+|   |       |   |   |   |   _meta.py
+|   |       |   |   |   |   _text.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           _adapters.cpython-311.pyc
+|   |       |   |   |           _collections.cpython-311.pyc
+|   |       |   |   |           _compat.cpython-311.pyc
+|   |       |   |   |           _functools.cpython-311.pyc
+|   |       |   |   |           _itertools.cpython-311.pyc
+|   |       |   |   |           _meta.cpython-311.pyc
+|   |       |   |   |           _text.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---importlib_resources
+|   |       |   |   |   |   abc.py
+|   |       |   |   |   |   readers.py
+|   |       |   |   |   |   simple.py
+|   |       |   |   |   |   _adapters.py
+|   |       |   |   |   |   _common.py
+|   |       |   |   |   |   _compat.py
+|   |       |   |   |   |   _itertools.py
+|   |       |   |   |   |   _legacy.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           abc.cpython-311.pyc
+|   |       |   |   |           readers.cpython-311.pyc
+|   |       |   |   |           simple.cpython-311.pyc
+|   |       |   |   |           _adapters.cpython-311.pyc
+|   |       |   |   |           _common.cpython-311.pyc
+|   |       |   |   |           _compat.cpython-311.pyc
+|   |       |   |   |           _itertools.cpython-311.pyc
+|   |       |   |   |           _legacy.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---jaraco
+|   |       |   |   |   |   context.py
+|   |       |   |   |   |   functools.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   +---text
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           context.cpython-311.pyc
+|   |       |   |   |           functools.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---more_itertools
+|   |       |   |   |   |   more.py
+|   |       |   |   |   |   recipes.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           more.cpython-311.pyc
+|   |       |   |   |           recipes.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---packaging
+|   |       |   |   |   |   markers.py
+|   |       |   |   |   |   requirements.py
+|   |       |   |   |   |   specifiers.py
+|   |       |   |   |   |   tags.py
+|   |       |   |   |   |   utils.py
+|   |       |   |   |   |   version.py
+|   |       |   |   |   |   _manylinux.py
+|   |       |   |   |   |   _musllinux.py
+|   |       |   |   |   |   _structures.py
+|   |       |   |   |   |   __about__.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           markers.cpython-311.pyc
+|   |       |   |   |           requirements.cpython-311.pyc
+|   |       |   |   |           specifiers.cpython-311.pyc
+|   |       |   |   |           tags.cpython-311.pyc
+|   |       |   |   |           utils.cpython-311.pyc
+|   |       |   |   |           version.cpython-311.pyc
+|   |       |   |   |           _manylinux.cpython-311.pyc
+|   |       |   |   |           _musllinux.cpython-311.pyc
+|   |       |   |   |           _structures.cpython-311.pyc
+|   |       |   |   |           __about__.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---pyparsing
+|   |       |   |   |   |   actions.py
+|   |       |   |   |   |   common.py
+|   |       |   |   |   |   core.py
+|   |       |   |   |   |   exceptions.py
+|   |       |   |   |   |   helpers.py
+|   |       |   |   |   |   results.py
+|   |       |   |   |   |   testing.py
+|   |       |   |   |   |   unicode.py
+|   |       |   |   |   |   util.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   +---diagram
+|   |       |   |   |   |   |   __init__.py
+|   |       |   |   |   |   |   
+|   |       |   |   |   |   \---__pycache__
+|   |       |   |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |   |           
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           actions.cpython-311.pyc
+|   |       |   |   |           common.cpython-311.pyc
+|   |       |   |   |           core.cpython-311.pyc
+|   |       |   |   |           exceptions.cpython-311.pyc
+|   |       |   |   |           helpers.cpython-311.pyc
+|   |       |   |   |           results.cpython-311.pyc
+|   |       |   |   |           testing.cpython-311.pyc
+|   |       |   |   |           unicode.cpython-311.pyc
+|   |       |   |   |           util.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   +---tomli
+|   |       |   |   |   |   _parser.py
+|   |       |   |   |   |   _re.py
+|   |       |   |   |   |   _types.py
+|   |       |   |   |   |   __init__.py
+|   |       |   |   |   |   
+|   |       |   |   |   \---__pycache__
+|   |       |   |   |           _parser.cpython-311.pyc
+|   |       |   |   |           _re.cpython-311.pyc
+|   |       |   |   |           _types.cpython-311.pyc
+|   |       |   |   |           __init__.cpython-311.pyc
+|   |       |   |   |           
+|   |       |   |   \---__pycache__
+|   |       |   |           ordered_set.cpython-311.pyc
+|   |       |   |           typing_extensions.cpython-311.pyc
+|   |       |   |           zipp.cpython-311.pyc
+|   |       |   |           __init__.cpython-311.pyc
+|   |       |   |           
+|   |       |   \---__pycache__
+|   |       |           archive_util.cpython-311.pyc
+|   |       |           build_meta.cpython-311.pyc
+|   |       |           depends.cpython-311.pyc
+|   |       |           dep_util.cpython-311.pyc
+|   |       |           discovery.cpython-311.pyc
+|   |       |           dist.cpython-311.pyc
+|   |       |           errors.cpython-311.pyc
+|   |       |           extension.cpython-311.pyc
+|   |       |           glob.cpython-311.pyc
+|   |       |           installer.cpython-311.pyc
+|   |       |           launch.cpython-311.pyc
+|   |       |           logging.cpython-311.pyc
+|   |       |           monkey.cpython-311.pyc
+|   |       |           msvc.cpython-311.pyc
+|   |       |           namespaces.cpython-311.pyc
+|   |       |           package_index.cpython-311.pyc
+|   |       |           py34compat.cpython-311.pyc
+|   |       |           sandbox.cpython-311.pyc
+|   |       |           unicode_utils.cpython-311.pyc
+|   |       |           version.cpython-311.pyc
+|   |       |           wheel.cpython-311.pyc
+|   |       |           windows_support.cpython-311.pyc
+|   |       |           _deprecation_warning.cpython-311.pyc
+|   |       |           _entry_points.cpython-311.pyc
+|   |       |           _imp.cpython-311.pyc
+|   |       |           _importlib.cpython-311.pyc
+|   |       |           _itertools.cpython-311.pyc
+|   |       |           _path.cpython-311.pyc
+|   |       |           _reqs.cpython-311.pyc
+|   |       |           __init__.cpython-311.pyc
+|   |       |           
+|   |       +---setuptools-65.5.0.dist-info
+|   |       |       entry_points.txt
+|   |       |       INSTALLER
+|   |       |       LICENSE
+|   |       |       METADATA
+|   |       |       RECORD
+|   |       |       REQUESTED
+|   |       |       top_level.txt
+|   |       |       WHEEL
+|   |       |       
+|   |       +---watchdog
+|   |       |   |   events.py
+|   |       |   |   py.typed
+|   |       |   |   version.py
+|   |       |   |   watchmedo.py
+|   |       |   |   __init__.py
+|   |       |   |   
+|   |       |   +---observers
+|   |       |   |   |   api.py
+|   |       |   |   |   fsevents.py
+|   |       |   |   |   fsevents2.py
+|   |       |   |   |   inotify.py
+|   |       |   |   |   inotify_buffer.py
+|   |       |   |   |   inotify_c.py
+|   |       |   |   |   kqueue.py
+|   |       |   |   |   polling.py
+|   |       |   |   |   read_directory_changes.py
+|   |       |   |   |   winapi.py
+|   |       |   |   |   __init__.py
+|   |       |   |   |   
+|   |       |   |   \---__pycache__
+|   |       |   |           api.cpython-311.pyc
+|   |       |   |           fsevents.cpython-311.pyc
+|   |       |   |           fsevents2.cpython-311.pyc
+|   |       |   |           inotify.cpython-311.pyc
+|   |       |   |           inotify_buffer.cpython-311.pyc
+|   |       |   |           inotify_c.cpython-311.pyc
+|   |       |   |           kqueue.cpython-311.pyc
+|   |       |   |           polling.cpython-311.pyc
+|   |       |   |           read_directory_changes.cpython-311.pyc
+|   |       |   |           winapi.cpython-311.pyc
+|   |       |   |           __init__.cpython-311.pyc
+|   |       |   |           
+|   |       |   +---tricks
+|   |       |   |   |   __init__.py
+|   |       |   |   |   
+|   |       |   |   \---__pycache__
+|   |       |   |           __init__.cpython-311.pyc
+|   |       |   |           
+|   |       |   +---utils
+|   |       |   |   |   bricks.py
+|   |       |   |   |   delayed_queue.py
+|   |       |   |   |   dirsnapshot.py
+|   |       |   |   |   echo.py
+|   |       |   |   |   event_debouncer.py
+|   |       |   |   |   patterns.py
+|   |       |   |   |   platform.py
+|   |       |   |   |   process_watcher.py
+|   |       |   |   |   __init__.py
+|   |       |   |   |   
+|   |       |   |   \---__pycache__
+|   |       |   |           bricks.cpython-311.pyc
+|   |       |   |           delayed_queue.cpython-311.pyc
+|   |       |   |           dirsnapshot.cpython-311.pyc
+|   |       |   |           echo.cpython-311.pyc
+|   |       |   |           event_debouncer.cpython-311.pyc
+|   |       |   |           patterns.cpython-311.pyc
+|   |       |   |           platform.cpython-311.pyc
+|   |       |   |           process_watcher.cpython-311.pyc
+|   |       |   |           __init__.cpython-311.pyc
+|   |       |   |           
+|   |       |   \---__pycache__
+|   |       |           events.cpython-311.pyc
+|   |       |           version.cpython-311.pyc
+|   |       |           watchmedo.cpython-311.pyc
+|   |       |           __init__.cpython-311.pyc
+|   |       |           
+|   |       +---watchdog-6.0.0.dist-info
+|   |       |       AUTHORS
+|   |       |       COPYING
+|   |       |       entry_points.txt
+|   |       |       INSTALLER
+|   |       |       LICENSE
+|   |       |       METADATA
+|   |       |       RECORD
+|   |       |       REQUESTED
+|   |       |       top_level.txt
+|   |       |       WHEEL
+|   |       |       
+|   |       +---yaml
+|   |       |   |   composer.py
+|   |       |   |   constructor.py
+|   |       |   |   cyaml.py
+|   |       |   |   dumper.py
+|   |       |   |   emitter.py
+|   |       |   |   error.py
+|   |       |   |   events.py
+|   |       |   |   loader.py
+|   |       |   |   nodes.py
+|   |       |   |   parser.py
+|   |       |   |   reader.py
+|   |       |   |   representer.py
+|   |       |   |   resolver.py
+|   |       |   |   scanner.py
+|   |       |   |   serializer.py
+|   |       |   |   tokens.py
+|   |       |   |   _yaml.cp311-win_amd64.pyd
+|   |       |   |   __init__.py
+|   |       |   |   
+|   |       |   \---__pycache__
+|   |       |           composer.cpython-311.pyc
+|   |       |           constructor.cpython-311.pyc
+|   |       |           cyaml.cpython-311.pyc
+|   |       |           dumper.cpython-311.pyc
+|   |       |           emitter.cpython-311.pyc
+|   |       |           error.cpython-311.pyc
+|   |       |           events.cpython-311.pyc
+|   |       |           loader.cpython-311.pyc
+|   |       |           nodes.cpython-311.pyc
+|   |       |           parser.cpython-311.pyc
+|   |       |           reader.cpython-311.pyc
+|   |       |           representer.cpython-311.pyc
+|   |       |           resolver.cpython-311.pyc
+|   |       |           scanner.cpython-311.pyc
+|   |       |           serializer.cpython-311.pyc
+|   |       |           tokens.cpython-311.pyc
+|   |       |           __init__.cpython-311.pyc
+|   |       |           
+|   |       +---_distutils_hack
+|   |       |   |   override.py
+|   |       |   |   __init__.py
+|   |       |   |   
+|   |       |   \---__pycache__
+|   |       |           override.cpython-311.pyc
+|   |       |           __init__.cpython-311.pyc
+|   |       |           
+|   |       \---_yaml
+|   |           |   __init__.py
+|   |           |   
+|   |           \---__pycache__
+|   |                   __init__.cpython-311.pyc
+|   |                   
+|   \---Scripts
+|           activate
+|           activate.bat
+|           Activate.ps1
+|           deactivate.bat
+|           dotenv.exe
+|           pip.exe
+|           pip3.11.exe
+|           pip3.exe
+|           python.exe
+|           pythonw.exe
+|           watchmedo.exe
+|           
++---docs
+|   |   SPOLKS (E-1572).rar
+|   |   СПОЛКС_ЛР.pdf
+|   |   
+|   \---SPOLKS (E-1572)
+|       \---ЭРУД по СПОЛКС
+|           |   index.htm
+|           |   
+|           +---Контроль_знаний
+|           |   |   test.htm
+|           |   |   
+|           |   \---content
+|           |       \---test
+|           |               test1.htm
+|           |               test2.htm
+|           |               
+|           +---Об авторах
+|           |   |   author.htm
+|           |   |   
+|           |   \---images
+|           |           Demidchuk.jpg
+|           |           Demidchuk.tif
+|           |           Iskra.jpg
+|           |           
+|           +---Оболочка
+|           |   +---css
+|           |   |       style.css
+|           |   |       
+|           |   \---images
+|           |           2.jpg
+|           |           3.jpg
+|           |           4.jpg
+|           |           background.jpg
+|           |           bsuir.png
+|           |           bsuir1.png
+|           |           logo_left.png
+|           |           logo_new.jpg
+|           |           practice.jpg
+|           |           practice_gray.jpg
+|           |           program.jpg
+|           |           program_gray.jpg
+|           |           question.jpg
+|           |           questionmark.jpg
+|           |           question_gray.jpg
+|           |           theory.jpg
+|           |           theory_gray.jpg
+|           |           Безимени-1.jpg
+|           |           Безимени-2.jpg
+|           |           Безимени-3.jpg
+|           |           Обращение 2008.jpg
+|           |           
+|           +---Практика
+|           |   |   practice.htm
+|           |   |   
+|           |   \---content
+|           |       +---kr
+|           |       |       kr1.htm
+|           |       |       kr2.htm
+|           |       |       
+|           |       \---lb
+|           |               lb1.htm
+|           |               lb10.htm
+|           |               lb11.htm
+|           |               lb12.htm
+|           |               lb2.htm
+|           |               lb3.htm
+|           |               lb4.htm
+|           |               lb5.htm
+|           |               lb6.htm
+|           |               lb7.htm
+|           |               lb8.htm
+|           |               lb9.htm
+|           |               requirements.htm
+|           |               
+|           +---Программа
+|           |   |   program.htm
+|           |   |   
+|           |   \---images
+|           |           image0.png
+|           |           image1.png
+|           |           image10.png
+|           |           image11.png
+|           |           image12.png
+|           |           image13.png
+|           |           image14.png
+|           |           image15.png
+|           |           image16.png
+|           |           image17.png
+|           |           image18.png
+|           |           image19.png
+|           |           image2.png
+|           |           image20.png
+|           |           image21.png
+|           |           image22.png
+|           |           image23.png
+|           |           image3.png
+|           |           image4.png
+|           |           image5.png
+|           |           image6.png
+|           |           image7.png
+|           |           image8.png
+|           |           image9.png
+|           |           Program.pdf
+|           |           
+|           \---Теория
+|               |   theory.htm
+|               |   
+|               +---content
+|               |   |   lit.htm
+|               |   |   lk01.htm
+|               |   |   lk02.htm
+|               |   |   lk03.htm
+|               |   |   lk04.htm
+|               |   |   lk05.htm
+|               |   |   lk06.htm
+|               |   |   lk07.htm
+|               |   |   lk08.htm
+|               |   |   lk09.htm
+|               |   |   lk10.htm
+|               |   |   lk11.htm
+|               |   |   lk12.htm
+|               |   |   lk13.htm
+|               |   |   lk14.htm
+|               |   |   lk15.htm
+|               |   |   lk16.htm
+|               |   |   lk17.htm
+|               |   |   lk18.htm
+|               |   |   lk19.htm
+|               |   |   lk20.htm
+|               |   |   lk21.htm
+|               |   |   lk22.htm
+|               |   |   lk23.htm
+|               |   |   
+|               |   \---unitegallery
+|               |       |   release_log.txt
+|               |       |   
+|               |       +---css
+|               |       |       unite-gallery.css
+|               |       |       
+|               |       +---images
+|               |       |       button-close.png
+|               |       |       cover-grid.png
+|               |       |       icon-link32.png
+|               |       |       icon-play32.png
+|               |       |       icon-zoom32.png
+|               |       |       lightbox-arrow-left.png
+|               |       |       lightbox-arrow-right.png
+|               |       |       lightbox-icon-close-compact.png
+|               |       |       lightbox-icon-close-compact2.png
+|               |       |       lightbox-icon-close.png
+|               |       |       loader-black1.gif
+|               |       |       loader-black2.gif
+|               |       |       loader-black3.gif
+|               |       |       loader-black4.gif
+|               |       |       loader-black5.gif
+|               |       |       loader-black6.gif
+|               |       |       loader-black7.gif
+|               |       |       loader-white1.gif
+|               |       |       loader-white2.gif
+|               |       |       loader-white3.gif
+|               |       |       loader-white4.gif
+|               |       |       loader-white5.gif
+|               |       |       loader-white6.gif
+|               |       |       loader-white7.gif
+|               |       |       loader.gif
+|               |       |       loader_bright.gif
+|               |       |       loader_skype_trans.gif
+|               |       |       not_loaded.png
+|               |       |       play-button-round.png
+|               |       |       play-button-square.png
+|               |       |       transparent.png
+|               |       |       
+|               |       +---js
+|               |       |       jquery-11.0.min.js
+|               |       |       ug-api.js
+|               |       |       ug-avia.js
+|               |       |       ug-carousel.js
+|               |       |       ug-common-libraries.js
+|               |       |       ug-functions.js
+|               |       |       ug-gallery.js
+|               |       |       ug-gridpanel.js
+|               |       |       ug-lightbox.js
+|               |       |       ug-panelsbase.js
+|               |       |       ug-slider.js
+|               |       |       ug-sliderassets.js
+|               |       |       ug-strippanel.js
+|               |       |       ug-thumbsgeneral.js
+|               |       |       ug-thumbsgrid.js
+|               |       |       ug-thumbsstrip.js
+|               |       |       ug-tiledesign.js
+|               |       |       ug-tiles.js
+|               |       |       ug-touchslider.js
+|               |       |       ug-touchthumbs.js
+|               |       |       ug-video.js
+|               |       |       ug-zoomslider.js
+|               |       |       
+|               |       +---skins
+|               |       |   +---alexis
+|               |       |   |   |   alexis.css
+|               |       |   |   |   
+|               |       |   |   \---images
+|               |       |   |           arrows_strip_left.png
+|               |       |   |           arrows_strip_right.png
+|               |       |   |           button_fullscreen.png
+|               |       |   |           button_playpause.png
+|               |       |   |           button_zoom_back.png
+|               |       |   |           button_zoom_minus.png
+|               |       |   |           button_zoom_plus.png
+|               |       |   |           grid_arrow_down.png
+|               |       |   |           grid_arrow_left.png
+|               |       |   |           grid_arrow_left_hortype.png
+|               |       |   |           grid_arrow_right.png
+|               |       |   |           grid_arrow_right_hortype.png
+|               |       |   |           grid_arrow_up.png
+|               |       |   |           grid_handle_down.png
+|               |       |   |           grid_handle_left.png
+|               |       |   |           grid_handle_right.png
+|               |       |   |           grid_handle_up.png
+|               |       |   |           slider_arrow_left.png
+|               |       |   |           slider_arrow_right.png
+|               |       |   |           slider_bullets.png
+|               |       |   |           
+|               |       |   \---default
+|               |       |           arrows_strip_down.png
+|               |       |           arrows_strip_left.png
+|               |       |           arrows_strip_right.png
+|               |       |           arrows_strip_up.png
+|               |       |           arrow_grid_down.png
+|               |       |           arrow_grid_up.png
+|               |       |           button_fullscreen.png
+|               |       |           button_playpause.png
+|               |       |           grid_arrow_left.png
+|               |       |           grid_arrow_right.png
+|               |       |           grid_handle_black_bottom.png
+|               |       |           grid_handle_black_left.png
+|               |       |           grid_handle_black_right.png
+|               |       |           grid_handle_black_top.png
+|               |       |           icon_zoom_back.png
+|               |       |           icon_zoom_minus.png
+|               |       |           icon_zoom_plus.png
+|               |       |           slider_arrow_left.png
+|               |       |           slider_arrow_right.png
+|               |       |           slider_bullets.png
+|               |       |           tile_bullets_blue.png
+|               |       |           tile_bullets_brown.png
+|               |       |           tile_bullets_gray.png
+|               |       |           tile_bullets_green.png
+|               |       |           tile_bullets_red.png
+|               |       |           tile_button_left.png
+|               |       |           tile_button_play_pause.png
+|               |       |           tile_button_right.png
+|               |       |           
+|               |       \---themes
+|               |           +---carousel
+|               |           |       ug-theme-carousel.js
+|               |           |       
+|               |           +---compact
+|               |           |       ug-theme-compact.js
+|               |           |       
+|               |           +---default
+|               |           |   |   ug-theme-default.css
+|               |           |   |   ug-theme-default.js
+|               |           |   |   
+|               |           |   \---images
+|               |           |           arrows_strip_left.png
+|               |           |           arrows_strip_right.png
+|               |           |           arrow_down_up.png
+|               |           |           button_fullscreen.png
+|               |           |           button_fullscreen_single.png
+|               |           |           button_playpause.png
+|               |           |           button_playpause_single.png
+|               |           |           
+|               |           +---grid
+|               |           |       ug-theme-grid.js
+|               |           |       
+|               |           +---slider
+|               |           |       ug-theme-slider.js
+|               |           |       
+|               |           +---tiles
+|               |           |       ug-theme-tiles.js
+|               |           |       
+|               |           +---tilesgrid
+|               |           |       ug-theme-tilesgrid.js
+|               |           |       
+|               |           \---video
+|               |               |   skin-right-no-thumb.css
+|               |               |   skin-right-thumb.css
+|               |               |   skin-right-title-only.css
+|               |               |   ug-theme-video.js
+|               |               |   
+|               |               \---images
+|               |                       arrow_left.png
+|               |                       arrow_right.png
+|               |                       
+|               \---images
+|                   |   00.convert.sh
+|                   |   lk.htm
+|                   |   
+|                   +---lk01
+|                   |       01-intro.pdf
+|                   |       lk01.0.png
+|                   |       lk01.1.png
+|                   |       lk01.10.png
+|                   |       lk01.11.png
+|                   |       lk01.12.png
+|                   |       lk01.13.png
+|                   |       lk01.14.png
+|                   |       lk01.15.png
+|                   |       lk01.16.png
+|                   |       lk01.17.png
+|                   |       lk01.18.png
+|                   |       lk01.19.png
+|                   |       lk01.2.png
+|                   |       lk01.20.png
+|                   |       lk01.21.png
+|                   |       lk01.22.png
+|                   |       lk01.23.png
+|                   |       lk01.24.png
+|                   |       lk01.25.png
+|                   |       lk01.26.png
+|                   |       lk01.27.png
+|                   |       lk01.28.png
+|                   |       lk01.29.png
+|                   |       lk01.3.png
+|                   |       lk01.30.png
+|                   |       lk01.31.png
+|                   |       lk01.32.png
+|                   |       lk01.33.png
+|                   |       lk01.34.png
+|                   |       lk01.35.png
+|                   |       lk01.36.png
+|                   |       lk01.4.png
+|                   |       lk01.5.png
+|                   |       lk01.6.png
+|                   |       lk01.7.png
+|                   |       lk01.8.png
+|                   |       lk01.9.png
+|                   |       lk01.htm
+|                   |       
+|                   +---lk02
+|                   |       03-stack-tcp_ip.pdf
+|                   |       lk02.0.png
+|                   |       lk02.1.png
+|                   |       lk02.10.png
+|                   |       lk02.11.png
+|                   |       lk02.12.png
+|                   |       lk02.13.png
+|                   |       lk02.14.png
+|                   |       lk02.15.png
+|                   |       lk02.16.png
+|                   |       lk02.17.png
+|                   |       lk02.18.png
+|                   |       lk02.19.png
+|                   |       lk02.2.png
+|                   |       lk02.20.png
+|                   |       lk02.21.png
+|                   |       lk02.22.png
+|                   |       lk02.23.png
+|                   |       lk02.24.png
+|                   |       lk02.25.png
+|                   |       lk02.26.png
+|                   |       lk02.27.png
+|                   |       lk02.28.png
+|                   |       lk02.29.png
+|                   |       lk02.3.png
+|                   |       lk02.30.png
+|                   |       lk02.31.png
+|                   |       lk02.32.png
+|                   |       lk02.33.png
+|                   |       lk02.34.png
+|                   |       lk02.35.png
+|                   |       lk02.36.png
+|                   |       lk02.37.png
+|                   |       lk02.4.png
+|                   |       lk02.5.png
+|                   |       lk02.6.png
+|                   |       lk02.7.png
+|                   |       lk02.8.png
+|                   |       lk02.9.png
+|                   |       lk02.htm
+|                   |       
+|                   +---lk03
+|                   |       04-stack-tcp_ip.pdf
+|                   |       lk03.0.png
+|                   |       lk03.1.png
+|                   |       lk03.10.png
+|                   |       lk03.11.png
+|                   |       lk03.12.png
+|                   |       lk03.13.png
+|                   |       lk03.14.png
+|                   |       lk03.15.png
+|                   |       lk03.16.png
+|                   |       lk03.17.png
+|                   |       lk03.18.png
+|                   |       lk03.19.png
+|                   |       lk03.2.png
+|                   |       lk03.20.png
+|                   |       lk03.21.png
+|                   |       lk03.22.png
+|                   |       lk03.23.png
+|                   |       lk03.24.png
+|                   |       lk03.25.png
+|                   |       lk03.26.png
+|                   |       lk03.27.png
+|                   |       lk03.28.png
+|                   |       lk03.29.png
+|                   |       lk03.3.png
+|                   |       lk03.4.png
+|                   |       lk03.5.png
+|                   |       lk03.6.png
+|                   |       lk03.7.png
+|                   |       lk03.8.png
+|                   |       lk03.9.png
+|                   |       lk03.htm
+|                   |       
+|                   +---lk04
+|                   |       05-sockets.pdf
+|                   |       lk04.0.png
+|                   |       lk04.1.png
+|                   |       lk04.10.png
+|                   |       lk04.11.png
+|                   |       lk04.12.png
+|                   |       lk04.13.png
+|                   |       lk04.14.png
+|                   |       lk04.15.png
+|                   |       lk04.16.png
+|                   |       lk04.17.png
+|                   |       lk04.18.png
+|                   |       lk04.19.png
+|                   |       lk04.2.png
+|                   |       lk04.20.png
+|                   |       lk04.21.png
+|                   |       lk04.22.png
+|                   |       lk04.23.png
+|                   |       lk04.24.png
+|                   |       lk04.25.png
+|                   |       lk04.26.png
+|                   |       lk04.27.png
+|                   |       lk04.28.png
+|                   |       lk04.29.png
+|                   |       lk04.3.png
+|                   |       lk04.30.png
+|                   |       lk04.31.png
+|                   |       lk04.32.png
+|                   |       lk04.33.png
+|                   |       lk04.34.png
+|                   |       lk04.35.png
+|                   |       lk04.36.png
+|                   |       lk04.37.png
+|                   |       lk04.38.png
+|                   |       lk04.39.png
+|                   |       lk04.4.png
+|                   |       lk04.40.png
+|                   |       lk04.41.png
+|                   |       lk04.42.png
+|                   |       lk04.43.png
+|                   |       lk04.44.png
+|                   |       lk04.45.png
+|                   |       lk04.46.png
+|                   |       lk04.47.png
+|                   |       lk04.48.png
+|                   |       lk04.49.png
+|                   |       lk04.5.png
+|                   |       lk04.50.png
+|                   |       lk04.51.png
+|                   |       lk04.52.png
+|                   |       lk04.53.png
+|                   |       lk04.54.png
+|                   |       lk04.55.png
+|                   |       lk04.56.png
+|                   |       lk04.57.png
+|                   |       lk04.58.png
+|                   |       lk04.59.png
+|                   |       lk04.6.png
+|                   |       lk04.60.png
+|                   |       lk04.61.png
+|                   |       lk04.62.png
+|                   |       lk04.63.png
+|                   |       lk04.7.png
+|                   |       lk04.8.png
+|                   |       lk04.9.png
+|                   |       lk04.htm
+|                   |       
+|                   +---lk05
+|                   |       06-sockets.pdf
+|                   |       lk05.0.png
+|                   |       lk05.1.png
+|                   |       lk05.10.png
+|                   |       lk05.11.png
+|                   |       lk05.12.png
+|                   |       lk05.13.png
+|                   |       lk05.14.png
+|                   |       lk05.15.png
+|                   |       lk05.16.png
+|                   |       lk05.17.png
+|                   |       lk05.18.png
+|                   |       lk05.19.png
+|                   |       lk05.2.png
+|                   |       lk05.20.png
+|                   |       lk05.21.png
+|                   |       lk05.22.png
+|                   |       lk05.23.png
+|                   |       lk05.24.png
+|                   |       lk05.25.png
+|                   |       lk05.26.png
+|                   |       lk05.27.png
+|                   |       lk05.28.png
+|                   |       lk05.3.png
+|                   |       lk05.4.png
+|                   |       lk05.5.png
+|                   |       lk05.6.png
+|                   |       lk05.7.png
+|                   |       lk05.8.png
+|                   |       lk05.9.png
+|                   |       lk05.htm
+|                   |       
+|                   +---lk06
+|                   |       07-client_server.pdf
+|                   |       lk06.0.png
+|                   |       lk06.1.png
+|                   |       lk06.10.png
+|                   |       lk06.11.png
+|                   |       lk06.12.png
+|                   |       lk06.13.png
+|                   |       lk06.14.png
+|                   |       lk06.15.png
+|                   |       lk06.16.png
+|                   |       lk06.17.png
+|                   |       lk06.18.png
+|                   |       lk06.19.png
+|                   |       lk06.2.png
+|                   |       lk06.20.png
+|                   |       lk06.21.png
+|                   |       lk06.22.png
+|                   |       lk06.23.png
+|                   |       lk06.24.png
+|                   |       lk06.25.png
+|                   |       lk06.26.png
+|                   |       lk06.27.png
+|                   |       lk06.28.png
+|                   |       lk06.29.png
+|                   |       lk06.3.png
+|                   |       lk06.30.png
+|                   |       lk06.31.png
+|                   |       lk06.32.png
+|                   |       lk06.33.png
+|                   |       lk06.34.png
+|                   |       lk06.35.png
+|                   |       lk06.36.png
+|                   |       lk06.37.png
+|                   |       lk06.38.png
+|                   |       lk06.39.png
+|                   |       lk06.4.png
+|                   |       lk06.40.png
+|                   |       lk06.5.png
+|                   |       lk06.6.png
+|                   |       lk06.7.png
+|                   |       lk06.8.png
+|                   |       lk06.9.png
+|                   |       lk06.htm
+|                   |       
+|                   +---lk07
+|                   |       08-09-client_server.pdf
+|                   |       lk07.0.png
+|                   |       lk07.1.png
+|                   |       lk07.10.png
+|                   |       lk07.11.png
+|                   |       lk07.12.png
+|                   |       lk07.13.png
+|                   |       lk07.14.png
+|                   |       lk07.15.png
+|                   |       lk07.16.png
+|                   |       lk07.17.png
+|                   |       lk07.18.png
+|                   |       lk07.19.png
+|                   |       lk07.2.png
+|                   |       lk07.20.png
+|                   |       lk07.21.png
+|                   |       lk07.22.png
+|                   |       lk07.23.png
+|                   |       lk07.24.png
+|                   |       lk07.25.png
+|                   |       lk07.26.png
+|                   |       lk07.27.png
+|                   |       lk07.28.png
+|                   |       lk07.29.png
+|                   |       lk07.3.png
+|                   |       lk07.30.png
+|                   |       lk07.31.png
+|                   |       lk07.32.png
+|                   |       lk07.33.png
+|                   |       lk07.34.png
+|                   |       lk07.35.png
+|                   |       lk07.36.png
+|                   |       lk07.37.png
+|                   |       lk07.38.png
+|                   |       lk07.39.png
+|                   |       lk07.4.png
+|                   |       lk07.40.png
+|                   |       lk07.41.png
+|                   |       lk07.42.png
+|                   |       lk07.43.png
+|                   |       lk07.44.png
+|                   |       lk07.45.png
+|                   |       lk07.46.png
+|                   |       lk07.47.png
+|                   |       lk07.48.png
+|                   |       lk07.49.png
+|                   |       lk07.5.png
+|                   |       lk07.50.png
+|                   |       lk07.51.png
+|                   |       lk07.52.png
+|                   |       lk07.53.png
+|                   |       lk07.54.png
+|                   |       lk07.55.png
+|                   |       lk07.56.png
+|                   |       lk07.57.png
+|                   |       lk07.58.png
+|                   |       lk07.59.png
+|                   |       lk07.6.png
+|                   |       lk07.60.png
+|                   |       lk07.61.png
+|                   |       lk07.7.png
+|                   |       lk07.8.png
+|                   |       lk07.9.png
+|                   |       lk07.htm
+|                   |       
+|                   +---lk08
+|                   |       10-high_level_proto_design.pdf
+|                   |       lk08.0.png
+|                   |       lk08.1.png
+|                   |       lk08.10.png
+|                   |       lk08.11.png
+|                   |       lk08.12.png
+|                   |       lk08.13.png
+|                   |       lk08.14.png
+|                   |       lk08.15.png
+|                   |       lk08.16.png
+|                   |       lk08.17.png
+|                   |       lk08.18.png
+|                   |       lk08.19.png
+|                   |       lk08.2.png
+|                   |       lk08.20.png
+|                   |       lk08.21.png
+|                   |       lk08.22.png
+|                   |       lk08.23.png
+|                   |       lk08.24.png
+|                   |       lk08.25.png
+|                   |       lk08.26.png
+|                   |       lk08.27.png
+|                   |       lk08.28.png
+|                   |       lk08.29.png
+|                   |       lk08.3.png
+|                   |       lk08.30.png
+|                   |       lk08.31.png
+|                   |       lk08.32.png
+|                   |       lk08.33.png
+|                   |       lk08.34.png
+|                   |       lk08.35.png
+|                   |       lk08.36.png
+|                   |       lk08.37.png
+|                   |       lk08.38.png
+|                   |       lk08.39.png
+|                   |       lk08.4.png
+|                   |       lk08.40.png
+|                   |       lk08.41.png
+|                   |       lk08.42.png
+|                   |       lk08.43.png
+|                   |       lk08.44.png
+|                   |       lk08.45.png
+|                   |       lk08.46.png
+|                   |       lk08.47.png
+|                   |       lk08.48.png
+|                   |       lk08.49.png
+|                   |       lk08.5.png
+|                   |       lk08.50.png
+|                   |       lk08.51.png
+|                   |       lk08.52.png
+|                   |       lk08.53.png
+|                   |       lk08.54.png
+|                   |       lk08.55.png
+|                   |       lk08.56.png
+|                   |       lk08.57.png
+|                   |       lk08.58.png
+|                   |       lk08.59.png
+|                   |       lk08.6.png
+|                   |       lk08.60.png
+|                   |       lk08.61.png
+|                   |       lk08.62.png
+|                   |       lk08.63.png
+|                   |       lk08.64.png
+|                   |       lk08.7.png
+|                   |       lk08.8.png
+|                   |       lk08.9.png
+|                   |       lk08.htm
+|                   |       
+|                   +---lk09
+|                   |       11-HTTP.odp.pdf
+|                   |       lk09.0.png
+|                   |       lk09.1.png
+|                   |       lk09.10.png
+|                   |       lk09.11.png
+|                   |       lk09.12.png
+|                   |       lk09.13.png
+|                   |       lk09.14.png
+|                   |       lk09.15.png
+|                   |       lk09.16.png
+|                   |       lk09.17.png
+|                   |       lk09.18.png
+|                   |       lk09.19.png
+|                   |       lk09.2.png
+|                   |       lk09.20.png
+|                   |       lk09.21.png
+|                   |       lk09.22.png
+|                   |       lk09.23.png
+|                   |       lk09.24.png
+|                   |       lk09.25.png
+|                   |       lk09.26.png
+|                   |       lk09.27.png
+|                   |       lk09.28.png
+|                   |       lk09.29.png
+|                   |       lk09.3.png
+|                   |       lk09.30.png
+|                   |       lk09.31.png
+|                   |       lk09.32.png
+|                   |       lk09.33.png
+|                   |       lk09.34.png
+|                   |       lk09.35.png
+|                   |       lk09.36.png
+|                   |       lk09.37.png
+|                   |       lk09.38.png
+|                   |       lk09.39.png
+|                   |       lk09.4.png
+|                   |       lk09.40.png
+|                   |       lk09.41.png
+|                   |       lk09.42.png
+|                   |       lk09.43.png
+|                   |       lk09.44.png
+|                   |       lk09.45.png
+|                   |       lk09.46.png
+|                   |       lk09.47.png
+|                   |       lk09.48.png
+|                   |       lk09.49.png
+|                   |       lk09.5.png
+|                   |       lk09.50.png
+|                   |       lk09.51.png
+|                   |       lk09.52.png
+|                   |       lk09.53.png
+|                   |       lk09.54.png
+|                   |       lk09.55.png
+|                   |       lk09.56.png
+|                   |       lk09.57.png
+|                   |       lk09.58.png
+|                   |       lk09.59.png
+|                   |       lk09.6.png
+|                   |       lk09.60.png
+|                   |       lk09.61.png
+|                   |       lk09.62.png
+|                   |       lk09.7.png
+|                   |       lk09.8.png
+|                   |       lk09.9.png
+|                   |       lk09.htm
+|                   |       
+|                   +---lk10
+|                   |       12-HTTP(rfc3205).pdf
+|                   |       lk10.0.png
+|                   |       lk10.1.png
+|                   |       lk10.10.png
+|                   |       lk10.11.png
+|                   |       lk10.12.png
+|                   |       lk10.13.png
+|                   |       lk10.14.png
+|                   |       lk10.15.png
+|                   |       lk10.16.png
+|                   |       lk10.17.png
+|                   |       lk10.18.png
+|                   |       lk10.19.png
+|                   |       lk10.2.png
+|                   |       lk10.20.png
+|                   |       lk10.21.png
+|                   |       lk10.22.png
+|                   |       lk10.23.png
+|                   |       lk10.24.png
+|                   |       lk10.25.png
+|                   |       lk10.26.png
+|                   |       lk10.27.png
+|                   |       lk10.28.png
+|                   |       lk10.29.png
+|                   |       lk10.3.png
+|                   |       lk10.30.png
+|                   |       lk10.4.png
+|                   |       lk10.5.png
+|                   |       lk10.6.png
+|                   |       lk10.7.png
+|                   |       lk10.8.png
+|                   |       lk10.9.png
+|                   |       lk10.htm
+|                   |       
+|                   +---lk11
+|                   |       13-ICMP.pdf
+|                   |       lk11.0.png
+|                   |       lk11.1.png
+|                   |       lk11.10.png
+|                   |       lk11.11.png
+|                   |       lk11.12.png
+|                   |       lk11.13.png
+|                   |       lk11.14.png
+|                   |       lk11.15.png
+|                   |       lk11.16.png
+|                   |       lk11.17.png
+|                   |       lk11.18.png
+|                   |       lk11.19.png
+|                   |       lk11.2.png
+|                   |       lk11.20.png
+|                   |       lk11.21.png
+|                   |       lk11.22.png
+|                   |       lk11.23.png
+|                   |       lk11.24.png
+|                   |       lk11.25.png
+|                   |       lk11.26.png
+|                   |       lk11.27.png
+|                   |       lk11.28.png
+|                   |       lk11.29.png
+|                   |       lk11.3.png
+|                   |       lk11.30.png
+|                   |       lk11.31.png
+|                   |       lk11.32.png
+|                   |       lk11.33.png
+|                   |       lk11.34.png
+|                   |       lk11.35.png
+|                   |       lk11.36.png
+|                   |       lk11.37.png
+|                   |       lk11.38.png
+|                   |       lk11.39.png
+|                   |       lk11.4.png
+|                   |       lk11.40.png
+|                   |       lk11.41.png
+|                   |       lk11.42.png
+|                   |       lk11.43.png
+|                   |       lk11.44.png
+|                   |       lk11.45.png
+|                   |       lk11.46.png
+|                   |       lk11.47.png
+|                   |       lk11.48.png
+|                   |       lk11.49.png
+|                   |       lk11.5.png
+|                   |       lk11.50.png
+|                   |       lk11.51.png
+|                   |       lk11.52.png
+|                   |       lk11.53.png
+|                   |       lk11.54.png
+|                   |       lk11.55.png
+|                   |       lk11.56.png
+|                   |       lk11.57.png
+|                   |       lk11.58.png
+|                   |       lk11.59.png
+|                   |       lk11.6.png
+|                   |       lk11.60.png
+|                   |       lk11.61.png
+|                   |       lk11.62.png
+|                   |       lk11.63.png
+|                   |       lk11.64.png
+|                   |       lk11.65.png
+|                   |       lk11.66.png
+|                   |       lk11.67.png
+|                   |       lk11.68.png
+|                   |       lk11.69.png
+|                   |       lk11.7.png
+|                   |       lk11.70.png
+|                   |       lk11.71.png
+|                   |       lk11.72.png
+|                   |       lk11.73.png
+|                   |       lk11.74.png
+|                   |       lk11.75.png
+|                   |       lk11.76.png
+|                   |       lk11.8.png
+|                   |       lk11.9.png
+|                   |       lk11.htm
+|                   |       
+|                   +---lk12
+|                   |       14-IPv6.pdf
+|                   |       lk12.0.png
+|                   |       lk12.1.png
+|                   |       lk12.10.png
+|                   |       lk12.11.png
+|                   |       lk12.12.png
+|                   |       lk12.13.png
+|                   |       lk12.14.png
+|                   |       lk12.15.png
+|                   |       lk12.16.png
+|                   |       lk12.17.png
+|                   |       lk12.18.png
+|                   |       lk12.19.png
+|                   |       lk12.2.png
+|                   |       lk12.20.png
+|                   |       lk12.21.png
+|                   |       lk12.22.png
+|                   |       lk12.23.png
+|                   |       lk12.24.png
+|                   |       lk12.25.png
+|                   |       lk12.26.png
+|                   |       lk12.27.png
+|                   |       lk12.28.png
+|                   |       lk12.29.png
+|                   |       lk12.3.png
+|                   |       lk12.30.png
+|                   |       lk12.31.png
+|                   |       lk12.32.png
+|                   |       lk12.4.png
+|                   |       lk12.5.png
+|                   |       lk12.6.png
+|                   |       lk12.7.png
+|                   |       lk12.8.png
+|                   |       lk12.9.png
+|                   |       lk12.htm
+|                   |       
+|                   +---lk13
+|                   |       15-multiaddr.pdf
+|                   |       lk13.0.png
+|                   |       lk13.1.png
+|                   |       lk13.10.png
+|                   |       lk13.11.png
+|                   |       lk13.12.png
+|                   |       lk13.13.png
+|                   |       lk13.14.png
+|                   |       lk13.15.png
+|                   |       lk13.16.png
+|                   |       lk13.17.png
+|                   |       lk13.18.png
+|                   |       lk13.19.png
+|                   |       lk13.2.png
+|                   |       lk13.20.png
+|                   |       lk13.21.png
+|                   |       lk13.22.png
+|                   |       lk13.23.png
+|                   |       lk13.24.png
+|                   |       lk13.25.png
+|                   |       lk13.26.png
+|                   |       lk13.27.png
+|                   |       lk13.28.png
+|                   |       lk13.29.png
+|                   |       lk13.3.png
+|                   |       lk13.30.png
+|                   |       lk13.4.png
+|                   |       lk13.5.png
+|                   |       lk13.6.png
+|                   |       lk13.7.png
+|                   |       lk13.8.png
+|                   |       lk13.9.png
+|                   |       lk13.htm
+|                   |       
+|                   +---lk14
+|                   |       16-MPIv2.pdf
+|                   |       lk14.0.png
+|                   |       lk14.1.png
+|                   |       lk14.10.png
+|                   |       lk14.11.png
+|                   |       lk14.12.png
+|                   |       lk14.13.png
+|                   |       lk14.14.png
+|                   |       lk14.15.png
+|                   |       lk14.16.png
+|                   |       lk14.17.png
+|                   |       lk14.18.png
+|                   |       lk14.19.png
+|                   |       lk14.2.png
+|                   |       lk14.20.png
+|                   |       lk14.21.png
+|                   |       lk14.22.png
+|                   |       lk14.23.png
+|                   |       lk14.24.png
+|                   |       lk14.25.png
+|                   |       lk14.26.png
+|                   |       lk14.27.png
+|                   |       lk14.28.png
+|                   |       lk14.29.png
+|                   |       lk14.3.png
+|                   |       lk14.30.png
+|                   |       lk14.31.png
+|                   |       lk14.32.png
+|                   |       lk14.33.png
+|                   |       lk14.34.png
+|                   |       lk14.35.png
+|                   |       lk14.36.png
+|                   |       lk14.37.png
+|                   |       lk14.38.png
+|                   |       lk14.39.png
+|                   |       lk14.4.png
+|                   |       lk14.40.png
+|                   |       lk14.41.png
+|                   |       lk14.42.png
+|                   |       lk14.43.png
+|                   |       lk14.44.png
+|                   |       lk14.45.png
+|                   |       lk14.46.png
+|                   |       lk14.47.png
+|                   |       lk14.48.png
+|                   |       lk14.49.png
+|                   |       lk14.5.png
+|                   |       lk14.50.png
+|                   |       lk14.51.png
+|                   |       lk14.52.png
+|                   |       lk14.53.png
+|                   |       lk14.54.png
+|                   |       lk14.55.png
+|                   |       lk14.56.png
+|                   |       lk14.57.png
+|                   |       lk14.6.png
+|                   |       lk14.7.png
+|                   |       lk14.8.png
+|                   |       lk14.9.png
+|                   |       lk14.htm
+|                   |       
+|                   +---lk15
+|                   |       17-MPI-collective.pdf
+|                   |       lk15.0.png
+|                   |       lk15.1.png
+|                   |       lk15.10.png
+|                   |       lk15.100.png
+|                   |       lk15.101.png
+|                   |       lk15.102.png
+|                   |       lk15.103.png
+|                   |       lk15.104.png
+|                   |       lk15.105.png
+|                   |       lk15.106.png
+|                   |       lk15.107.png
+|                   |       lk15.108.png
+|                   |       lk15.109.png
+|                   |       lk15.11.png
+|                   |       lk15.110.png
+|                   |       lk15.111.png
+|                   |       lk15.112.png
+|                   |       lk15.113.png
+|                   |       lk15.114.png
+|                   |       lk15.115.png
+|                   |       lk15.116.png
+|                   |       lk15.117.png
+|                   |       lk15.118.png
+|                   |       lk15.119.png
+|                   |       lk15.12.png
+|                   |       lk15.120.png
+|                   |       lk15.121.png
+|                   |       lk15.122.png
+|                   |       lk15.123.png
+|                   |       lk15.124.png
+|                   |       lk15.125.png
+|                   |       lk15.126.png
+|                   |       lk15.127.png
+|                   |       lk15.128.png
+|                   |       lk15.129.png
+|                   |       lk15.13.png
+|                   |       lk15.130.png
+|                   |       lk15.131.png
+|                   |       lk15.132.png
+|                   |       lk15.133.png
+|                   |       lk15.134.png
+|                   |       lk15.135.png
+|                   |       lk15.136.png
+|                   |       lk15.137.png
+|                   |       lk15.138.png
+|                   |       lk15.139.png
+|                   |       lk15.14.png
+|                   |       lk15.140.png
+|                   |       lk15.141.png
+|                   |       lk15.142.png
+|                   |       lk15.143.png
+|                   |       lk15.144.png
+|                   |       lk15.145.png
+|                   |       lk15.146.png
+|                   |       lk15.15.png
+|                   |       lk15.16.png
+|                   |       lk15.17.png
+|                   |       lk15.18.png
+|                   |       lk15.19.png
+|                   |       lk15.2.png
+|                   |       lk15.20.png
+|                   |       lk15.21.png
+|                   |       lk15.22.png
+|                   |       lk15.23.png
+|                   |       lk15.24.png
+|                   |       lk15.25.png
+|                   |       lk15.26.png
+|                   |       lk15.27.png
+|                   |       lk15.28.png
+|                   |       lk15.29.png
+|                   |       lk15.3.png
+|                   |       lk15.30.png
+|                   |       lk15.31.png
+|                   |       lk15.32.png
+|                   |       lk15.33.png
+|                   |       lk15.34.png
+|                   |       lk15.35.png
+|                   |       lk15.36.png
+|                   |       lk15.37.png
+|                   |       lk15.38.png
+|                   |       lk15.39.png
+|                   |       lk15.4.png
+|                   |       lk15.40.png
+|                   |       lk15.41.png
+|                   |       lk15.42.png
+|                   |       lk15.43.png
+|                   |       lk15.44.png
+|                   |       lk15.45.png
+|                   |       lk15.46.png
+|                   |       lk15.47.png
+|                   |       lk15.48.png
+|                   |       lk15.49.png
+|                   |       lk15.5.png
+|                   |       lk15.50.png
+|                   |       lk15.51.png
+|                   |       lk15.52.png
+|                   |       lk15.53.png
+|                   |       lk15.54.png
+|                   |       lk15.55.png
+|                   |       lk15.56.png
+|                   |       lk15.57.png
+|                   |       lk15.58.png
+|                   |       lk15.59.png
+|                   |       lk15.6.png
+|                   |       lk15.60.png
+|                   |       lk15.61.png
+|                   |       lk15.62.png
+|                   |       lk15.63.png
+|                   |       lk15.64.png
+|                   |       lk15.65.png
+|                   |       lk15.66.png
+|                   |       lk15.67.png
+|                   |       lk15.68.png
+|                   |       lk15.69.png
+|                   |       lk15.7.png
+|                   |       lk15.70.png
+|                   |       lk15.71.png
+|                   |       lk15.72.png
+|                   |       lk15.73.png
+|                   |       lk15.74.png
+|                   |       lk15.75.png
+|                   |       lk15.76.png
+|                   |       lk15.77.png
+|                   |       lk15.78.png
+|                   |       lk15.79.png
+|                   |       lk15.8.png
+|                   |       lk15.80.png
+|                   |       lk15.81.png
+|                   |       lk15.82.png
+|                   |       lk15.83.png
+|                   |       lk15.84.png
+|                   |       lk15.85.png
+|                   |       lk15.86.png
+|                   |       lk15.87.png
+|                   |       lk15.88.png
+|                   |       lk15.89.png
+|                   |       lk15.9.png
+|                   |       lk15.90.png
+|                   |       lk15.91.png
+|                   |       lk15.92.png
+|                   |       lk15.93.png
+|                   |       lk15.94.png
+|                   |       lk15.95.png
+|                   |       lk15.96.png
+|                   |       lk15.97.png
+|                   |       lk15.98.png
+|                   |       lk15.99.png
+|                   |       lk15.htm
+|                   |       
+|                   +---lk16
+|                   |       18-dist_sys.pdf
+|                   |       lk16.0.png
+|                   |       lk16.1.png
+|                   |       lk16.10.png
+|                   |       lk16.11.png
+|                   |       lk16.12.png
+|                   |       lk16.13.png
+|                   |       lk16.14.png
+|                   |       lk16.15.png
+|                   |       lk16.16.png
+|                   |       lk16.17.png
+|                   |       lk16.18.png
+|                   |       lk16.19.png
+|                   |       lk16.2.png
+|                   |       lk16.20.png
+|                   |       lk16.21.png
+|                   |       lk16.22.png
+|                   |       lk16.23.png
+|                   |       lk16.24.png
+|                   |       lk16.25.png
+|                   |       lk16.26.png
+|                   |       lk16.27.png
+|                   |       lk16.28.png
+|                   |       lk16.29.png
+|                   |       lk16.3.png
+|                   |       lk16.30.png
+|                   |       lk16.31.png
+|                   |       lk16.32.png
+|                   |       lk16.33.png
+|                   |       lk16.34.png
+|                   |       lk16.35.png
+|                   |       lk16.36.png
+|                   |       lk16.37.png
+|                   |       lk16.38.png
+|                   |       lk16.39.png
+|                   |       lk16.4.png
+|                   |       lk16.40.png
+|                   |       lk16.41.png
+|                   |       lk16.42.png
+|                   |       lk16.43.png
+|                   |       lk16.5.png
+|                   |       lk16.6.png
+|                   |       lk16.7.png
+|                   |       lk16.8.png
+|                   |       lk16.9.png
+|                   |       lk16.htm
+|                   |       
+|                   +---lk17
+|                   |       19-process.pdf
+|                   |       lk17.0.png
+|                   |       lk17.1.png
+|                   |       lk17.10.png
+|                   |       lk17.11.png
+|                   |       lk17.12.png
+|                   |       lk17.13.png
+|                   |       lk17.14.png
+|                   |       lk17.15.png
+|                   |       lk17.16.png
+|                   |       lk17.17.png
+|                   |       lk17.18.png
+|                   |       lk17.19.png
+|                   |       lk17.2.png
+|                   |       lk17.20.png
+|                   |       lk17.21.png
+|                   |       lk17.3.png
+|                   |       lk17.4.png
+|                   |       lk17.5.png
+|                   |       lk17.6.png
+|                   |       lk17.7.png
+|                   |       lk17.8.png
+|                   |       lk17.9.png
+|                   |       lk17.htm
+|                   |       
+|                   +---lk18
+|                   |       20-sync.pdf
+|                   |       lk18.0.png
+|                   |       lk18.1.png
+|                   |       lk18.10.png
+|                   |       lk18.11.png
+|                   |       lk18.12.png
+|                   |       lk18.13.png
+|                   |       lk18.14.png
+|                   |       lk18.15.png
+|                   |       lk18.16.png
+|                   |       lk18.17.png
+|                   |       lk18.18.png
+|                   |       lk18.19.png
+|                   |       lk18.2.png
+|                   |       lk18.20.png
+|                   |       lk18.21.png
+|                   |       lk18.22.png
+|                   |       lk18.23.png
+|                   |       lk18.24.png
+|                   |       lk18.25.png
+|                   |       lk18.26.png
+|                   |       lk18.27.png
+|                   |       lk18.28.png
+|                   |       lk18.29.png
+|                   |       lk18.3.png
+|                   |       lk18.30.png
+|                   |       lk18.31.png
+|                   |       lk18.32.png
+|                   |       lk18.33.png
+|                   |       lk18.34.png
+|                   |       lk18.35.png
+|                   |       lk18.36.png
+|                   |       lk18.37.png
+|                   |       lk18.38.png
+|                   |       lk18.39.png
+|                   |       lk18.4.png
+|                   |       lk18.40.png
+|                   |       lk18.41.png
+|                   |       lk18.42.png
+|                   |       lk18.43.png
+|                   |       lk18.44.png
+|                   |       lk18.45.png
+|                   |       lk18.46.png
+|                   |       lk18.47.png
+|                   |       lk18.48.png
+|                   |       lk18.49.png
+|                   |       lk18.5.png
+|                   |       lk18.50.png
+|                   |       lk18.51.png
+|                   |       lk18.52.png
+|                   |       lk18.53.png
+|                   |       lk18.54.png
+|                   |       lk18.55.png
+|                   |       lk18.56.png
+|                   |       lk18.6.png
+|                   |       lk18.7.png
+|                   |       lk18.8.png
+|                   |       lk18.9.png
+|                   |       lk18.htm
+|                   |       
+|                   +---lk19
+|                   |       21-Consistency.pdf
+|                   |       lk19.0.png
+|                   |       lk19.1.png
+|                   |       lk19.10.png
+|                   |       lk19.11.png
+|                   |       lk19.12.png
+|                   |       lk19.13.png
+|                   |       lk19.14.png
+|                   |       lk19.15.png
+|                   |       lk19.16.png
+|                   |       lk19.17.png
+|                   |       lk19.18.png
+|                   |       lk19.19.png
+|                   |       lk19.2.png
+|                   |       lk19.20.png
+|                   |       lk19.21.png
+|                   |       lk19.22.png
+|                   |       lk19.23.png
+|                   |       lk19.24.png
+|                   |       lk19.25.png
+|                   |       lk19.26.png
+|                   |       lk19.27.png
+|                   |       lk19.28.png
+|                   |       lk19.29.png
+|                   |       lk19.3.png
+|                   |       lk19.30.png
+|                   |       lk19.31.png
+|                   |       lk19.32.png
+|                   |       lk19.33.png
+|                   |       lk19.34.png
+|                   |       lk19.35.png
+|                   |       lk19.36.png
+|                   |       lk19.37.png
+|                   |       lk19.38.png
+|                   |       lk19.39.png
+|                   |       lk19.4.png
+|                   |       lk19.40.png
+|                   |       lk19.41.png
+|                   |       lk19.42.png
+|                   |       lk19.43.png
+|                   |       lk19.44.png
+|                   |       lk19.45.png
+|                   |       lk19.46.png
+|                   |       lk19.47.png
+|                   |       lk19.48.png
+|                   |       lk19.49.png
+|                   |       lk19.5.png
+|                   |       lk19.50.png
+|                   |       lk19.51.png
+|                   |       lk19.52.png
+|                   |       lk19.53.png
+|                   |       lk19.54.png
+|                   |       lk19.55.png
+|                   |       lk19.56.png
+|                   |       lk19.57.png
+|                   |       lk19.58.png
+|                   |       lk19.6.png
+|                   |       lk19.7.png
+|                   |       lk19.8.png
+|                   |       lk19.9.png
+|                   |       lk19.htm
+|                   |       
+|                   +---lk20
+|                   |       22-F_tolerance.pdf
+|                   |       lk20.0.png
+|                   |       lk20.1.png
+|                   |       lk20.10.png
+|                   |       lk20.11.png
+|                   |       lk20.12.png
+|                   |       lk20.13.png
+|                   |       lk20.14.png
+|                   |       lk20.15.png
+|                   |       lk20.16.png
+|                   |       lk20.17.png
+|                   |       lk20.18.png
+|                   |       lk20.19.png
+|                   |       lk20.2.png
+|                   |       lk20.20.png
+|                   |       lk20.21.png
+|                   |       lk20.22.png
+|                   |       lk20.23.png
+|                   |       lk20.24.png
+|                   |       lk20.25.png
+|                   |       lk20.26.png
+|                   |       lk20.27.png
+|                   |       lk20.28.png
+|                   |       lk20.29.png
+|                   |       lk20.3.png
+|                   |       lk20.4.png
+|                   |       lk20.5.png
+|                   |       lk20.6.png
+|                   |       lk20.7.png
+|                   |       lk20.8.png
+|                   |       lk20.9.png
+|                   |       lk20.htm
+|                   |       
+|                   +---lk21
+|                   |       23-FS.pdf
+|                   |       lk21.0.png
+|                   |       lk21.1.png
+|                   |       lk21.10.png
+|                   |       lk21.11.png
+|                   |       lk21.12.png
+|                   |       lk21.13.png
+|                   |       lk21.14.png
+|                   |       lk21.15.png
+|                   |       lk21.16.png
+|                   |       lk21.17.png
+|                   |       lk21.18.png
+|                   |       lk21.19.png
+|                   |       lk21.2.png
+|                   |       lk21.20.png
+|                   |       lk21.21.png
+|                   |       lk21.3.png
+|                   |       lk21.4.png
+|                   |       lk21.5.png
+|                   |       lk21.6.png
+|                   |       lk21.7.png
+|                   |       lk21.8.png
+|                   |       lk21.9.png
+|                   |       lk21.htm
+|                   |       
+|                   +---lk22
+|                   |       24-Hadoop-clusterBSUIR.pdf
+|                   |       lk22.0.png
+|                   |       lk22.1.png
+|                   |       lk22.10.png
+|                   |       lk22.11.png
+|                   |       lk22.12.png
+|                   |       lk22.13.png
+|                   |       lk22.14.png
+|                   |       lk22.15.png
+|                   |       lk22.16.png
+|                   |       lk22.17.png
+|                   |       lk22.18.png
+|                   |       lk22.19.png
+|                   |       lk22.2.png
+|                   |       lk22.20.png
+|                   |       lk22.21.png
+|                   |       lk22.22.png
+|                   |       lk22.23.png
+|                   |       lk22.24.png
+|                   |       lk22.25.png
+|                   |       lk22.26.png
+|                   |       lk22.27.png
+|                   |       lk22.28.png
+|                   |       lk22.29.png
+|                   |       lk22.3.png
+|                   |       lk22.30.png
+|                   |       lk22.31.png
+|                   |       lk22.32.png
+|                   |       lk22.33.png
+|                   |       lk22.34.png
+|                   |       lk22.35.png
+|                   |       lk22.36.png
+|                   |       lk22.37.png
+|                   |       lk22.38.png
+|                   |       lk22.39.png
+|                   |       lk22.4.png
+|                   |       lk22.40.png
+|                   |       lk22.41.png
+|                   |       lk22.42.png
+|                   |       lk22.43.png
+|                   |       lk22.44.png
+|                   |       lk22.45.png
+|                   |       lk22.46.png
+|                   |       lk22.47.png
+|                   |       lk22.48.png
+|                   |       lk22.49.png
+|                   |       lk22.5.png
+|                   |       lk22.50.png
+|                   |       lk22.51.png
+|                   |       lk22.52.png
+|                   |       lk22.53.png
+|                   |       lk22.54.png
+|                   |       lk22.55.png
+|                   |       lk22.56.png
+|                   |       lk22.57.png
+|                   |       lk22.58.png
+|                   |       lk22.59.png
+|                   |       lk22.6.png
+|                   |       lk22.60.png
+|                   |       lk22.61.png
+|                   |       lk22.62.png
+|                   |       lk22.63.png
+|                   |       lk22.64.png
+|                   |       lk22.65.png
+|                   |       lk22.66.png
+|                   |       lk22.67.png
+|                   |       lk22.68.png
+|                   |       lk22.69.png
+|                   |       lk22.7.png
+|                   |       lk22.70.png
+|                   |       lk22.71.png
+|                   |       lk22.72.png
+|                   |       lk22.73.png
+|                   |       lk22.74.png
+|                   |       lk22.75.png
+|                   |       lk22.76.png
+|                   |       lk22.77.png
+|                   |       lk22.78.png
+|                   |       lk22.79.png
+|                   |       lk22.8.png
+|                   |       lk22.80.png
+|                   |       lk22.81.png
+|                   |       lk22.82.png
+|                   |       lk22.83.png
+|                   |       lk22.84.png
+|                   |       lk22.85.png
+|                   |       lk22.86.png
+|                   |       lk22.87.png
+|                   |       lk22.88.png
+|                   |       lk22.89.png
+|                   |       lk22.9.png
+|                   |       lk22.90.png
+|                   |       lk22.91.png
+|                   |       lk22.92.png
+|                   |       lk22.93.png
+|                   |       lk22.94.png
+|                   |       lk22.95.png
+|                   |       lk22.96.png
+|                   |       lk22.97.png
+|                   |       lk22.htm
+|                   |       
+|                   \---lk23
+|                           02-unixway.pdf
+|                           lk23.0.png
+|                           lk23.1.png
+|                           lk23.10.png
+|                           lk23.11.png
+|                           lk23.12.png
+|                           lk23.13.png
+|                           lk23.14.png
+|                           lk23.15.png
+|                           lk23.16.png
+|                           lk23.17.png
+|                           lk23.18.png
+|                           lk23.19.png
+|                           lk23.2.png
+|                           lk23.20.png
+|                           lk23.21.png
+|                           lk23.22.png
+|                           lk23.23.png
+|                           lk23.24.png
+|                           lk23.25.png
+|                           lk23.26.png
+|                           lk23.27.png
+|                           lk23.28.png
+|                           lk23.29.png
+|                           lk23.3.png
+|                           lk23.30.png
+|                           lk23.31.png
+|                           lk23.32.png
+|                           lk23.33.png
+|                           lk23.34.png
+|                           lk23.35.png
+|                           lk23.36.png
+|                           lk23.37.png
+|                           lk23.38.png
+|                           lk23.39.png
+|                           lk23.4.png
+|                           lk23.40.png
+|                           lk23.41.png
+|                           lk23.42.png
+|                           lk23.43.png
+|                           lk23.44.png
+|                           lk23.45.png
+|                           lk23.46.png
+|                           lk23.47.png
+|                           lk23.48.png
+|                           lk23.49.png
+|                           lk23.5.png
+|                           lk23.50.png
+|                           lk23.51.png
+|                           lk23.52.png
+|                           lk23.53.png
+|                           lk23.54.png
+|                           lk23.55.png
+|                           lk23.56.png
+|                           lk23.57.png
+|                           lk23.58.png
+|                           lk23.59.png
+|                           lk23.6.png
+|                           lk23.60.png
+|                           lk23.61.png
+|                           lk23.62.png
+|                           lk23.63.png
+|                           lk23.64.png
+|                           lk23.65.png
+|                           lk23.66.png
+|                           lk23.67.png
+|                           lk23.68.png
+|                           lk23.7.png
+|                           lk23.8.png
+|                           lk23.9.png
+|                           lk23.htm
+|                           
+\---src
+    |   app.py
+    |   colors.py
+    |   settings.py
+    |   tcp_protocol.py
+    |   
+    \---__pycache__
+            colors.cpython-311.pyc
+            echo_protocol.cpython-311.pyc
+            settings.cpython-311.pyc
+            tcp_protocol.cpython-311.pyc
+            
