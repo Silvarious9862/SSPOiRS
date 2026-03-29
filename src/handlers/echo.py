@@ -3,6 +3,7 @@ from __future__ import annotations
 
 
 def is_echo_command(request: str) -> bool:
+    """Проверка команды на эхо"""
     return request.upper().startswith("ECHO")
 
 
