@@ -59,11 +59,8 @@ def main():
     else:
         host = args.host or base_settings.udp_host
         port = args.port or base_settings.udp_port
-
-    log.set_log_level(base_settings.log_level)
-    log.info(f"Starting {proto.upper()} server in {mode} mode at {host}:{port}")
     
-    print(f"Starting {proto.upper()} server in {mode} mode at {host}:{port}")
+    #print(f"Starting {proto.upper()} server in {mode} mode at {host}:{port}")
 
     if proto == "tcp" and mode == "single":
         from src.models.tcp_single import run_server
@@ -74,8 +71,11 @@ def main():
     elif proto == "tcp" and mode == "thread":
         from src.models.tcp_thread import run_server
     else:
+        log.error("Unsupported mode/proto combination")
         raise SystemExit("Unsupported mode/proto combination")
 
+    log.set_log_level(base_settings.log_level)
+    log.info(f"Starting {proto.upper()} server in {mode} mode at {host}:{port}")
     run_server(host=host, port=port, log_level=base_settings.log_level)
 
 if __name__ == "__main__":

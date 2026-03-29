@@ -1,12 +1,7 @@
 # src/handlers/close.py
 from __future__ import annotations
 
-from . import ConnectionLike
+CLOSE_COMMANDS = {"CLOSE", "EXIT", "QUIT"}
 
-
-def handle_close(conn: ConnectionLike) -> None:
-    """
-    Обработка команды CLOSE/EXIT/QUIT.
-    Может отправить подтверждение и закрыть соединение.
-    """
-    raise NotImplementedError("handle_close is not implemented yet")
+def is_close_command(request: str) -> bool:
+    return request.upper() in CLOSE_COMMANDS
