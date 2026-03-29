@@ -7,11 +7,20 @@ from src.utils import logging as log
 from src.tcp_protocol import create_listen_socket, accept_client, handle_client
 
 
-def serve_forever(server_socket) -> NoReturn:
+def serve_forever(server_socket) -> None:
     while True:
-        client_socket, client_addr = accept_client(server_socket)
+        accepted = accept_client(server_socket)
+        if accepted is None:
+            continue  # ничего не пришло
+
+        client_socket, client_addr = accepted
         handle_client(client_socket, client_addr)
 
+def shutdown_server(server_socket) -> None:
+    try:
+        server_socket.close()
+    finally:
+        log.info("TCP single server stopped")
 
 def run_server(host: str, port: int, log_level: str = "INFO") -> NoReturn:
     """
@@ -20,4 +29,12 @@ def run_server(host: str, port: int, log_level: str = "INFO") -> NoReturn:
     log.set_log_level(log_level)
     server_socket = create_listen_socket(host, port)
     log.info(f"TCP single server started on {host}:{port}")
-    serve_forever(server_socket)
+
+    try:
+        serve_forever(server_socket)
+    except KeyboardInterrupt:
+        log.warn("Shutdown requested by Ctrl+C")
+    finally:
+        shutdown_server(server_socket)
+
+    raise SystemExit(0)

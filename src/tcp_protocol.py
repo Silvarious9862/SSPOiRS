@@ -11,6 +11,7 @@ from src.utils.colors import colorize
 
 BUFFER_SIZE: Final[int] = 4096
 BACKLOG: Final[int] = 5
+SOCKET_TIMEOUT: Final[float] = 0.5
 
 
 def create_listen_socket(host: str, port: int) -> socket.socket:
@@ -18,17 +19,29 @@ def create_listen_socket(host: str, port: int) -> socket.socket:
     server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     server_socket.bind((host, port))
     server_socket.listen(BACKLOG)
+    server_socket.settimeout(SOCKET_TIMEOUT)
     return server_socket
 
 
 def accept_client(server_socket: socket.socket) -> tuple[socket.socket, tuple[str, int]]:
-    client_socket, client_addr = server_socket.accept()
+    try:
+        client_socket, client_addr = server_socket.accept()
+    except socket.timeout:
+        return None
+    client_socket.settimeout(SOCKET_TIMEOUT)
     log.info(f"Client connected: {client_addr[0]}:{client_addr[1]}")
     return client_socket, client_addr
 
 
-def receive_request(client_socket: socket.socket) -> str:
-    data = client_socket.recv(BUFFER_SIZE)
+def receive_request(client_socket: socket.socket) -> str | None:
+    try:
+        data = client_socket.recv(BUFFER_SIZE)
+    except (socket.timeout, TimeoutError):
+        return None  # нет данных, но соединение живо
+
+    if not data:
+        return ""
+
     request = data.decode("utf-8").strip()
     log.debug(f"Received: {request}")
     return request
@@ -68,13 +81,22 @@ def handle_client(client_socket: socket.socket, client_addr: tuple[str, int]) ->
 
         while True:
             request = receive_request(client_socket)
-            if not request:
-                break
+
+            if request is None:
+                continue 
+
+            if request == "":
+                break  # клиент закрыл соединение
 
             response, level, should_close = build_response(request)
             send_response(client_socket, response, level=level)
 
             if should_close:
                 break
+    except KeyboardInterrupt:
+        # сюда дойдём, только если Ctrl+C прилетит именно во время работы с этим клиентом
+        shutdown_msg = colorize("SERVER SHUTDOWN", level="warn")
+        client_socket.sendall(f"{shutdown_msg}\n".encode("utf-8"))
+        raise
     finally:
         close_client(client_socket, client_addr)
