@@ -218,6 +218,6 @@ __marimo__/
 
 docs/
 tree.txt
-server_files/
+serverfiles/
 client/**
 !client/**/*.py
