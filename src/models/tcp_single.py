@@ -27,6 +27,7 @@ def run_server(host: str, port: int, log_level: str = "INFO") -> NoReturn:
     ЛР1: однопоточный TCP-сервер, обслуживающий одного клиента за раз.
     """
     log.set_log_level(log_level)
+    log.debug(f"Current log level: {log_level}")
     server_socket = create_listen_socket(host, port)
     log.info(f"TCP single server started on {host}:{port}")
 
