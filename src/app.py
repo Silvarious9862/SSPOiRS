@@ -41,9 +41,6 @@ def parse_args():
 
     return parser.parse_args()
 
-
-# src/app.py
-
 def main():
     load_env()
     base_settings = get_settings()

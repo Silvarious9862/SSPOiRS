@@ -4,7 +4,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Tuple
 
-from settings import get_settings
+from src.settings import get_settings
 
 
 def get_base_dir() -> Path:
