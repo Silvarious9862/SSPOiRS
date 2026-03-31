@@ -8,10 +8,12 @@ def is_echo_command(request: str) -> bool:
 
 
 def extract_echo_message(request: str) -> str:
+    """Получить сообщение за ECHO"""
     return request[4:].strip()
 
 
 def handle_echo(request: str) -> str:
+    """Обработка команды ECHO"""
     if not is_echo_command(request):
         return "ERROR: unknown command"
     message = extract_echo_message(request)

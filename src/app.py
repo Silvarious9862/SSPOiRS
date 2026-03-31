@@ -42,26 +42,24 @@ def parse_args():
     return parser.parse_args()
 
 
+# src/app.py
+
 def main():
     load_env()
     base_settings = get_settings()
     args = parse_args()
 
-
-    # proto/mode по умолчанию — для ЛР1
     proto = args.proto or "tcp"
     mode = args.mode or "single"
 
-    # выбираем host/port в зависимости от протокола
     if proto == "tcp":
         host = args.host or base_settings.tcp_host
         port = args.port or base_settings.tcp_port
     else:
         host = args.host or base_settings.udp_host
         port = args.port or base_settings.udp_port
-    
-    #print(f"Starting {proto.upper()} server in {mode} mode at {host}:{port}")
 
+    # выбираем run_server
     if proto == "tcp" and mode == "single":
         from src.models.tcp_single import run_server
     elif proto == "udp" and mode == "single":
@@ -74,9 +72,12 @@ def main():
         log.error("Unsupported mode/proto combination")
         raise SystemExit("Unsupported mode/proto combination")
 
-    log.set_log_level(base_settings.log_level)
+    effective_log_level = args.log_level or base_settings.log_level
+
+    log.set_log_level(effective_log_level)
     log.info(f"Starting {proto.upper()} server in {mode} mode at {host}:{port}")
-    run_server(host=host, port=port, log_level=base_settings.log_level)
+
+    run_server(host=host, port=port, log_level=effective_log_level)
 
 if __name__ == "__main__":
     main()
