@@ -1,43 +1,109 @@
-# src/udp_protocol.py
+"""src/udp_protocol.py — UDP protocol layer."""
 from __future__ import annotations
 
 import socket
-from typing import Tuple
+from typing import Final
+
+from src.handlers.close import is_close_command
+from src.handlers.echo import handle_echo, is_echo_command
+from src.handlers.time_ import handle_time, is_time_command
+from src.handlers.upload import is_upload_command
+from src.handlers.download import is_download_command
+from src.handlers_udp.upload import handle_upload
+from src.handlers_udp.download import handle_download
+from src.utils import logging as log
+from src.utils.colors import colorize
+
+BUFFERSIZE: Final[int] = 4096
+SOCKET_TIMEOUT: Final[float] = 0.5
 
 
-class UdpEndpoint:
-    """
-    Обёртка над UDP-сокетом + адрес клиента.
-    Нужна, чтобы интерфейс был похож на TcpConnection.
-    """
-
-    def __init__(self, sock: socket.socket, addr: Tuple[str, int]):
-        self.sock = sock
-        self.addr = addr
-
-    def send_line(self, data: str) -> None:
-        raise NotImplementedError("UdpEndpoint.send_line is not implemented yet")
-
-    def send_bytes(self, data: bytes) -> None:
-        raise NotImplementedError("UdpEndpoint.send_bytes is not implemented yet")
+def create_server_socket(host: str, port: int) -> socket.socket:
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    server_socket.bind((host, port))
+    server_socket.settimeout(SOCKET_TIMEOUT)
+    return server_socket
 
 
-def create_udp_socket(host: str, port: int) -> socket.socket:
-    """Создаёт и биндует UDP-сокет на host:port."""
-    raise NotImplementedError("create_udp_socket is not implemented yet")
+def receive_request(
+    server_socket: socket.socket,
+) -> tuple[str, tuple[str, int]] | None:
+    try:
+        data, client_addr = server_socket.recvfrom(BUFFERSIZE)
+    except (socket.timeout, TimeoutError):
+        return None
+    except OSError as exc:
+        log.debug(f"UDP recvfrom failed: {exc}")
+        return None
+
+    request = data.decode("utf-8").strip()
+    log.debug(f"Received from {client_addr[0]}:{client_addr[1]}: {request!r}")
+    return request, client_addr
 
 
-def recv_request(sock: socket.socket) -> Tuple[bytes, Tuple[str, int]]:
-    """
-    Получает один UDP-дейтаграмм.
-    Возвращает (raw_data, client_addr).
-    """
-    raise NotImplementedError("recv_request is not implemented yet")
+def send_response(
+    server_socket: socket.socket,
+    client_addr: tuple[str, int],
+    message: str,
+    *,
+    level: str = "info",
+) -> bool:
+    colored_message = colorize(message, level=level)
+    try:
+        server_socket.sendto(f"{colored_message}\n".encode("utf-8"), client_addr)
+    except OSError as exc:
+        log.debug(
+            f"Send skipped to {client_addr[0]}:{client_addr[1]} "
+            f"before {message!r}: {exc}"
+        )
+        return False
+
+    log.debug(f"Sent to {client_addr[0]}:{client_addr[1]}: {message!r}")
+    return True
 
 
-def handle_datagram(data: bytes, endpoint: UdpEndpoint) -> None:
-    """
-    Обработка одной команды по UDP.
-    Здесь позже будет парсинг ECHO/TIME/CLOSE/UPLOAD/DOWNLOAD.
-    """
-    raise NotImplementedError("handle_datagram is not implemented yet")
+def send_hello(
+    server_socket: socket.socket,
+    client_addr: tuple[str, int],
+) -> bool:
+    return send_response(server_socket, client_addr, "HELLO", level="info")
+
+
+def build_response(request: str) -> tuple[str, str, bool]:
+    if not request:
+        return "ERROR empty request", "error", False
+
+    request = request.strip()
+
+    if is_close_command(request):
+        return "BYE", "info", True
+    if is_echo_command(request):
+        return handle_echo(request), "info", False
+    if is_time_command(request):
+        return handle_time(request), "info", False
+
+    return "ERROR unknown command", "error", False
+
+
+def handle_datagram(
+    server_socket: socket.socket,
+    request: str,
+    client_addr: tuple[str, int],
+) -> None:
+    req_stripped = request.strip()
+
+    if is_upload_command(req_stripped):
+        handle_upload(server_socket, client_addr, req_stripped)
+        return
+
+    if is_download_command(req_stripped):
+        handle_download(server_socket, client_addr, req_stripped)
+        return
+
+    response, level, should_close = build_response(req_stripped)
+    if not send_response(server_socket, client_addr, response, level=level):
+        return
+
+    if should_close:
+        log.info(f"UDP client finished {client_addr[0]}:{client_addr[1]}")
