@@ -92,25 +92,6 @@ def _handle_failure(attempt: int) -> tuple[int, bool]:
             print("Transfer aborted by user.")
             return attempt, False
 
-def _poll_oob_progress(sock: socket.socket) -> None:
-    """
-    Ненавязчиво проверяет, пришли ли внеполосные данные с прогрессом,
-    и печатает их, не блокируя основной приём файла.
-    """
-    try:
-        r, _, x = select.select([], [], [sock], 0)
-    except OSError:
-        return
-
-    if sock in x:
-        try:
-            data = sock.recv(1, socket.MSG_OOB)
-        except OSError:
-            return
-        if data:
-            percent = data[0]
-            print(f"\n[OOB] progress: {percent}%", flush=True)
-
 def download_file(filename: str) -> None:
     attempt = 0
 

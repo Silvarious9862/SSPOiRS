@@ -1,11 +1,11 @@
-"""client_upload.py — клиент загрузки файлов на сервер с SO_KEEPALIVE и автовосстановлением."""
+"""client_upload.py — клиент выгрузки файла на сервер с SO_KEEPALIVE, OOB-прогрессом и автовосстановлением."""
 from __future__ import annotations
 
 import argparse
 import os
 import re
 import socket
-import struct
+import sys
 import time
 
 HOST = "127.0.0.1"
@@ -16,7 +16,8 @@ KEEPALIVE_INTVL = 5
 KEEPALIVE_CNT = 4
 
 RETRY_DELAYS = [0.5, 1, 2, 5, 10, 30]
-RECV_TIMEOUT = 60.0
+SEND_TIMEOUT = 60.0
+OOB_PROGRESS_STEP = 10
 
 ANSI_ESCAPE_RE = re.compile(r"\x1B\[[0-?]*[ -/]*[@-~]")
 
@@ -53,18 +54,13 @@ def recv_line(sock: socket.socket) -> str:
 def _connect_and_handshake() -> socket.socket:
     sock = socket.create_connection((HOST, PORT))
     _apply_keepalive(sock)
-    sock.settimeout(RECV_TIMEOUT)
+    sock.settimeout(SEND_TIMEOUT)
     hello = strip_ansi(recv_line(sock))
     print(f"SERVER: {hello}")
     return sock
 
 
 def _handle_failure(attempt: int) -> tuple[int, bool]:
-    """
-    Лестница задержек:
-    0.5s, 1s, 2s, 5s, 10s, 30s.
-    После этого решение остаётся за пользователем.
-    """
     attempt += 1
 
     if attempt <= len(RETRY_DELAYS):
@@ -90,17 +86,24 @@ def _handle_failure(attempt: int) -> tuple[int, bool]:
         if answer == "n":
             print("Transfer aborted by user.")
             return attempt, False
+        
+def send_oob_progress(sock: socket.socket, percent: int) -> None:
+    try:
+        sock.send(bytes([percent]), socket.MSG_OOB)
+    except (BrokenPipeError, ConnectionResetError, OSError, ValueError):
+        pass
 
-def upload_file(filename: str) -> None:
-    if not os.path.exists(filename):
-        print(f"Local file not found: {filename}")
+def upload_file(filepath: str) -> None:
+    if not os.path.exists(filepath):
+        print(f"Local file not found: {filepath}")
         return
 
-    with open(filename, "rb") as f:
-        data = f.read()
-    total_size = len(data)
-    print(f"Local file: {filename}, size={total_size} bytes")
+    if not os.path.isfile(filepath):
+        print(f"Path is not a regular file: {filepath}")
+        return
 
+    filename = os.path.basename(filepath)
+    total_size = os.path.getsize(filepath)
     attempt = 0
 
     while True:
@@ -114,57 +117,125 @@ def upload_file(filename: str) -> None:
             continue
 
         try:
-            sock.sendall(f"upload {filename} {total_size}".encode("utf-8"))
+            cmd = f"upload {filename} {total_size}"
+            sock.sendall(cmd.encode("utf-8"))
 
             raw_status = recv_line(sock)
-            print(f"SERVER RAW: {raw_status!r}")  # то, что пришло по сети
+            print(f"SERVER RAW: {raw_status!r}")
 
             status = strip_ansi(raw_status)
-            print(f"SERVER STRIPPED: {status!r}")  # после удаления ANSI
+            print(f"SERVER STRIPPED: {status!r}")
 
             offset = 0
-
-            if status.startswith("OK READY"):
-                offset = 0
-
-            elif status.startswith("RESUME"):
+            if status.startswith("RESUME "):
                 try:
-                    offset_str = status.split()[1]
-                    offset = int(offset_str)
-                except (IndexError, ValueError) as exc:
+                    offset = int(status.split()[1])
+                except (IndexError, ValueError):
                     print("Invalid RESUME offset from server.")
-                    try:
-                        sock.sendall(b"exit")
-                    except OSError:
-                        pass
                     return
-
+            elif status.startswith("OK READY"):
+                offset = 0
+            elif status.startswith("OK UPLOADED"):
+                print(f"SERVER: {status}")
+                return
             else:
-                print(f"Upload refused by server: {status}")
+                print("Upload refused by server.")
                 try:
                     sock.sendall(b"exit")
+                    recv_line(sock)
                 except OSError:
                     pass
                 return
 
-            remaining_data = data[offset:]
+            if offset > total_size:
+                print(
+                    f"Server requested invalid resume offset {offset}, "
+                    f"local file size is {total_size}."
+                )
+                return
+
+            remaining = total_size - offset
+            if remaining == 0:
+                print("Nothing to upload — server already has the whole file.")
+                final = strip_ansi(recv_line(sock))
+                if final:
+                    print(f"SERVER: {final}")
+                try:
+                    sock.sendall(b"exit")
+                    recv_line(sock)
+                except OSError:
+                    pass
+                return
+
+            sent = 0
             interrupted = False
+            status_line = ""
+            progress_oob = None
 
-            try:
-                sent = 0
-                chunk_size = 4096
-                while sent < len(remaining_data):
-                    piece = remaining_data[sent:sent + chunk_size]
-                    sock.sendall(piece)
-                    sent += len(piece)
-                    print(
-                        f"\rUploaded {offset + sent} / {total_size} bytes",
-                        end="", flush=True,
-                    )
-            except (BrokenPipeError, ConnectionResetError, OSError) as exc:
-                print(f"\n[CONNECTION] Transfer interrupted: {exc}")
-                interrupted = True
+            sent = 0
+            interrupted = False
+            status_line = ""
+            progress_oob = None
+            last_oob_step = -1
 
+            with open(filepath, "rb") as f:
+                f.seek(offset)
+
+                while sent < remaining:
+                    chunk = f.read(min(65536, remaining - sent))
+                    if not chunk:
+                        break
+
+                    try:
+                        sock.sendall(chunk)
+                    except (socket.timeout, TimeoutError):
+                        print(
+                            f"\n[CONNECTION] Send timeout after {SEND_TIMEOUT:.0f}s — "
+                            "connection appears lost."
+                        )
+                        interrupted = True
+                        break
+                    except (ConnectionResetError, BrokenPipeError, OSError) as exc:
+                        print(f"\n[CONNECTION] Transfer interrupted: {exc}")
+                        interrupted = True
+                        break
+
+                    sent += len(chunk)
+
+                    # считаем свой прогресс и шлём OOB на сервер (отправитель файла = клиент)
+                    percent = int(sent * 100 / remaining)
+                    step = percent // OOB_PROGRESS_STEP
+                    if step > last_oob_step and percent < 100:
+                        oob_percent = min(step * OOB_PROGRESS_STEP, 99)
+                        send_oob_progress(sock, oob_percent)
+                        progress_oob = oob_percent
+                        last_oob_step = step
+
+                    # формируем единую строку статуса
+                    parts = []
+                    if progress_oob is not None:
+                        parts.append(f"{progress_oob:3d}%")
+                    parts.append(f"Uploaded {offset + sent} / {total_size} bytes")
+                    new_status = " | ".join(parts)
+
+                    # перерисовываем только если что-то поменялось
+                    if new_status != status_line:
+                        status_line = new_status
+                        sys.stdout.write("\r" + " " * 80 + "\r")
+                        sys.stdout.write(status_line)
+                        sys.stdout.flush()
+
+            # гарантированно показать финальные 100%
+            if not interrupted and sent == remaining:
+                send_oob_progress(sock, 100)
+                progress_oob = 100
+                status_line = f"{progress_oob:3d}% | Uploaded {offset + sent} / {total_size} bytes"
+            else:
+                status_line = f"Uploaded {offset + sent} / {total_size} bytes"
+
+            sys.stdout.write("\r" + " " * 80 + "\r")
+            sys.stdout.write(status_line)
+            sys.stdout.flush()
             print()
 
             if interrupted:
@@ -177,11 +248,21 @@ def upload_file(filename: str) -> None:
                     continue
                 return
 
+            if offset + sent != total_size:
+                print(
+                    f"\nWarning: expected to upload {remaining} bytes, sent only {sent}."
+                )
+
             final = strip_ansi(recv_line(sock))
             if final:
                 print(f"SERVER: {final}")
-            sock.sendall(b"exit")
-            recv_line(sock)
+
+            try:
+                sock.sendall(b"exit")
+                recv_line(sock)
+            except OSError:
+                pass
+
             attempt = 0
             return
 
@@ -199,9 +280,9 @@ def upload_file(filename: str) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="UPLOAD")
-    parser.add_argument("filename", help="File to upload")
+    parser.add_argument("filepath", help="Local file to upload")
     args = parser.parse_args()
-    upload_file(args.filename)
+    upload_file(args.filepath)
 
 
 if __name__ == "__main__":

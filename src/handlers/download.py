@@ -11,7 +11,7 @@ from src.utils.colors import colorize
 
 BUFFERSIZE: Final[int] = 4096
 BASEDIR: Final[str] = "serverfiles"
-DOWNLOAD_DELAY_PER_CHUNK: float = 0.05
+DOWNLOAD_DELAY_PER_CHUNK: float = 0.00
 OOB_PROGRESS_STEP: Final[int] = 10
 
 
@@ -158,4 +158,3 @@ def handle_download(client_socket, request: str) -> None:
                 level="info")
     else:
         log.debug(f"Download interrupted at offset {offset + sent} of {filesize} bytes")
-        # Финальный OK не отправляем — клиент определит разрыв по EOF/таймауту
