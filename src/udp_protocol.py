@@ -37,7 +37,19 @@ def receive_request(
         log.debug(f"UDP recvfrom failed: {exc}")
         return None
 
-    request = data.decode("utf-8").strip()
+    try:
+        request = data.decode("utf-8").strip()
+    except UnicodeDecodeError as exc:
+        log.warn(
+            f"Ignored non-UTF8 datagram from "
+            f"{client_addr[0]}:{client_addr[1]}"
+        )
+        return None
+    
+    if not request:
+        log.debug(f"Ignored empty datagram from {client_addr[0]}:{client_addr[1]}")
+        return None
+    
     log.debug(f"Received from {client_addr[0]}:{client_addr[1]}: {request!r}")
     return request, client_addr
 
