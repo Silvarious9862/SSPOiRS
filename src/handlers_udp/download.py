@@ -16,6 +16,69 @@ ACK_TIMEOUT: Final[float] = 0.1
 MAX_RETRIES: Final[int] = 20
 RECV_BUFSIZE: Final[int] = 65535
 
+# вверху файла, после импортов:
+try:
+    from src.handlers_udp._download_core import send_window_core
+    HAS_CYTHON_CORE = True
+except ImportError:
+    HAS_CYTHON_CORE = False
+
+
+def _send_window_core_py(
+    server_socket: socket.socket,
+    client_addr: tuple[str, int],
+    packets: list[bytes],
+    window_size: int,
+    max_retries: int,
+) -> bool:
+    total_packets = len(packets)
+    base = 0
+    next_seq = 0
+    retries = 0
+
+    while base < total_packets:
+        while next_seq < total_packets and next_seq < base + window_size:
+            try:
+                server_socket.sendto(packets[next_seq], client_addr)
+            except OSError as exc:
+                log.debug(f"UDP send DATA failed: {exc}")
+                return False
+            next_seq += 1
+
+        ack_seq = wait_for_cumulative_ack(server_socket, client_addr, base)
+
+        if ack_seq is None:
+            retries += 1
+            if retries > max_retries:
+                log.debug(
+                    f"UDP download interrupted: ACK timeout window base={base}, "
+                    f"client={client_addr[0]}:{client_addr[1]}"
+                )
+                return False
+
+            log.debug(
+                f"ACK timeout: retransmit window base={base}, next_seq={next_seq}, "
+                f"retry={retries}/{max_retries}"
+            )
+
+            for seq in range(base, next_seq):
+                try:
+                    server_socket.sendto(packets[seq], client_addr)
+                except OSError as exc:
+                    log.debug(f"UDP resend DATA failed: {exc}")
+                    return False
+            continue
+
+        if ack_seq >= total_packets:
+            ack_seq = total_packets - 1
+
+        if ack_seq < base:
+            continue
+
+        base = ack_seq + 1
+        retries = 0
+
+    return True
 
 def send_line(
     server_socket,
@@ -197,15 +260,6 @@ def handle_download(server_socket, client_addr: tuple[str, int], request: str) -
         log.info(f"UDP download skipped file={filename}, nothing to send")
         return
 
-    '''if remaining == 0:
-        for _ in range(MAX_RETRIES):
-            if not send_line(server_socket, client_addr, "DONE", level="info"):
-                return
-            if wait_for_ack_done(server_socket, client_addr):
-                log.info(f"UDP download finished file={filename}, bytes=0")
-                return
-        return'''
-
     packets: list[bytes] = []
     try:
         with open(path, "rb") as f:
@@ -232,47 +286,21 @@ def handle_download(server_socket, client_addr: tuple[str, int], request: str) -
         f"chunk_size={CHUNK_SIZE}, window={WINDOW_SIZE}"
     )
 
-    while base < total_packets:
-        while next_seq < total_packets and next_seq < base + WINDOW_SIZE:
-            try:
-                server_socket.sendto(packets[next_seq], client_addr)
-            except OSError as exc:
-                log.debug(f"UDP send DATA failed: {exc}")
-                return
-            next_seq += 1
+    if HAS_CYTHON_CORE:
+        log.debug(f"Download realized with Cython .pyx")
+    else:
+        log.debug(f"Download realized with Python default")
 
-        ack_seq = wait_for_cumulative_ack(server_socket, client_addr, base)
+    ok = (
+        send_window_core(server_socket, client_addr, packets, WINDOW_SIZE, MAX_RETRIES)
+        if HAS_CYTHON_CORE
+        else _send_window_core_py(
+            server_socket, client_addr, packets, WINDOW_SIZE, MAX_RETRIES
+        )
+    )
 
-        if ack_seq is None:
-            retries += 1
-            if retries > MAX_RETRIES:
-                log.debug(
-                    f"UDP download interrupted: ACK timeout window base={base}, "
-                    f"client={client_addr[0]}:{client_addr[1]}"
-                )
-                return
-
-            log.debug(
-                f"ACK timeout: retransmit window base={base}, next_seq={next_seq}, "
-                f"retry={retries}/{MAX_RETRIES}"
-            )
-
-            for seq in range(base, next_seq):
-                try:
-                    server_socket.sendto(packets[seq], client_addr)
-                except OSError as exc:
-                    log.debug(f"UDP resend DATA failed: {exc}")
-                    return
-            continue
-
-        if ack_seq >= total_packets:
-            ack_seq = total_packets - 1
-
-        if ack_seq < base:
-            continue
-
-        base = ack_seq + 1
-        retries = 0
+    if not ok:
+        return
 
     duration = time.perf_counter() - start
     speed_kbps = remaining / 1024 / duration if duration > 0 else 0.0
