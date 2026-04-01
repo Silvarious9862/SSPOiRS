@@ -10,12 +10,18 @@ from src.utils import logging as log
 from src.utils.colors import colorize
 
 BASEDIR: Final[str] = "serverfiles"
+CHUNK_SIZE: Final[int] = 1450
 RECV_BUFSIZE: Final[int] = 65535
-ACK_TIMEOUT: Final[float] = 0.5
+ACK_TIMEOUT: Final[float] = 0.1
 MAX_RETRIES: Final[int] = 20
 
 
-def send_line(server_socket, client_addr: tuple[str, int], message: str, level: str = "info") -> bool:
+def send_line(
+    server_socket,
+    client_addr: tuple[str, int],
+    message: str,
+    level: str = "info",
+) -> bool:
     colored = colorize(message, level=level)
     try:
         server_socket.sendto(f"{colored}\n".encode("utf-8"), client_addr)
@@ -28,7 +34,6 @@ def send_line(server_socket, client_addr: tuple[str, int], message: str, level: 
 
     log.debug(f"Sent to {client_addr[0]}:{client_addr[1]}: {message!r}")
     return True
-
 
 def parse_upload_command(request: str) -> tuple[str, int] | None:
     parts = request.strip().split()
@@ -46,60 +51,30 @@ def parse_upload_command(request: str) -> tuple[str, int] | None:
     return os.path.basename(filename), total_size
 
 
-def wait_for_ready_or_resume(
-    server_socket: socket.socket,
-    client_addr: tuple[str, int],
-) -> int | None:
-    """
-    Ждём от клиента 'OK READY' или 'RESUME <offset>'.
-    Возвращаем offset (0 или >0) или None при ошибке/таймауте.
-    """
-    old_timeout = server_socket.gettimeout()
-    server_socket.settimeout(ACK_TIMEOUT)
+def parse_data_packet(data: bytes) -> tuple[int, bytes] | None:
+    header, sep, payload = data.partition(b"\n")
+    if not sep:
+        return None
 
     try:
-        while True:
-            try:
-                data, addr = server_socket.recvfrom(RECV_BUFSIZE)
-            except (socket.timeout, TimeoutError):
-                return None
-            except OSError as exc:
-                log.debug(f"UDP recvfrom failed while waiting READY/RESUME: {exc}")
-                return None
+        header_text = header.decode("utf-8").strip()
+    except UnicodeDecodeError:
+        return None
 
-            if addr != client_addr:
-                log.debug(
-                    f"Ignored datagram from {addr[0]}:{addr[1]} while waiting "
-                    f"READY/RESUME from {client_addr[0]}:{client_addr[1]}"
-                )
-                continue
+    parts = header_text.split()
+    if len(parts) != 3 or parts[0] != "DATA":
+        return None
 
-            try:
-                message = data.decode("utf-8").strip()
-            except UnicodeDecodeError:
-                continue
+    try:
+        seq = int(parts[1])
+        size = int(parts[2])
+    except ValueError:
+        return None
 
-            if message == "OK READY":
-                return 0
+    if size < 0 or len(payload) != size:
+        return None
 
-            if message.startswith("RESUME "):
-                parts = message.split()
-                if len(parts) != 2:
-                    return None
-                try:
-                    offset = int(parts[1])
-                    if offset < 0:
-                        return None
-                    return offset
-                except ValueError:
-                    return None
-
-            log.debug(
-                f"Ignored unexpected datagram {message!r} from "
-                f"{addr[0]}:{addr[1]} while waiting READY/RESUME"
-            )
-    finally:
-        server_socket.settimeout(old_timeout)
+    return seq, payload
 
 
 def handle_upload(server_socket, client_addr: tuple[str, int], request: str) -> None:
@@ -126,40 +101,25 @@ def handle_upload(server_socket, client_addr: tuple[str, int], request: str) -> 
             return
 
         if 0 < offset < total_size:
-            # Предлагаем докачку
             if not send_line(server_socket, client_addr, f"RESUME {offset}", level="info"):
                 return
         elif offset == total_size:
             # Уже всё загружено
-            summary = f"OK UPLOADED {total_size} bytes in 0.000 s, 0.00 KB/s"
+            if not send_line(server_socket, client_addr, f"RESUME {offset}", level="info"):
+                return
+            summary = f"OK UPLOADED 0 bytes in 0.000 s, 0.00 KB/s"
             send_line(server_socket, client_addr, summary, level="info")
             return
         else:
-            # offset == 0 или файл пустой
             if not send_line(server_socket, client_addr, "OK READY", level="info"):
                 return
     else:
         if not send_line(server_socket, client_addr, "OK READY", level="info"):
             return
 
-    # Ждём подтверждение от клиента (OK READY / RESUME <offset>)
-    confirmed_offset = wait_for_ready_or_resume(server_socket, client_addr)
-    if confirmed_offset is None:
-        log.debug(
-            f"UDP upload aborted: no READY/RESUME from "
-            f"{client_addr[0]}:{client_addr[1]}"
-        )
-        return
-
-    if confirmed_offset != offset:
-        log.debug(
-            f"UDP upload offset mismatch: server={offset}, client={confirmed_offset}"
-        )
-        offset = confirmed_offset
-
     remaining = total_size - offset
     if remaining == 0:
-        summary = f"OK UPLOADED {total_size} bytes in 0.000 s, 0.00 KB/s"
+        summary = f"OK UPLOADED 0 bytes in 0.000 s, 0.00 KB/s"
         send_line(server_socket, client_addr, summary, level="info")
         return
 
@@ -180,6 +140,7 @@ def handle_upload(server_socket, client_addr: tuple[str, int], request: str) -> 
             f"offset={offset}, remaining={remaining}"
         )
 
+        expected_seq = offset // CHUNK_SIZE  # номер ожидаемого блока
         received = 0
         start = time.perf_counter()
 
@@ -203,28 +164,60 @@ def handle_upload(server_socket, client_addr: tuple[str, int], request: str) -> 
                 )
                 continue
 
+            # DONE от клиента
             try:
                 text = data.decode("utf-8").strip()
             except UnicodeDecodeError:
                 text = None
 
             if text == "DONE":
-                # Клиент закончил, подтверждаем
                 try:
                     server_socket.sendto(b"ACK DONE", client_addr)
                 except OSError as exc:
                     log.debug(f"UDP send ACK DONE failed: {exc}")
                 break
 
-            # Иначе считаем, что это «сырые» данные файла
-            try:
-                f.write(data)
-            except OSError as exc:
-                log.error(f"File write error for {path}: {exc}")
-                send_line(server_socket, client_addr, "ERROR cannot write file", level="error")
-                return
+            # иначе ожидаем DATA-пакет
+            parsed = parse_data_packet(data)
+            if parsed is None:
+                log.debug(
+                    f"Ignored non-DATA datagram from "
+                    f"{addr[0]}:{addr[1]} while waiting DATA"
+                )
+                continue
 
-            received += len(data)
+            seq, payload = parsed
+
+            if seq == expected_seq:
+                try:
+                    f.write(payload)
+                except OSError as exc:
+                    log.error(f"File write error for {path}: {exc}")
+                    send_line(
+                        server_socket,
+                        client_addr,
+                        "ERROR cannot write file",
+                        level="error",
+                    )
+                    return
+
+                received += len(payload)
+                expected_seq += 1
+
+                ack_seq = expected_seq - 1
+                try:
+                    server_socket.sendto(f"ACK {ack_seq}".encode("utf-8"), client_addr)
+                except OSError as exc:
+                    log.debug(f"UDP send ACK failed: {exc}")
+                    return
+            else:
+                # повторяем ACK последней подтверждённой последовательности
+                ack_seq = expected_seq - 1
+                try:
+                    server_socket.sendto(f"ACK {ack_seq}".encode("utf-8"), client_addr)
+                except OSError as exc:
+                    log.debug(f"UDP resend ACK failed: {exc}")
+                    return
 
         duration = time.perf_counter() - start
         speed_kbps = received / 1024 / duration if duration > 0 else 0.0

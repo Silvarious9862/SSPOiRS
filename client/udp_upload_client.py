@@ -11,8 +11,12 @@ from typing import Final
 
 RECV_BUFSIZE: Final[int] = 65535
 SOCKET_TIMEOUT: Final[float] = 5.0
+CHUNK_SIZE: Final[int] = 1450
+WINDOW_SIZE: Final[int] = 32
+ACK_TIMEOUT: Final[float] = 0.1
+MAX_RETRIES: Final[int] = 20
 
-ANSI_ESCAPE_RE = re.compile(r"\x1B\\[[0-?]*[ -/]*[@-~]")
+ANSI_ESCAPE_RE = re.compile(r"\x1B\[[0-?]*[ -/]*[@-~]")
 
 RETRY_DELAYS = [0.5, 1, 2, 5, 10, 30]
 
@@ -49,6 +53,11 @@ def print_progress(sent_now: int, total_now: int, last_step: int) -> int:
     return last_step
 
 
+def build_data_packet(seq: int, chunk: bytes) -> bytes:
+    header = f"DATA {seq} {len(chunk)}\n".encode("utf-8")
+    return header + chunk
+
+
 def _upload_once(
     host: str,
     port: int,
@@ -59,6 +68,8 @@ def _upload_once(
         raise RuntimeError(f"Local file '{local_name}' does not exist")
 
     total_size = os.path.getsize(local_name)
+    if total_size <= 0:
+        raise RuntimeError("Cannot upload empty file (size 0)")
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.settimeout(SOCKET_TIMEOUT)
@@ -79,62 +90,136 @@ def _upload_once(
             try:
                 offset = int(status.split()[1])
             except (IndexError, ValueError):
-                print("Invalid RESUME offset from server.")
-                return
+                raise RuntimeError("Invalid RESUME offset from server.")
         elif status.startswith("OK READY"):
             offset = 0
         elif status.startswith("OK UPLOADED"):
             print(f"SERVER: {status}")
             return
+        elif status.startswith("ERROR"):
+            raise RuntimeError(status)
         else:
-            print("Upload refused by server.")
-            return
-
-        # подтверждаем выбор offset
-        if offset > 0:
-            ack_msg = f"RESUME {offset}"
-        else:
-            ack_msg = "OK READY"
-        sock.sendto(ack_msg.encode("utf-8"), server_addr)
+            raise RuntimeError(f"Upload refused by server: {status}")
 
         remaining = total_size - offset
         if remaining == 0:
             print("Nothing to upload — server already has full file.")
+            try:
+                final, addr = recv_text_datagram(sock)
+                if addr == server_addr and final:
+                    print(f"SERVER: {final}")
+            except socket.timeout:
+                pass
             return
 
-        sent = 0
-        last_step = -1
-
+        # читаем файл в память так же, как сервер download
+        packets: list[bytes] = []
         with open(local_name, "rb") as f:
             if offset > 0:
                 f.seek(offset)
-
-            while sent < remaining:
-                chunk = f.read(min(65536, remaining - sent))
+            while True:
+                chunk = f.read(CHUNK_SIZE)
                 if not chunk:
                     break
+                packets.append(build_data_packet(len(packets), chunk))
 
-                sock.sendto(chunk, server_addr)
-                sent += len(chunk)
-                last_step = print_progress(sent, total_size, last_step)
+        total_packets = len(packets)
+        base = 0
+        next_seq = 0
+        retries = 0
+        sent_bytes = 0
+        last_step = -1
 
-        # сигнал окончания
-        sock.sendto(b"DONE", server_addr)
+        print(f"Starting UDP upload, packets={total_packets}, window={WINDOW_SIZE}")
 
-        # ждём ACK DONE и финальный статус
-        try:
-            status, addr = recv_text_datagram(sock)
-            if addr == server_addr and status == "ACK DONE":
-                status, addr = recv_text_datagram(sock)
-                if addr == server_addr and status:
-                    print(f"\nSERVER: {status}")
-            else:
-                print("\nSERVER:", status)
-        except socket.timeout:
-            print("\n[WARNING] No final ACK DONE from server.")
+        start = time.perf_counter()
+
+        while base < total_packets:
+            # досылаем окно
+            while next_seq < total_packets and next_seq < base + WINDOW_SIZE:
+                try:
+                    sock.sendto(packets[next_seq], server_addr)
+                except OSError as exc:
+                    raise OSError(f"UDP send DATA failed: {exc}") from exc
+                next_seq += 1
+
+            # ждём cumulative ACK
+            ack_seq = _wait_for_cumulative_ack_client(sock, server_addr, base)
+
+            if ack_seq is None:
+                retries += 1
+                if retries > MAX_RETRIES:
+                    raise TimeoutError(
+                        f"UDP upload interrupted: ACK timeout window base={base}"
+                    )
+
+                for seq in range(base, next_seq):
+                    try:
+                        sock.sendto(packets[seq], server_addr)
+                    except OSError as exc:
+                        raise OSError(f"UDP resend DATA failed: {exc}") from exc
+                continue
+
+            if ack_seq >= total_packets:
+                ack_seq = total_packets - 1
+            if ack_seq < base:
+                continue
+
+            # обновляем base и прогресс
+            newly_acked = ack_seq - base + 1
+            base = ack_seq + 1
+            retries = 0
+
+            sent_bytes = min(total_size - offset, base * CHUNK_SIZE)
+            last_step = print_progress(offset + sent_bytes, total_size, last_step)
+
+        duration = time.perf_counter() - start
+        print_progress(offset + remaining, total_size, last_step)
+        print()
+
+        msg, addr = recv_text_datagram(sock)
+        if addr == server_addr and msg:
+            print(f"SERVER: {msg}")
     finally:
         sock.close()
 
+def _wait_for_cumulative_ack_client(
+    sock: socket.socket,
+    server_addr: tuple[str, int],
+    min_expected: int,
+) -> int | None:
+    old_timeout = sock.gettimeout()
+    sock.settimeout(ACK_TIMEOUT)
+    try:
+        while True:
+            try:
+                data, addr = sock.recvfrom(RECV_BUFSIZE)
+            except (socket.timeout, TimeoutError):
+                return None
+            except OSError:
+                return None
+
+            if addr != server_addr:
+                continue
+
+            try:
+                text = data.decode("utf-8").strip()
+            except UnicodeDecodeError:
+                continue
+
+            parts = text.split()
+            if len(parts) != 2 or parts[0] != "ACK":
+                continue
+
+            try:
+                ack_seq = int(parts[1])
+            except ValueError:
+                continue
+
+            if ack_seq >= min_expected:
+                return ack_seq
+    finally:
+        sock.settimeout(old_timeout)
 
 def _handle_failure(attempt: int) -> tuple[int, bool]:
     attempt += 1

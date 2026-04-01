@@ -197,15 +197,6 @@ def handle_download(server_socket, client_addr: tuple[str, int], request: str) -
         log.info(f"UDP download skipped file={filename}, nothing to send")
         return
 
-    '''if remaining == 0:
-        for _ in range(MAX_RETRIES):
-            if not send_line(server_socket, client_addr, "DONE", level="info"):
-                return
-            if wait_for_ack_done(server_socket, client_addr):
-                log.info(f"UDP download finished file={filename}, bytes=0")
-                return
-        return'''
-
     packets: list[bytes] = []
     try:
         with open(path, "rb") as f:
