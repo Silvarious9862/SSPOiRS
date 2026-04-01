@@ -10,7 +10,7 @@ import time
 from typing import Final
 
 RECV_BUFSIZE: Final[int] = 65535
-SOCKET_TIMEOUT: Final[float] = 15.0
+SOCKET_TIMEOUT: Final[float] = 5.0
 
 ANSI_ESCAPE_RE = re.compile(r"\x1B\[[0-?]*[ -/]*[@-~]")
 
