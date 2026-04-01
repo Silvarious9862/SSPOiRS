@@ -40,7 +40,7 @@ def receive_request(
     try:
         request = data.decode("utf-8").strip()
     except UnicodeDecodeError as exc:
-        log.warn(
+        log.debug(
             f"Ignored non-UTF8 datagram from "
             f"{client_addr[0]}:{client_addr[1]}"
         )

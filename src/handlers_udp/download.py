@@ -10,11 +10,11 @@ from src.utils import logging as log
 from src.utils.colors import colorize
 
 BASEDIR: Final[str] = "serverfiles"
-CHUNK_SIZE: Final[int] = 1200
-WINDOW_SIZE: Final[int] = 8
-ACK_TIMEOUT: Final[float] = 0.5
+CHUNK_SIZE: Final[int] = 1450
+WINDOW_SIZE: Final[int] = 32
+ACK_TIMEOUT: Final[float] = 0.1
 MAX_RETRIES: Final[int] = 20
-RECV_BUFSIZE: Final[int] = 4096
+RECV_BUFSIZE: Final[int] = 65535
 
 
 def send_line(
