@@ -8,7 +8,7 @@ import socket
 import sys
 import time
 
-HOST = "127.0.0.1"
+HOST = "192.168.12.118"
 PORT = 5000
 
 KEEPALIVE_IDLE = 15
@@ -252,14 +252,21 @@ def upload_file(filepath: str) -> None:
                     f"\nWarning: expected to upload {remaining} bytes, sent only {sent}."
                 )
 
+            
             final = strip_ansi(recv_line(sock))
+            
             if final:
                 print(f"SERVER: {final}")
 
             try:
+                
                 sock.sendall((exit_cmd + "\n").encode("utf-8"))
-                recv_line(sock)
-            except OSError:
+                sock.settimeout(3.0)
+                
+                bye = strip_ansi(recv_line(sock))
+                if bye:
+                    print(f"SERVER: {bye}")
+            except (socket.timeout, TimeoutError, OSError):
                 pass
 
             attempt = 0
