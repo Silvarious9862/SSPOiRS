@@ -116,15 +116,12 @@ def download_file(filename: str) -> None:
             cmd = (f"download {filename} {offset}"
                    if offset > 0 else f"download {filename}")
             exit_cmd = (f"exit")
-            print(f"SEND: {cmd!r}")
+
             sock.sendall((cmd + "\n").encode("utf-8"))
-            print("Sended successfully")
 
             raw_status = recv_line(sock)
-            print(f"SERVER RAW: {raw_status!r}")
 
             status = strip_ansi(raw_status)
-            print(f"SERVER STRIPPED: {status!r}")
 
             # Если сервер сказал, что файла нет, а мы хотели резюмировать
             if status.startswith("ERROR file not found") and offset > 0:
