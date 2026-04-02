@@ -180,6 +180,23 @@ def handle_read_ready(
     session: TcpSession,
 ) -> None:
     """Обработать готовность сокета к чтению."""
+    if session.sock.fileno() == -1:
+            return
+    
+    if session.command_mode == "upload":
+        try:
+            continue_upload_receive(session)
+        except (ConnectionResetError, BrokenPipeError, OSError) as exc:
+            log.debug(f"Read error from {session.addr}: {exc}")
+            close_client(selector, session)
+            return
+
+        if session.sock.fileno() == -1:
+                return
+
+        update_interest(selector, session)
+        return
+    
     try:
         data = session.sock.recv(BUFFERSIZE)
     except BlockingIOError:
@@ -191,12 +208,6 @@ def handle_read_ready(
 
     if not data:
         close_client(selector, session)
-        return
-
-    if session.command_mode == "upload":
-        session.in_buffer.extend(data)
-        continue_upload_receive(session)
-        update_interest(selector, session)
         return
 
     session.in_buffer.extend(data)

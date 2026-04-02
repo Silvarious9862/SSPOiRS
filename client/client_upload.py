@@ -118,13 +118,12 @@ def upload_file(filepath: str) -> None:
 
         try:
             cmd = f"upload {filename} {total_size}"
-            sock.sendall(cmd.encode("utf-8"))
+            exit_cmd = (f"exit")
+            sock.sendall((cmd + "\n").encode("utf-8"))
 
             raw_status = recv_line(sock)
-            print(f"SERVER RAW: {raw_status!r}")
 
             status = strip_ansi(raw_status)
-            print(f"SERVER STRIPPED: {status!r}")
 
             offset = 0
             if status.startswith("RESUME "):
@@ -141,7 +140,7 @@ def upload_file(filepath: str) -> None:
             else:
                 print("Upload refused by server.")
                 try:
-                    sock.sendall(b"exit")
+                    sock.sendall((exit_cmd + "\n").encode("utf-8"))
                     recv_line(sock)
                 except OSError:
                     pass
@@ -161,7 +160,7 @@ def upload_file(filepath: str) -> None:
                 if final:
                     print(f"SERVER: {final}")
                 try:
-                    sock.sendall(b"exit")
+                    sock.sendall((exit_cmd + "\n").encode("utf-8"))
                     recv_line(sock)
                 except OSError:
                     pass
@@ -258,7 +257,7 @@ def upload_file(filepath: str) -> None:
                 print(f"SERVER: {final}")
 
             try:
-                sock.sendall(b"exit")
+                sock.sendall((exit_cmd + "\n").encode("utf-8"))
                 recv_line(sock)
             except OSError:
                 pass
