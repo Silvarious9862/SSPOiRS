@@ -213,9 +213,14 @@ def handle_write_ready(
 ) -> None:
     flush_out_buffer(selector, session)
 
+    if session.sock.fileno() == -1:
+        return
+
     if session.command_mode == "download" and not session.out_buffer:
         continue_download_send(session)
         flush_out_buffer(selector, session)
+        if session.sock.fileno() == -1:
+            return
 
     if session.closing and not session.out_buffer and session.command_mode == "line":
         close_client(selector, session)
