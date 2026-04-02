@@ -102,6 +102,7 @@ def queue_line(
     """Добавить строковый ответ в выходной буфер."""
     colored = colorize(message, level=level)
     queue_bytes(session, f"{colored}\n".encode("utf-8"))
+    log.debug(f"Sent to {session.addr[0]}:{session.addr[1]}: {message!r}")
 
 
 def queue_hello(session: TcpSession) -> None:
@@ -210,28 +211,48 @@ def handle_write_ready(
     selector: selectors.BaseSelector,
     session: TcpSession,
 ) -> None:
-    """Обработать готовность сокета к записи."""
-    if session.command_mode == "download":
+    flush_out_buffer(selector, session)
+
+    if session.command_mode == "download" and not session.out_buffer:
         continue_download_send(session)
-
-    if session.out_buffer:
-        try:
-            sent = session.sock.send(session.out_buffer)
-        except BlockingIOError:
-            sent = 0
-        except (ConnectionResetError, BrokenPipeError, OSError) as exc:
-            log.debug(f"Write error to {session.addr}: {exc}")
-            close_client(selector, session)
-            return
-
-        if sent > 0:
-            del session.out_buffer[:sent]
+        flush_out_buffer(selector, session)
 
     if session.closing and not session.out_buffer and session.command_mode == "line":
         close_client(selector, session)
         return
 
     update_interest(selector, session)
+
+
+def flush_out_buffer(
+    selector: selectors.BaseSelector,
+    session: TcpSession,
+) -> None:
+    """Попытаться отправить накопленный выходной буфер."""
+    if not session.out_buffer:
+        return
+
+    try:
+        sent = session.sock.send(session.out_buffer)
+    except BlockingIOError:
+        return
+    except (ConnectionResetError, BrokenPipeError, OSError) as exc:
+        log.debug(f"Write error to {session.addr}: {exc}")
+        close_client(selector, session)
+        return
+
+    if sent > 0:
+        '''preview = session.out_buffer[:sent]
+        # Попробуем распознать как текст, не ломая бинарные данные
+        try:
+            text = preview.decode("utf-8", errors="ignore").strip()
+        except Exception:
+            text = ""
+        if text:
+            log.debug(f"Sent {sent} bytes to {session.addr}: {text!r}")
+        else:
+            log.debug(f"Sent {sent} bytes to {session.addr} (binary)")'''
+        del session.out_buffer[:sent]
 
 
 def update_interest(

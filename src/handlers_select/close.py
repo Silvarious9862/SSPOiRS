@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from src.models.tcp_session import TcpSession, mark_session_closing
 from src.utils.colors import colorize
+from src.utils import logging as log
 
 CLOSE_COMMANDS = {"CLOSE", "EXIT", "QUIT"}
 
@@ -17,4 +18,8 @@ def handle_close(session: TcpSession, request: str) -> None:
 
     bye = colorize("BYE", level="info")
     session.out_buffer.extend(f"{bye}\n".encode("utf-8"))
+
+    host, port = session.addr
+    log.debug(f"Sent to {host}:{port}: BYE")
+    
     mark_session_closing(session)

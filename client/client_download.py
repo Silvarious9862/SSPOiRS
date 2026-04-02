@@ -115,7 +115,10 @@ def download_file(filename: str) -> None:
         try:
             cmd = (f"download {filename} {offset}"
                    if offset > 0 else f"download {filename}")
-            sock.sendall(cmd.encode("utf-8"))
+            exit_cmd = (f"exit")
+            print(f"SEND: {cmd!r}")
+            sock.sendall((cmd + "\n").encode("utf-8"))
+            print("Sended successfully")
 
             raw_status = recv_line(sock)
             print(f"SERVER RAW: {raw_status!r}")
@@ -130,7 +133,7 @@ def download_file(filename: str) -> None:
                     "resume from local offset is impossible."
                 )
                 try:
-                    sock.sendall(b"exit")
+                    sock.sendall((exit_cmd + "\n").encode("utf-8"))
                     recv_line(sock)
                 except OSError:
                     pass
@@ -139,7 +142,7 @@ def download_file(filename: str) -> None:
             if not status.startswith("OK"):
                 print("Download refused by server.")
                 try:
-                    sock.sendall(b"exit")
+                    sock.sendall((exit_cmd + "\n").encode("utf-8"))
                     recv_line(sock)
                 except OSError:
                     pass
@@ -150,7 +153,7 @@ def download_file(filename: str) -> None:
             except (IndexError, ValueError):
                 print("Invalid size in server response.")
                 try:
-                    sock.sendall(b"exit")
+                    sock.sendall((exit_cmd + "\n").encode("utf-8"))
                     recv_line(sock)
                 except OSError:
                     pass
@@ -164,7 +167,7 @@ def download_file(filename: str) -> None:
                 if final:
                     print(f"SERVER: {final}")
                 try:
-                    sock.sendall(b"exit")
+                    sock.sendall((exit_cmd + "\n").encode("utf-8"))
                     recv_line(sock)
                 except OSError:
                     pass
@@ -254,7 +257,7 @@ def download_file(filename: str) -> None:
             final = strip_ansi(recv_line(sock))
             if final:
                 print(f"SERVER: {final}")
-            sock.sendall(b"exit")
+            sock.sendall((exit_cmd + "\n").encode("utf-8"))
             recv_line(sock)
             attempt = 0
             return

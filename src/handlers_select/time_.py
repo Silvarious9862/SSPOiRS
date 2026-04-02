@@ -4,7 +4,7 @@ from datetime import datetime
 
 from src.models.tcp_session import TcpSession
 from src.utils.colors import colorize
-
+from src.utils import logging as log
 
 def is_time_command(request: str) -> bool:
     return request.strip().upper() == "TIME"
@@ -19,5 +19,9 @@ def handle_time(session: TcpSession, request: str) -> None:
         session.out_buffer.extend(b"ERROR unknown command\n")
         return
 
-    time = colorize(get_current_time(), level="info")
-    session.out_buffer.extend(f"{time}\n".encode("utf-8"))
+    time = get_current_time()
+    time_colored = colorize(time, level="info")
+    session.out_buffer.extend(f"{time_colored}\n".encode("utf-8"))
+
+    host, port = session.addr
+    log.debug(f"Sent to {host}:{port}: {time!r}")
