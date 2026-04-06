@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import socket
+import threading
 import struct
 from typing import Final
 
@@ -66,35 +67,65 @@ def accept_client(
     return client_socket, client_addr
 
 
-def receive_request(client_socket: socket.socket) -> str | None:
+def receive_request(
+    client_socket: socket.socket,
+    client_addr: tuple[str, int],
+) -> str | None:
+    worker_name = threading.current_thread().name
+    host, port = client_addr
+
     try:
         data = client_socket.recv(BUFFERSIZE)
     except (socket.timeout, TimeoutError):
         return None
-    except (ConnectionResetError, BrokenPipeError, OSError):
+    except (ConnectionResetError, BrokenPipeError, OSError) as exc:
+        log.debug(
+            f"{worker_name} | Receive failed from {host}:{port}: {exc}"
+        )
         return ""
+
     if not data:
+        log.debug(f"{worker_name} | Client closed connection {host}:{port}")
         return ""
+
     request = data.decode("utf-8").strip()
-    log.debug(f"Received: {request!r}")
+    log.debug(f"{worker_name} | Received from {host}:{port}: {request!r}")
     return request
 
 
 def send_response(
-    client_socket: socket.socket, message: str, *, level: str = "info"
+    client_socket: socket.socket,
+    message: str,
+    *,
+    level: str = "info",
+    client_addr: tuple[str, int] | None = None,
 ) -> bool:
     colored_message = colorize(message, level=level)
+    worker_name = threading.current_thread().name
+
+    if client_addr is None:
+        try:
+            client_addr = client_socket.getpeername()
+        except OSError:
+            client_addr = ("unknown", 0)
+
+    host, port = client_addr[0], client_addr[1]
+
     try:
         client_socket.sendall(f"{colored_message}\n".encode("utf-8"))
     except (BrokenPipeError, ConnectionResetError, OSError):
-        log.debug(f"Send skipped — client closed before: {message!r}")
+        log.debug(
+            f"{worker_name} | Send skipped to {host}:{port} "
+            f"(client closed before): {message!r}"
+        )
         return False
-    log.debug(f"Sent: {message!r}")
+
+    log.debug(f"{worker_name} | Sent to {host}:{port}: {message!r}")
     return True
 
 
-def send_hello(client_socket: socket.socket) -> bool:
-    return send_response(client_socket, "HELLO", level="info")
+def send_hello(client_socket: socket.socket, client_addr: tuple[str, int]) -> bool:
+    return send_response(client_socket, "HELLO", level="info", client_addr=client_addr)
 
 
 def build_response(request: str) -> tuple[str, str, bool]:
@@ -123,10 +154,10 @@ def handle_client(
     client_socket: socket.socket, client_addr: tuple[str, int]
 ) -> None:
     try:
-        if not send_hello(client_socket):
+        if not send_hello(client_socket, client_addr):
             return
         while True:
-            request = receive_request(client_socket)
+            request = receive_request(client_socket, client_addr)
             if request is None:
                 continue
             if request == "":

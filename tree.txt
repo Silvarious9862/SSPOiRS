@@ -1,34 +1,64 @@
-¦   .env
-¦   .env.example
-¦   .gitignore
-¦   requirements.txt
-+---docs                     
-+---src
-¦   ¦   app.py
-¦   ¦   settings.py
-¦   ¦   tcp_protocol.py
-¦   ¦   udp_protocol.py
-¦   ¦   __init__.py
-¦   ¦   
-¦   +---handlers
-¦   ¦       close.py
-¦   ¦       download.py
-¦   ¦       echo.py
-¦   ¦       time_.py
-¦   ¦       upload.py
-¦   ¦       __init__.py
-¦   ¦       
-¦   +---models
-¦   ¦      tcp_select.py
-¦   ¦      tcp_single.py
-¦   ¦      tcp_thread.py
-¦   ¦      udp_single.py
-¦   ¦      __init__.py
-¦   +---utils
-¦   ¦      colors.py
-¦   ¦      files.py
-¦   ¦      logging.py
-¦   
-¦           
-L---venv
-    
+
+E:.
+|   .env.example
+|   .gitignore
+|   README.md
+|   requirements.txt
+|   
++---.venv
++---client
+|       bigtext.txt
+|       client_download.py
+|       client_upload.py
+|       empty.txt
+|       small.txt
+|       udp_download_client.py
+|       udp_upload_client.py
+|       
++---docs  
++---serverfiles
+|       bigtext.txt
+|       empty.txt
+|       small.txt
+|       
+\---src
+    |   app.py
+    |   settings.py
+    |   tcp_protocol.py
+    |   tcp_protocol_select.py
+    |   udp_protocol.py
+    |   __init__.py
+    |   
+    +---handlers
+    |   |   close.py
+    |   |   download.py
+    |   |   echo.py
+    |   |   time_.py
+    |   |   upload.py
+    |   |   __init__.py
+    |           
+    +---handlers_select
+    |   |   close.py
+    |   |   download.py
+    |   |   echo.py
+    |   |   time_.py
+    |   |   upload.py
+    |   |   __init__.py
+    |           
+    +---handlers_udp
+    |   |   download.py
+    |   |   upload.py
+    |   |   __init__.py
+    |           
+    +---models
+    |   |   tcp_select.py
+    |   |   tcp_session.py
+    |   |   tcp_single.py
+    |   |   tcp_thread.py
+    |   |   udp_single.py
+    |   |   __init__.py
+    |           
+    +---utils
+    |   |   colors.py
+    |   |   files.py
+    |   |   logging.py

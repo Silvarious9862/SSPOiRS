@@ -8,9 +8,6 @@ import socket
 import sys
 import time
 
-HOST = "192.168.12.118"
-PORT = 5000
-
 KEEPALIVE_IDLE = 15
 KEEPALIVE_INTVL = 5
 KEEPALIVE_CNT = 4
@@ -51,8 +48,8 @@ def recv_line(sock: socket.socket) -> str:
     return data.decode(errors="replace").rstrip()
 
 
-def _connect_and_handshake() -> socket.socket:
-    sock = socket.create_connection((HOST, PORT))
+def _connect_and_handshake(host: str, port: int) -> socket.socket:
+    sock = socket.create_connection((host, port))
     _apply_keepalive(sock)
     sock.settimeout(SEND_TIMEOUT)
     hello = strip_ansi(recv_line(sock))
@@ -93,7 +90,7 @@ def send_oob_progress(sock: socket.socket, percent: int) -> None:
     except (BrokenPipeError, ConnectionResetError, OSError, ValueError):
         pass
 
-def upload_file(filepath: str) -> None:
+def upload_file(host: str, port: int, filepath: str) -> None:
     if not os.path.exists(filepath):
         print(f"Local file not found: {filepath}")
         return
@@ -108,9 +105,9 @@ def upload_file(filepath: str) -> None:
 
     while True:
         try:
-            sock = _connect_and_handshake()
+            sock = _connect_and_handshake(host, port)
         except (OSError, ConnectionRefusedError) as exc:
-            print(f"[CONNECTION] Cannot connect to {HOST}:{PORT}: {exc}")
+            print(f"[CONNECTION] Cannot connect to {host}:{port}: {exc}")
             attempt, ok = _handle_failure(attempt)
             if not ok:
                 return
@@ -138,7 +135,7 @@ def upload_file(filepath: str) -> None:
                 print(f"SERVER: {status}")
                 return
             else:
-                print("Upload refused by server.")
+                print(f"Upload refused by server: {status}")
                 try:
                     sock.sendall((exit_cmd + "\n").encode("utf-8"))
                     recv_line(sock)
@@ -286,6 +283,8 @@ def upload_file(filepath: str) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="UPLOAD")
+    parser.add_argument("host")
+    parser.add_argument("port", type=int)
     parser.add_argument("filepath", help="Local file to upload")
     args = parser.parse_args()
     upload_file(args.filepath)

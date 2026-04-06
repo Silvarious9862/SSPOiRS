@@ -9,9 +9,6 @@ import time
 import select
 import sys
 
-HOST = "127.0.0.1"
-PORT = 5000
-
 KEEPALIVE_IDLE = 15
 KEEPALIVE_INTVL = 5
 KEEPALIVE_CNT = 4
@@ -51,8 +48,8 @@ def recv_line(sock: socket.socket) -> str:
     return data.decode(errors="replace").rstrip()
 
 
-def _connect_and_handshake() -> socket.socket:
-    sock = socket.create_connection((HOST, PORT))
+def _connect_and_handshake(host: str, port: int) -> socket.socket:
+    sock = socket.create_connection((host, port))
     _apply_keepalive(sock)
     sock.settimeout(RECV_TIMEOUT)
     hello = strip_ansi(recv_line(sock))
@@ -92,7 +89,7 @@ def _handle_failure(attempt: int) -> tuple[int, bool]:
             print("Transfer aborted by user.")
             return attempt, False
 
-def download_file(filename: str) -> None:
+def download_file(host: str, port: int, filename: str) -> None:
     attempt = 0
 
     while True:
@@ -104,9 +101,9 @@ def download_file(filename: str) -> None:
             print(f"Local file '{filename}' does not exist, starting from 0")
 
         try:
-            sock = _connect_and_handshake()
+            sock = _connect_and_handshake(host, port)
         except (OSError, ConnectionRefusedError) as exc:
-            print(f"[CONNECTION] Cannot connect to {HOST}:{PORT}: {exc}")
+            print(f"[CONNECTION] Cannot connect to {host}:{port}: {exc}")
             attempt, ok = _handle_failure(attempt)
             if not ok:
                 return
@@ -137,7 +134,7 @@ def download_file(filename: str) -> None:
                 return
 
             if not status.startswith("OK"):
-                print("Download refused by server.")
+                print(f"Download refused by server: {status}")
                 try:
                     sock.sendall((exit_cmd + "\n").encode("utf-8"))
                     recv_line(sock)
@@ -272,6 +269,8 @@ def download_file(filename: str) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="DOWNLOAD")
+    parser.add_argument("host")
+    parser.add_argument("port", type=int)
     parser.add_argument("filename", help="File to download")
     args = parser.parse_args()
     download_file(args.filename)

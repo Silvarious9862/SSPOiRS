@@ -64,7 +64,7 @@ def get_settings() -> Settings:
     env = os.getenv("APP_ENV", "development")
     log_level = os.getenv("LOG_LEVEL", "INFO")
 
-    files_dir = Path(os.getenv("FILES_DIR", PROJECT_ROOT / "files")).resolve()
+    files_dir = Path(os.getenv("FILES_DIR", PROJECT_ROOT / "serverfiles")).resolve()
 
     # tcp
     tcp_host = os.getenv("TCP_HOST", "0.0.0.0")
