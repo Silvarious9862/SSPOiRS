@@ -74,11 +74,6 @@ def get_settings() -> Settings:
     udp_host = os.getenv("UDP_HOST", "0.0.0.0")
     udp_port = int(os.getenv("UDP_PORT", "5001"))
 
-    # thread pool
-    thread_nmin = int(os.getenv("THREAD_NMIN", "2"))
-    thread_nmax = int(os.getenv("THREAD_NMAX", "16"))
-    thread_idle_timeout = float(os.getenv("THREAD_IDLE_TIMEOUT", "30"))
-
     _settings = Settings(
         env=env,
         log_level=log_level,
@@ -87,8 +82,5 @@ def get_settings() -> Settings:
         tcp_port=tcp_port,
         udp_host=udp_host,
         udp_port=udp_port,
-        thread_nmin=thread_nmin,
-        thread_nmax=thread_nmax,
-        thread_idle_timeout=thread_idle_timeout,
     )
     return _settings
