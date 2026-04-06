@@ -8,9 +8,13 @@ from typing import Final
 
 from src.utils import logging as log
 from src.utils.colors import colorize
+from src.utils.files import (
+    get_file_path,
+    is_upload_in_progress,
+    normalize_filename,
+)
 
 BUFFERSIZE: Final[int] = 4096
-BASEDIR: Final[str] = "serverfiles"
 DOWNLOAD_DELAY_PER_CHUNK: float = 0.00
 OOB_PROGRESS_STEP: Final[int] = 10
 
@@ -62,14 +66,21 @@ def handle_download(client_socket, request: str) -> None:
         return
 
     filename, offset = parsed
-    path = os.path.join(BASEDIR, filename)
+    safe_name = normalize_filename(filename)
 
-    if not os.path.exists(path):
+    if is_upload_in_progress(safe_name):
+        send_line(client_socket, "ERROR file is busy", level="error")
+        log.debug(f"DOWNLOAD denied for busy file: {safe_name}")
+        return
+
+    path = get_file_path(safe_name)
+
+    if not path.exists():
         send_line(client_socket, "ERROR file not found", level="error")
         return
 
     try:
-        filesize = os.path.getsize(path)
+        filesize = path.stat().st_size
     except OSError as e:
         log.error(f"Cannot stat file {path}: {e}")
         send_line(client_socket, "ERROR cannot read file", level="error")
@@ -84,40 +95,44 @@ def handle_download(client_socket, request: str) -> None:
     if remaining == 0:
         if not send_line(client_socket, "OK 0", level="info"):
             return
-        send_line(client_socket,
-                  f"OK DOWNLOADED {filesize} bytes in 0.000 s, 0.00 KB/s",
-                  level="info")
+        send_line(
+            client_socket,
+            f"OK DOWNLOADED {filesize} bytes in 0.000 s, 0.00 KB/s",
+            level="info",
+        )
         return
 
     if not send_line(client_socket, f"OK {remaining}", level="info"):
         return
 
-    log.debug(f"Starting download file={filename}, size={filesize}, "
-              f"offset={offset}, remaining={remaining}")
+    log.debug(
+        f"Starting download file={safe_name}, size={filesize}, "
+        f"offset={offset}, remaining={remaining}"
+    )
+
     start = time.perf_counter()
     sent = 0
     last_oob_step = -1
     expected = filesize - offset
 
     try:
-        with open(path, "rb") as f:
+        with path.open("rb") as f:
             f.seek(offset)
             while remaining > 0:
                 chunk = f.read(min(BUFFERSIZE, remaining))
                 if not chunk:
                     break
+
                 try:
                     client_socket.sendall(chunk)
                 except (BrokenPipeError, ConnectionResetError, OSError) as exc:
-                    # Разрыв во время передачи — keepalive его уже зафиксировал;
-                    # сервер прекращает попытку без финального OK.
                     log.debug(f"Connection error during download sendall: {exc}")
                     break
+
                 size = len(chunk)
                 sent += size
                 remaining -= size
 
-                # Обычные данные: считаем и выводим отдельно, без OOB
                 if expected > 0:
                     percent = int(sent * 100 / expected)
                     step = percent // OOB_PROGRESS_STEP
@@ -127,7 +142,6 @@ def handle_download(client_socket, request: str) -> None:
                             f"({min(step * OOB_PROGRESS_STEP, 100)}%)"
                         )
 
-                # Внеполосные данные: отправляем процент шагами
                 if expected > 0:
                     percent = int(sent * 100 / expected)
                     step = percent // OOB_PROGRESS_STEP
@@ -139,6 +153,7 @@ def handle_download(client_socket, request: str) -> None:
 
                 if DOWNLOAD_DELAY_PER_CHUNK > 0:
                     time.sleep(DOWNLOAD_DELAY_PER_CHUNK)
+
     except OSError as e:
         log.error(f"File read error for {path}: {e}")
         send_line(client_socket, "ERROR cannot read file", level="error")
@@ -152,9 +167,13 @@ def handle_download(client_socket, request: str) -> None:
         log.info(f"DOWNLOAD finished, regular bytes sent: {sent}")
 
         speed_kbps = sent / 1024 / duration if duration > 0 else 0.0
-        send_line(client_socket,
-                f"OK DOWNLOADED {filesize} bytes in {duration:.3f} s, "
-                f"{speed_kbps:.2f} KB/s",
-                level="info")
+        send_line(
+            client_socket,
+            f"OK DOWNLOADED {filesize} bytes in {duration:.3f} s, "
+            f"{speed_kbps:.2f} KB/s",
+            level="info",
+        )
     else:
-        log.debug(f"Download interrupted at offset {offset + sent} of {filesize} bytes")
+        log.debug(
+            f"Download interrupted at offset {offset + sent} of {filesize} bytes"
+        )

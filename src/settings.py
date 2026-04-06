@@ -64,7 +64,7 @@ def get_settings() -> Settings:
     env = os.getenv("APP_ENV", "development")
     log_level = os.getenv("LOG_LEVEL", "INFO")
 
-    files_dir = Path(os.getenv("FILES_DIR", PROJECT_ROOT / "files")).resolve()
+    files_dir = Path(os.getenv("FILES_DIR", PROJECT_ROOT / "serverfiles")).resolve()
 
     # tcp
     tcp_host = os.getenv("TCP_HOST", "0.0.0.0")
@@ -74,11 +74,6 @@ def get_settings() -> Settings:
     udp_host = os.getenv("UDP_HOST", "0.0.0.0")
     udp_port = int(os.getenv("UDP_PORT", "5001"))
 
-    # thread pool
-    thread_nmin = int(os.getenv("THREAD_NMIN", "2"))
-    thread_nmax = int(os.getenv("THREAD_NMAX", "16"))
-    thread_idle_timeout = float(os.getenv("THREAD_IDLE_TIMEOUT", "30"))
-
     _settings = Settings(
         env=env,
         log_level=log_level,
@@ -87,8 +82,5 @@ def get_settings() -> Settings:
         tcp_port=tcp_port,
         udp_host=udp_host,
         udp_port=udp_port,
-        thread_nmin=thread_nmin,
-        thread_nmax=thread_nmax,
-        thread_idle_timeout=thread_idle_timeout,
     )
     return _settings
