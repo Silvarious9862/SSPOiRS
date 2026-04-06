@@ -168,5 +168,8 @@ def handle_upload(client_socket, request: str) -> None:
             )
 
     finally:
-        client_socket.settimeout(old_timeout)
+        try:
+            client_socket.settimeout(old_timeout)
+        except OSError:
+            pass
         release_upload(safe_name)
