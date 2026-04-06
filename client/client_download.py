@@ -273,7 +273,7 @@ def main() -> None:
     parser.add_argument("port", type=int)
     parser.add_argument("filename", help="File to download")
     args = parser.parse_args()
-    download_file(args.filename)
+    download_file(args.host, args.port, args.filename)
 
 
 if __name__ == "__main__":

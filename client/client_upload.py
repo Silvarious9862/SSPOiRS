@@ -287,7 +287,7 @@ def main() -> None:
     parser.add_argument("port", type=int)
     parser.add_argument("filepath", help="Local file to upload")
     args = parser.parse_args()
-    upload_file(args.filepath)
+    upload_file(args.host, args.port, args.filepath)
 
 
 if __name__ == "__main__":
