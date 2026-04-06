@@ -13,6 +13,7 @@ from src.handlers.upload import is_upload_command, handle_upload
 from src.handlers.download import is_download_command, handle_download
 from src.utils import logging as log
 from src.utils.colors import colorize
+from src.utils.runtime import shutdown_event, clients_lock, active_clients
 
 BUFFERSIZE: Final[int] = 4096
 BACKLOG: Final[int] = 5
@@ -67,6 +68,13 @@ def accept_client(
     return client_socket, client_addr
 
 
+def set_client_state(client_addr, state: str) -> None:
+    with clients_lock:
+        info = active_clients.get(client_addr)
+        if info is not None:
+            info["state"] = state
+
+
 def receive_request(
     client_socket: socket.socket,
     client_addr: tuple[str, int],
@@ -79,17 +87,22 @@ def receive_request(
     except (socket.timeout, TimeoutError):
         return None
     except (ConnectionResetError, BrokenPipeError, OSError) as exc:
-        log.debug(
-            f"{worker_name} | Receive failed from {host}:{port}: {exc}"
-        )
+        if shutdown_event.is_set():
+            log.debug(
+                f"{worker_name} | Receive interrupted by shutdown"
+            )
+        else:
+            log.debug(
+                f"{worker_name} | Receive failed: {exc}"
+            )
         return ""
 
     if not data:
-        log.debug(f"{worker_name} | Client closed connection {host}:{port}")
+        log.debug(f"{worker_name} | Client closed connection")
         return ""
 
     request = data.decode("utf-8").strip()
-    log.debug(f"{worker_name} | Received from {host}:{port}: {request!r}")
+    log.debug(f"{worker_name} | Received: {request!r}")
     return request
 
 
@@ -115,12 +128,12 @@ def send_response(
         client_socket.sendall(f"{colored_message}\n".encode("utf-8"))
     except (BrokenPipeError, ConnectionResetError, OSError):
         log.debug(
-            f"{worker_name} | Send skipped to {host}:{port} "
+            f"{worker_name} | Send skipped "
             f"(client closed before): {message!r}"
         )
         return False
 
-    log.debug(f"{worker_name} | Sent to {host}:{port}: {message!r}")
+    log.debug(f"{worker_name} | Sent: {message!r}")
     return True
 
 
@@ -155,6 +168,7 @@ def handle_client(
 ) -> None:
     try:
         if not send_hello(client_socket, client_addr):
+            set_client_state(client_addr, "idle")
             return
         while True:
             request = receive_request(client_socket, client_addr)
@@ -164,10 +178,14 @@ def handle_client(
                 break
             req_stripped = request.strip()
             if is_upload_command(req_stripped):
+                set_client_state(client_addr, "upload")
                 handle_upload(client_socket, req_stripped)
+                set_client_state(client_addr, "idle")
                 continue
             if is_download_command(req_stripped):
+                set_client_state(client_addr, "download")
                 handle_download(client_socket, req_stripped)
+                set_client_state(client_addr, "idle")
                 continue
             response, level, should_close = build_response(req_stripped)
             if not send_response(client_socket, response, level=level):
