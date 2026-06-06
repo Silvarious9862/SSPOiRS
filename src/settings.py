@@ -27,11 +27,6 @@ class Settings:
     udp_host: str
     udp_port: int
 
-    # Thread-pool (ЛР4)
-    thread_nmin: int
-    thread_nmax: int
-    thread_idle_timeout: float  # секунды
-
 
 _settings: Settings | None = None
 
