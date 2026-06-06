@@ -221,3 +221,4 @@ tree.txt
 serverfiles/
 client/**
 !client/**/*.py
+*.pptx
